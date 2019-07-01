@@ -1,0 +1,36 @@
+
+buildscript {
+    ext.groups = 'top.fksoft'
+    ext.versions = '1.0-SNAPSHOT'
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0'
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+
+    }
+}
+
+task clean(type: Delete) {
+    def size = project.allprojects.size()
+    for(index in 0..(size-1) ){
+        def projectIndex = project.allprojects[index]
+        println "delete [:${projectIndex.name}] cache ... [OK]"
+        delete projectIndex.buildDir
+    }
+}
+
