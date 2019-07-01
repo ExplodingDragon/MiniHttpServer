@@ -5,10 +5,11 @@ group "$groups"
 version "$versions"
 sourceCompatibility = 1.8
 
-def mainClassName = 'top.fksoft.run.Main'
+def mainClassName = 'top.fksoft.execute.Main'
 
 dependencies {
     implementation project(":core")
+    implementation 'com.github.ExplodingFKL:JavaUtils:v0.1-beta'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 

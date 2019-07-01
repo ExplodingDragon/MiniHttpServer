@@ -2,6 +2,7 @@
 buildscript {
     ext.groups = 'top.fksoft'
     ext.versions = '1.0-SNAPSHOT'
+    ext.versionCode = 1
 
     repositories {
         google()
