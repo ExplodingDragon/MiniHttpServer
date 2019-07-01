@@ -20,7 +20,7 @@ jar {
 }
 task fatJar(type: Jar) {
     manifest.from jar.manifest
-    classifier = 'Run'
+    classifier = 'all'
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     } {
@@ -34,4 +34,24 @@ task fatJar(type: Jar) {
 }
 artifacts {
     archives fatJar
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+task(bootRun, dependsOn: fatJar) {
+    doLast {
+        def path = "$buildDir${File.separator}libs${File.separator}cli-${versions}-all.jar"
+        print "Jar File Path : ${path}"
+        javaexec {
+
+            main = "-jar"
+            args = [
+                    path
+            ]
+
+        }
+
+    }
 }
