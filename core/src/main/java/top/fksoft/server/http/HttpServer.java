@@ -1,11 +1,14 @@
-package top.fksoft.httpServer;
+package top.fksoft.server.http;
 
-import top.fksoft.httpServer.logcat.Logger;
+import top.fksoft.server.http.logcat.Logger;
 
 import javax.net.ServerSocketFactory;
 import java.io.IOException;
 import java.util.concurrent.ThreadFactory;
 
+/**
+ * @author Explo
+ */
 public class HttpServer {
     private static Logger logger = Logger.getLogger(HttpServer.class);
     private final HttpRunnable runnable;

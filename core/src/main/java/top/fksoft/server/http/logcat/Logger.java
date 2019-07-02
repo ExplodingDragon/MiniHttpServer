@@ -1,16 +1,18 @@
-package top.fksoft.httpServer.logcat;
+package top.fksoft.server.http.logcat;
 
 import jdkUtils.data.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import static top.fksoft.httpServer.logcat.Log.LogId.*;
+import static top.fksoft.server.http.logcat.Log.LogId.*;
 
 public class Logger extends Log {
+    static {
+        printLogo("/res/Logo.txt");
+    }
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss",Locale.getDefault());
     private final String name;
-    private boolean firstPrint = false;
 
     private Logger(String name) {
         this.name = name;
@@ -41,23 +43,21 @@ public class Logger extends Log {
     }
 
     private void callback(LogId info, String message) {
-        if(!firstPrint){
-            printLogo("/resource/Logo.txt");
-            firstPrint = true;
-        }
+
         LogCat.listener.callback(info, String.format("%s - %-5S - %s - %s",
                 format.format(System.currentTimeMillis()),
                 info.name(),
                 name,
                 message));
+
     }
-    public void printLogo(String path){
+    public static void printLogo(String path){
         try {
-            String logo = StringUtils.inputStreamToString(getClass().getResourceAsStream(path)
+            String logo = StringUtils.inputStreamToString(Logger.class.getResourceAsStream(path)
                     , "UTF-8");
             LogCat.listener.callback(ERROR,"\n" + logo );
         }catch (Exception e){
-            warn("Logo 打印失败！");
+            System.err.println("Logo 打印失败！");
         }
     }
 }

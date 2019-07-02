@@ -1,4 +1,4 @@
-package top.fksoft.httpServer.logcat;
+package top.fksoft.server.http.logcat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

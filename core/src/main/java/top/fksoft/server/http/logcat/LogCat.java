@@ -1,6 +1,6 @@
-package top.fksoft.httpServer.logcat;
+package top.fksoft.server.http.logcat;
 
-import top.fksoft.httpServer.logcat.Log.LogId;
+import top.fksoft.server.http.logcat.Log.LogId;
 
 /**
  * <p>日志的管理类，用于日志的全局管理</p>

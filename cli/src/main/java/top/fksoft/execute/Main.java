@@ -1,7 +1,7 @@
 package top.fksoft.execute;
 
-import top.fksoft.httpServer.HttpServer;
-import top.fksoft.httpServer.logcat.Logger;
+import top.fksoft.server.http.HttpServer;
+import top.fksoft.server.http.logcat.Logger;
 
 import java.io.IOException;
 

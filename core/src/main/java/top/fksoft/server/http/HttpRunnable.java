@@ -1,6 +1,6 @@
-package top.fksoft.httpServer;
+package top.fksoft.server.http;
 
-import top.fksoft.httpServer.logcat.Logger;
+import top.fksoft.server.http.logcat.Logger;
 
 import java.io.Closeable;
 import java.io.IOException;
