@@ -1,6 +1,8 @@
 package top.fksoft.server.http;
 
 import top.fksoft.server.http.config.ServerConfig;
+import top.fksoft.server.http.http2utils.BaseHttpHeaderFactory;
+import top.fksoft.server.http.http2utils.DefaultHttpHeaderFactory;
 import top.fksoft.server.http.logcat.Logger;
 import top.fksoft.server.http.server.HttpRunnable;
 
@@ -21,6 +23,7 @@ public class HttpServer {
      */
     private final ServerConfig serverConfig = new ServerConfig();
     private Thread httpThread = null;
+    private Class<? extends BaseHttpHeaderFactory> httpHeaderFactory = DefaultHttpHeaderFactory.class;
 
     /**
      * 将 HTTP Server 绑定到一个端口上
@@ -52,25 +55,31 @@ public class HttpServer {
         runnable = new HttpRunnable(this,serverSocket);
     }
 
-    public void start() {
+    public void start(ThreadFactory factory) {
         if (httpThread == null) {
-            httpThread = new HttpThreadFactory().newThread(runnable);
+            httpThread = factory.newThread(runnable);
             httpThread.start();
             logger.info("监听线程已开启");
         } else {
             logger.warn("已开启过监听线程");
         }
-
+    }
+    public void start() {
+        start(new HttpThreadFactory());
     }
 
     public ServerConfig getServerConfig() {
         return serverConfig;
     }
 
+    public Class<? extends BaseHttpHeaderFactory> getHttpHeaderFactory() {
+        return httpHeaderFactory;
+    }
+
     private class HttpThreadFactory implements ThreadFactory {
         @Override
         public Thread newThread(Runnable r) {
-            Thread thread = new Thread(r, "#HTTP ACCEPT THREAD");
+            Thread thread = new Thread(r, "#AcceptThread");
             thread.setPriority(Thread.MAX_PRIORITY);
             thread.setUncaughtExceptionHandler((t, e) -> {
                 Logger.getLogger(r.getClass())

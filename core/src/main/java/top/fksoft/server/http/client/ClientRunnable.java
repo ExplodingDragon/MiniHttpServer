@@ -2,11 +2,11 @@ package top.fksoft.server.http.client;
 
 import top.fksoft.server.http.HttpServer;
 import top.fksoft.server.http.config.NetworkInfo;
-import top.fksoft.server.http.utils.CloseUtils;
+import top.fksoft.server.http.http2utils.BaseHttpHeaderFactory;
+import top.fksoft.server.http.logcat.Logger;
 
-import java.io.Closeable;
 import java.io.IOException;
-import java.net.InetSocketAddress;
+import java.io.InputStream;
 import java.net.Socket;
 
 /**
@@ -16,29 +16,24 @@ import java.net.Socket;
  * @version 1.0
  * @author ExplodingDragon
  */
-public class ClientRunnable implements Runnable, Closeable {
+public class ClientRunnable extends BaseClientRunnable{
+    private static Logger logger = Logger.getLogger(ClientRunnable.class);
 
-    private final InetSocketAddress remote;
-    private final Socket client;
-    private final HttpServer httpServer;
 
-    public ClientRunnable(Socket client, InetSocketAddress remote, HttpServer httpServer) {
-        this.client = client;
-        this.remote = remote;
-        this.httpServer = httpServer;
+    public ClientRunnable(HttpServer httpServer, Socket client, NetworkInfo info) {
+        super(httpServer, client, info);
     }
 
     @Override
-    public void run() {
-
-    }
-
-    public NetworkInfo getRemoteAddress() {
-        return null;
+    void readData() throws Exception {
+        InputStream input = getInputStream();
+        Class<? extends BaseHttpHeaderFactory> findUtil = httpServer.getHttpHeaderFactory();
     }
 
     @Override
-    public void close() throws IOException {
-        CloseUtils.close(client);
+    void clear() throws IOException {
+
     }
+
+
 }

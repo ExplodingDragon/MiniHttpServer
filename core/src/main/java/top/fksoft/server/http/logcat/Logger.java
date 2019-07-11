@@ -7,6 +7,14 @@ import java.util.Locale;
 
 import static top.fksoft.server.http.logcat.Log.LogId.*;
 
+/**
+ * <p>此HTTP Server下的日志系统
+ * </p>
+ *
+ * 用于打印 HTTP 下的所有日志
+ *
+ * @author Explo
+ */
 public class Logger extends Log {
     static {
         printLogo("/res/Logo.txt");

@@ -8,7 +8,18 @@ public abstract class Log {
 
 
     public enum LogId {
-        INFO, DEBUG, WARN, ERROR
+        /**
+         * 标准日志，用于打印服务器工作状态
+         */
+        INFO,
+        /**
+         * 调试日志，用于打印内部调试日志
+         */
+        DEBUG,
+        /**
+         * 警告日志
+         */
+        WARN, ERROR
     }
 
     public abstract void info(String message);
@@ -17,60 +28,29 @@ public abstract class Log {
         info(String.format(message, t));
     }
 
-    public void info(String message, Throwable t) {
-        info(formatLogcat(message, t));
-    }
-
-    public void i(String message, Throwable t) {
-        info(message, t);
-    }
-
-    public void i(String message) {
-        info(message);
+    public void info(String message, Throwable t,Object ... obj) {
+        info(formatLogcat(String.format(message,obj), t));
     }
 
     public abstract void debug(String message);
-
-    public void debug(String message, Throwable t) {
-        debug(formatLogcat(message, t));
+    public void debug(String message, Object... t) {
+        debug(String.format(message, t));
+    }
+    public void debug(String message, Throwable t,Object ... obj) {
+        debug(formatLogcat(String.format(message,obj), t));
     }
 
-    public void d(String message, Throwable t) {
-        debug(message, t);
-    }
-
-    public void d(String message) {
-        debug(message);
-    }
 
     public abstract void warn(String message);
 
-    public void warn(String message, Throwable t) {
-        warn(formatLogcat(message, t));
-    }
-
-    public void w(String message, Throwable t) {
-        warn(message, t);
-    }
-
-    public void w(String message) {
-        warn(message);
+    public void warn(String message, Throwable t,Object ... obj) {
+        warn(formatLogcat(String.format(message,obj), t));
     }
 
     public abstract void error(String message);
 
-    public void error(String message, Throwable t) {
-        error(formatLogcat(message, t));
-    }
     public void error(String message, Throwable t, Object... obj) {
         error(formatLogcat(String.format(message,obj), t));
-    }
-    public void e(String message, Throwable t) {
-        error(message, t);
-    }
-
-    public void e(String message) {
-        error(message);
     }
 
     private String formatLogcat(String message, Throwable t) {

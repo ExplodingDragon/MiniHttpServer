@@ -10,6 +10,7 @@ public class Main {
     private static Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
+
         LogCat.setListener(new LogListener());
         Config config = Config.newInstance();
         config.initConfig(args);

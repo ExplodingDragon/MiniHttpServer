@@ -4,6 +4,7 @@ import top.fksoft.server.http.logcat.Log.LogId;
 
 /**
  * <p>日志的管理类，用于日志的全局管理</p>
+ * @author Explo
  */
 public class LogCat {
     static LogcatListener listener = (id, message) -> {
@@ -16,6 +17,7 @@ public class LogCat {
             case ERROR:
                 System.err.println(message);
                 break;
+                default:
         }
     };
 
@@ -29,6 +31,12 @@ public class LogCat {
     }
 
     public interface LogcatListener {
+        /**
+         * <p>Log 的回调方法，用于在http服务器中自定义输出
+         * </p>
+         * @param id
+         * @param message
+         */
         void callback(LogId id, String message);
     }
 }
