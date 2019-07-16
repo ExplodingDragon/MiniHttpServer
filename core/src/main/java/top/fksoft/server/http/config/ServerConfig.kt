@@ -56,12 +56,15 @@ class ServerConfig(
 
     @Throws(IOException::class)
     fun init(): Boolean {
-        logger.info("检测临时文件夹。")
+        logger.debug("临时文件夹:[${tempDirectory.absolutePath}]")
         if (!tempDirectory.isDirectory) {
             tempDirectory.delete()
             if (!tempDirectory.mkdirs()) {
-                logger.error("无法建立临时文件夹。")
+                logger.error("无法建立临时文件夹.")
                 return false
+            }else{
+                logger.info("未发现临时文件夹，已重新建立.")
+
             }
         }
         return true
@@ -99,7 +102,7 @@ class ServerConfig(
      * @return 数据
      */
     fun getHttpProperty(key: HttpKey.PROPERTIES_KEY): String? {
-        return httpPropertiesMap["_DONT_REMOVE_2_EDIT_" + key.name]
+        return httpPropertiesMap["_DONT_REMOVE_2_EDIT_${key.name}" ]
     }
 
     /**
@@ -126,14 +129,14 @@ class ServerConfig(
      * @param value 属性
      */
     fun addHttpProperty(key: HttpKey.PROPERTIES_KEY, value: String) {
-        val keyStr = "_DONT_REMOVE_2_EDIT_" + key.name
+        val keyStr = "_DONT_REMOVE_2_EDIT_${key.name}"
         if (!httpPropertiesMap.containsKey(keyStr)) {
             httpPropertiesMap[keyStr] = value
         }
     }
 
     companion object {
-        private val logger = Logger.getLogger(ServerConfig::class.java)
+        private val logger = Logger.getLogger(ServerConfig::class)
     }
 
 

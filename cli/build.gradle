@@ -1,5 +1,6 @@
 apply plugin: 'java'
-//apply plugin: 'application'
+apply plugin: 'kotlin'
+
 
 group "$groups"
 version "$versions"
@@ -10,6 +11,8 @@ def mainClassName = 'top.fksoft.execute.Main'
 dependencies {
     implementation project(":core")
     implementation 'com.github.ExplodingFKL:JavaUtils:v0.1-beta'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 

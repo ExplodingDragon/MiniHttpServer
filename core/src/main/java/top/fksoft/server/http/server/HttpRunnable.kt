@@ -31,7 +31,7 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
     private val cacheThreadPool: ExecutorService
 
     init {
-        if (serverSocket == null || serverSocket.isClosed || !serverSocket.isBound) {
+        if (serverSocket.isClosed || !serverSocket.isBound) {
             throw IOException("套接字错误！")
         }
         cacheThreadPool = ThreadPoolExecutor(0, Integer.MAX_VALUE,

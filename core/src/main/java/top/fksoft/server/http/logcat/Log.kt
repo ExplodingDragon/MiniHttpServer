@@ -3,6 +3,7 @@ package top.fksoft.server.http.logcat
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.PrintWriter
+import java.nio.charset.Charset
 
 abstract class Log {
 
@@ -65,7 +66,7 @@ abstract class Log {
         t.printStackTrace(printWriter)
         printWriter.flush()
         printWriter.close()
-        val result = String(outputStream.toByteArray())
+        val result = String(outputStream.toByteArray(), Charset.defaultCharset())
         try {
             outputStream.close()
         } catch (ignored: IOException) {

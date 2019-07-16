@@ -29,9 +29,9 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
     @Throws(Exception::class)
     override fun readHeaderData(httpHeader: HttpHeader.Edit): Boolean {
         val headerReader = BufferedReader(InputStreamReader(inputStream))
-        val httpType = headerReader.readLine().trim { it <= ' ' }
+        val httpType = headerReader.readLine().trim()
         // 读取HTTP第一行的数据
-        val array = httpType.split(" ".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+        val array = httpType.split(" ")
         /*
         在标准 HTTP 协议下 ，请求头一般为：
             GET /index.html HTTP/1.1
@@ -49,7 +49,6 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
         }
         location = URLDecoder.decode(location, HttpKey.CHARSET_UTF_8)
         //还原 URL 中的转义字符
-
         if (httpType.startsWith(HttpKey.METHOD_GET)) {
             httpHeader.setMethod(HttpKey.METHOD_GET)
             //GET

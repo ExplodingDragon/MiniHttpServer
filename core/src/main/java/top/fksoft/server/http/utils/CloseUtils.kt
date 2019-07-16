@@ -21,9 +21,6 @@ object CloseUtils {
 
     fun close(vararg close: java.io.Closeable) {
         for (closeable in close) {
-            if (closeable == null) {
-                continue
-            }
             try {
                 closeable.close()
             } catch (ignored: Exception) {

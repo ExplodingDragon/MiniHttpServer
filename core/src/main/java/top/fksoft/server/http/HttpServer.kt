@@ -42,14 +42,14 @@ class HttpServer
     init {
         val serverSocket = factory.createServerSocket(port) ?: throw NullPointerException()
         serverConfig = ServerConfig(port)
-        if (!serverConfig.init()) {
-            throw IOException("在初始化过程发生问题。")
-        }
         runnable = HttpRunnable(this, serverSocket)
     }
 
     fun start() {
         if (httpThread == null) {
+            if (!serverConfig.init()) {
+                throw IOException("在初始化过程发生问题.")
+            }
             httpThread = HttpThreadFactory().newThread(runnable)
             httpThread!!.start()
             logger.info("监听线程已开启")

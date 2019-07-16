@@ -16,9 +16,9 @@ public class Main {
         config.initConfig(args);
         config.printConfig();
         try {
-            new HttpServer(18080).start();
+            new HttpServer(8080).start();
         }catch (Exception e){
-            logger.error("无法绑定端口 ！",e);
+            logger.error("启动服务器时出现问题 ！",e);
         }
     }
 }

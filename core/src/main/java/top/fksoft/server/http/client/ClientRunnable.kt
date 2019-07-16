@@ -19,16 +19,12 @@ import java.net.Socket
  * @author ExplodingDragon
  */
 class ClientRunnable(httpServer: HttpServer, client: Socket, info: NetworkInfo) : BaseClientRunnable(httpServer, client, info) {
-    private val httpHeader: HttpHeader
+    private val httpHeader: HttpHeader = HttpHeader(info)
     private var httpHeaderReader: BaseHttpHeaderReader? = null
-
-    init {
-        httpHeader = HttpHeader(info)
-    }
 
     @Throws(Exception::class)
     override fun execute() {
-        httpHeaderReader = BaseHttpHeaderReader.createHttpHeaderReader(httpServer.httpHeaderReader)
+        httpHeaderReader = BaseHttpHeaderReader.createHttpHeaderReader(super.httpServer.httpHeaderReader)
         httpHeaderReader!!.onCreate(httpServer.serverConfig, this)
         //初始化 HTTP 解析类
         if (httpHeaderReader!!.readHeaderData(httpHeader.edit())) {

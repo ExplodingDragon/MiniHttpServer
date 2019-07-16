@@ -3,7 +3,7 @@ package top.fksoft.execute.config;
 import top.fksoft.server.http.logcat.Logger;
 
 public class Config {
-    private Logger logger = Logger.Companion.getLogger(Config.class);
+    private Logger logger = Logger.getLogger(Config.class);
     private static Config config = null;
     private boolean debug = false,
             printConfig = false;
