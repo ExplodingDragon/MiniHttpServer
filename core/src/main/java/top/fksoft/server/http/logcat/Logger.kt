@@ -67,5 +67,7 @@ class Logger private constructor(private val name: String) : Log() {
             }
 
         }
+        @JvmStatic
+        fun getLogger(any: Any) = getLogger(any::class)
     }
 }

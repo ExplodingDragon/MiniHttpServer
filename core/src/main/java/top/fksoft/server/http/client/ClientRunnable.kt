@@ -3,7 +3,7 @@ package top.fksoft.server.http.client
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.HttpHeader
 import top.fksoft.server.http.config.NetworkInfo
-import top.fksoft.server.http.http2utils.BaseHttpHeaderReader
+import top.fksoft.server.http.httpHeaderReader.BaseHttpHeaderReader
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
 

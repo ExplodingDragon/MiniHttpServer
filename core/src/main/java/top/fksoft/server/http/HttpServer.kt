@@ -1,8 +1,8 @@
 package top.fksoft.server.http
 
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.http2utils.BaseHttpHeaderReader
-import top.fksoft.server.http.http2utils.DefaultHttpHeaderReader
+import top.fksoft.server.http.httpHeaderReader.BaseHttpHeaderReader
+import top.fksoft.server.http.httpHeaderReader.DefaultHttpHeaderReader
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.server.HttpRunnable
 import java.io.IOException

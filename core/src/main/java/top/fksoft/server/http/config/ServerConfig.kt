@@ -17,18 +17,10 @@ import java.util.concurrent.ConcurrentHashMap
  * @author ExplodingDragon
  * @version 1.0
  */
-class ServerConfig(
-        /**
-         *
-         * 得到Server 绑定的端口
-         *
-         *
-         * 得到 HTTP Server 绑定的端口号
-         *
-         * @return 绑定的端口号
-         */
-        val serverPort: Int) : HttpKey {
+class ServerConfig(private val serverPort: Int) {
+    private val logger = Logger.getLogger(ServerConfig::class)
 
+    fun getServerPort():Int = serverPort
 
     private val httpPropertiesMap = ConcurrentHashMap<String, String>()
 
@@ -135,9 +127,6 @@ class ServerConfig(
         }
     }
 
-    companion object {
-        private val logger = Logger.getLogger(ServerConfig::class)
-    }
 
 
 }

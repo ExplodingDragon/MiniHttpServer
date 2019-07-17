@@ -1,4 +1,4 @@
-package top.fksoft.server.http.http2utils
+package top.fksoft.server.http.httpHeaderReader
 
 import top.fksoft.server.http.config.HttpHeader
 import top.fksoft.server.http.config.HttpKey
@@ -25,33 +25,36 @@ import java.net.URLDecoder
  * @version 1.0
  */
 class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
+    private val logger = Logger.getLogger(DefaultHttpHeaderReader::class)
 
     @Throws(Exception::class)
     override fun readHeaderData(httpHeader: HttpHeader.Edit): Boolean {
         val headerReader = BufferedReader(InputStreamReader(inputStream))
         val httpType = headerReader.readLine().trim()
         // 读取HTTP第一行的数据
-        val array = httpType.split(" ")
+        val typeArray = httpType.split(" ")
         /*
         在标准 HTTP 协议下 ，请求头一般为：
             GET /index.html HTTP/1.1
             由此可利用切割来取出数据
 
          */
-        if (array.size != 3) {
+        if (typeArray.size != 3) {
             logger.warn("未知协议：$httpType")
             return false
         }
-        var location = array[1]
-        val i = location.indexOf('?')
-        if (i != -1) {
-
-        }
+        var location = typeArray[1]
         location = URLDecoder.decode(location, HttpKey.CHARSET_UTF_8)
         //还原 URL 中的转义字符
         if (httpType.startsWith(HttpKey.METHOD_GET)) {
             httpHeader.setMethod(HttpKey.METHOD_GET)
             //GET
+            val i = location.indexOf('?')
+            if (i != -1) {
+                var methodGetData = location.substring(i + 1).trim()
+                //得到 在GET 请求下附加的数据
+                httpHeader.addForms(methodGetData)
+            }
 
         } else if (httpType.startsWith(HttpKey.METHOD_POST)) {
             httpHeader.setMethod(HttpKey.METHOD_POST)
@@ -69,7 +72,4 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
 
     }
 
-    companion object {
-        private val logger = Logger.getLogger(DefaultHttpHeaderReader::class)
-    }
 }

@@ -1,6 +1,5 @@
 package top.fksoft.server.http.config
 
-import top.fksoft.server.http.config.HttpKey.Companion.getValue
 
 /**
  *
@@ -10,7 +9,7 @@ import top.fksoft.server.http.config.HttpKey.Companion.getValue
  * @author ExplodingDragon
  * @version 1.0
  */
-interface HttpKey {
+object HttpKey {
 
 
     enum class PROPERTIES_KEY {
@@ -21,59 +20,60 @@ interface HttpKey {
 
     }
 
-    companion object {
 
-        /**
-         * Http 下的GET 请求表示方法
-         */
-        val METHOD_GET = "GET"
+    /**
+     * Http 下的GET 请求表示方法
+     */
+    const val METHOD_GET = "GET"
 
-        /**
-         * Http 下 POST 请求的表示方法
-         */
-        val METHOD_POST = "POST"
-
-
-        val PROPERTY_SYSTEM_TEMP_DIR = "java.io.tmpdir"
-
-        val PKG_NAME = "MiniHttpServer"
+    /**
+     * Http 下 POST 请求的表示方法
+     */
+    const val METHOD_POST = "POST"
 
 
-        val VERSION_KEY = "HTTP/"
+    /**
+     *  一个系统属性值，可得到系统临时目录位置
+     */
+    const val PROPERTY_SYSTEM_TEMP_DIR = "java.io.tmpdir"
 
-        val CHARSET_GBK = "GBK"
-        val CHARSET_UTF_8 = "UTF-8"
+    /**
+     * 项目名称，随意啦
+     */
+    const val PKG_NAME = "MiniHttpServer"
 
 
-        val HEADER_USER_AGENT = "User-Agent"
-        val HEADER_HOST = "Host"
-        val HEADER_ACCEPT_LANGUAGE = "Accept-Language"
-        val HEADER_ACCEPT = "Accept"
-        val HEADER_CONTENT_LENGTH = "Content-Length"
-        val HEADER_CONTENT_TYPE = "Content-Type"
-        val HEADER_CHARSET_KEY = "charset="
-        val HEADER_BOUNDARY_KEY = "boundary="
 
-        val HEADER_RANGE_KEY2 = "Range:"
+    const val CHARSET_GBK = "GBK"
+    const val CHARSET_UTF_8 = "UTF-8"
 
-        val TYPE_X_WWW_FORM_URLENCODED = "application/x-www-form-urlencoded"
-        val TYPE_FORM_DATA = "multipart/form-data"
 
-        val HTTP_MAX_HEADER_LEN = 5200
+    const val HEADER_USER_AGENT = "User-Agent"
+    const val HEADER_HOST = "Host"
+    const val HEADER_ACCEPT_LANGUAGE = "Accept-Language"
+    const val HEADER_ACCEPT = "Accept"
+    const val HEADER_CONTENT_LENGTH = "Content-Length"
+    const val HEADER_CONTENT_TYPE = "Content-Type"
 
-        @JvmOverloads
-        fun getValue(src: String, key: String, spit: String = ";"): String? {
-            for (line in src.split(spit.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()) {
-                if (line.contains(key)) {
-                    return line.substring(line.indexOf(key) + key.length)
-                }
+    const val HEADER_CHARSET_KEY = "charset="
+    const val HEADER_BOUNDARY_KEY = "boundary="
+
+    const val HEADER_RANGE_KEY2 = "Range:"
+
+    const val TYPE_X_WWW_FORM_URLENCODED = "application/x-www-form-urlencoded"
+    const val TYPE_FORM_DATA = "multipart/form-data"
+
+    const val HTTP_MAX_HEADER_LEN = 5200
+
+
+    fun getValue(src: String, key: String, spit: String = ";"): String? {
+        for (line in src.split(spit.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()) {
+            if (line.contains(key)) {
+                return line.substring(line.indexOf(key) + key.length)
             }
-            return null
         }
-
-        @Throws(IndexOutOfBoundsException::class)
-        fun getValueException(src: String, key: String): String {
-            return getValue(src, key) ?: throw IndexOutOfBoundsException()
-        }
+        return null
     }
+
+
 }

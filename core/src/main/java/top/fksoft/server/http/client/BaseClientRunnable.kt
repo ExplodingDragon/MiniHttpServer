@@ -1,12 +1,10 @@
 package top.fksoft.server.http.client
 
 import top.fksoft.server.http.HttpServer
-import top.fksoft.server.http.config.HttpKey
 import top.fksoft.server.http.config.NetworkInfo
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
-
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -20,8 +18,9 @@ import java.net.Socket
  * @author ExplodingDragon
  * @version 1.0
  */
-abstract class BaseClientRunnable(protected val httpServer: HttpServer, protected val client: Socket, val remoteAddress: NetworkInfo) : Runnable, CloseUtils.Closeable, HttpKey {
-    protected val serverConfig: ServerConfig
+abstract class BaseClientRunnable(protected val httpServer: HttpServer, protected val client: Socket, val remoteAddress: NetworkInfo)
+    : Runnable, CloseUtils.Closeable {
+    protected val serverConfig: ServerConfig = httpServer.serverConfig
 
     val inputStream: InputStream
         @Throws(IOException::class)
@@ -29,10 +28,6 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
     val outputStream: OutputStream
         @Throws(IOException::class)
         get() = client.getOutputStream()
-
-    init {
-        this.serverConfig = httpServer.serverConfig
-    }
 
     override fun run() {
         try {
@@ -43,7 +38,7 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
 
         try {
             //销毁
-            close()
+            CloseUtils.close(this)
         } catch (e: Exception) {
             logger.warn("在销毁来自%s的Http请求中发生错误.", e, remoteAddress)
         }

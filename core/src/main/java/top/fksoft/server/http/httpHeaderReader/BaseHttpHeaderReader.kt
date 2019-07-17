@@ -1,11 +1,9 @@
-package top.fksoft.server.http.http2utils
+package top.fksoft.server.http.httpHeaderReader
 
 import top.fksoft.server.http.client.ClientRunnable
 import top.fksoft.server.http.config.HttpHeader
-import top.fksoft.server.http.config.HttpKey
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.utils.CloseUtils
-
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -25,7 +23,7 @@ import java.io.OutputStream
  * @author ExplodingDragon
  * @version 1.0
  */
-abstract class BaseHttpHeaderReader : CloseUtils.Closeable, HttpKey {
+abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
     private var runnable: ClientRunnable? = null
     private var config: ServerConfig? = null
 

@@ -16,7 +16,9 @@ import java.util.concurrent.TimeUnit
 
 /**
  *
- * HTTP 監控綫程，監聽每一個遠程鏈接
+ * HTTP 处理线程
+ *
+ * 处理每一条远程 TCP 连接并建立通道
  *
  *
  * @author ExplodingDragon
@@ -49,8 +51,8 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
     }
 
     override fun run() {
-        val localPort = serverSocket.getLocalPort()
-        logger.info("HTTP 服务器启动正常，绑定端口为：%d .", localPort)
+        val localPort = serverSocket.localPort
+        logger.info("HTTP 服务器启动正常，绑定端口为：$localPort .")
         while (!serverSocket.isClosed()) {
             val remoteInfo = NetworkInfo()
             try {
@@ -65,13 +67,20 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
                 client.soTimeout = serverConfig.socketTimeout
                 cacheThreadPool.execute(ClientRunnable(httpServer, client, remoteInfo))
             } catch (e: Exception) {
-                logger.warn("在处理%s的过程中出现异常.", e, remoteInfo.toString())
+                logger.warn("在处理 $remoteInfo 的过程中出现异常.", e)
             }
 
         }
     }
 
-
+    /**
+     * 关闭Server
+     *
+     * 不应该手动调用此方法，应该调用 HttpServer#close()
+     * 来自动关闭
+     *
+     * @throws Exception
+     */
     @Throws(Exception::class)
     override fun close() {
         serverSocket.close()
