@@ -20,23 +20,26 @@ import java.net.Socket
  */
 class ClientRunnable(httpServer: HttpServer, client: Socket, info: NetworkInfo) : BaseClientRunnable(httpServer, client, info) {
     private val httpHeader: HttpHeader = HttpHeader(info)
-    private var httpHeaderReader: BaseHttpHeaderReader? = null
+    private var headerReader: BaseHttpHeaderReader? = null
 
     @Throws(Exception::class)
     override fun execute() {
-        httpHeaderReader = BaseHttpHeaderReader.createHttpHeaderReader(super.httpServer.httpHeaderReader)
-        httpHeaderReader!!.onCreate(httpServer.serverConfig, this)
+        var httpHeaderReader = BaseHttpHeaderReader.createHttpHeaderReader(super.httpServer.httpHeaderReader)
+        this.headerReader = httpHeaderReader
+        httpHeaderReader.onCreate(httpServer.serverConfig, this)
         //初始化 HTTP 解析类
-        if (httpHeaderReader!!.readHeaderData(httpHeader.edit())) {
-
+        if (httpHeaderReader.readHeaderInfo(httpHeader.edit())) {
+            if(httpHeader.isPost())
+                httpHeaderReader.readHeaderPostData(httpHeader.edit())
         } else {
-            throw IOException("无法解析 HTTP Header 的数据.")
+            throw IOException("无法解析 HTTP Header 的数据.具体信息查看上一条日志！")
         }
+        logger.debug("${httpHeader.method} ${httpHeader.path}")
     }
 
     @Throws(IOException::class)
     internal override fun clear() {
-        CloseUtils.close(httpHeaderReader, httpHeader)
+        CloseUtils.close(headerReader, httpHeader)
     }
 
     companion object {

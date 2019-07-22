@@ -1,13 +1,14 @@
 package top.fksoft.server.http
 
+import top.fksoft.server.http.config.HttpKey
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.httpHeaderReader.BaseHttpHeaderReader
-import top.fksoft.server.http.httpHeaderReader.DefaultHttpHeaderReader
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.server.HttpRunnable
 import java.io.IOException
 import java.util.concurrent.ThreadFactory
 import javax.net.ServerSocketFactory
+import kotlin.reflect.KClass
 
 /**
  * @author ExplodingDragon
@@ -15,6 +16,7 @@ import javax.net.ServerSocketFactory
  * @version 1.0
  */
 class HttpServer
+
 /**
  *
  * 将 HttpServer通过自定义工厂类绑定到指定端口
@@ -30,6 +32,7 @@ class HttpServer
  */
 @Throws(IOException::class)
 @JvmOverloads constructor(port: Int, factory: ServerSocketFactory = ServerSocketFactory.getDefault()) {
+    private val logger = Logger.getLogger(HttpServer::class)
     private val runnable: HttpRunnable
     /**
      *
@@ -37,8 +40,13 @@ class HttpServer
      *
      */
     val serverConfig: ServerConfig
+
     private var httpThread: Thread? = null
-    val httpHeaderReader: Class<out BaseHttpHeaderReader> = DefaultHttpHeaderReader::class.java
+
+    /**
+     * 解析 HTTP请求头的处理类
+     */
+    var httpHeaderReader: KClass<out BaseHttpHeaderReader> = HttpKey.DEFAULT_HTTP_HEADER_READER.kotlin
     init {
         val serverSocket = factory.createServerSocket(port) ?: throw NullPointerException()
         serverConfig = ServerConfig(port)
@@ -60,23 +68,14 @@ class HttpServer
 
     private inner class HttpThreadFactory : ThreadFactory {
         override fun newThread(r: Runnable): Thread {
-            val thread = Thread(r, "#AcceptThread")
+            val thread = Thread(r, "AcceptThread")
             thread.priority = Thread.MAX_PRIORITY
             thread.setUncaughtExceptionHandler { t, e ->
                 Logger.getLogger(r.javaClass)
-                        .error("[%s] 发生未捕获的错误，可将错误信息通过issues告诉开发者!", e, t.name)
+                        .error("[ ${t.name} ] 发生未捕获的错误，可将错误信息通过issues告诉开发者!", e)
             }
             return thread
         }
     }
 
-    companion object {
-        private val logger = Logger.getLogger(HttpServer::class.java)
-    }
 }
-/**
- * 将 HTTP Server 绑定到一个端口上
- *
- * @param port 绑定端口
- * @throws IOException 如果端口绑定失败
- */

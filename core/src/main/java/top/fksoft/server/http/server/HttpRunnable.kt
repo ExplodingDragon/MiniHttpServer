@@ -39,21 +39,13 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
         cacheThreadPool = ThreadPoolExecutor(0, Integer.MAX_VALUE,
                 (serverConfig.socketTimeout * 4).toLong(),
                 TimeUnit.MILLISECONDS,
-                SynchronousQueue()) { r ->
-            val thread = Thread(r)
-            if (r.javaClass == ClientRunnable::class.java) {
-                val runnable = r as ClientRunnable
-                // 为每一个http线程打TAG
-                thread.name = "#Http Client - " + runnable.remoteAddress.toString()
-            }
-            thread
-        }
+                SynchronousQueue())
     }
 
     override fun run() {
         val localPort = serverSocket.localPort
         logger.info("HTTP 服务器启动正常，绑定端口为：$localPort .")
-        while (!serverSocket.isClosed()) {
+        while (!serverSocket.isClosed) {
             val remoteInfo = NetworkInfo()
             try {
                 val client = serverSocket.accept()
@@ -63,7 +55,7 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
                 remoteInfo.update(remoteAddress, remotePort)
                 remoteInfo.setHostName(remote.hostName)
                 // 得到远程服务器信息
-                logger.debug(String.format("接受到一条来自%s远程连接.", remoteInfo.toString()))
+                logger.debug("tcp://${remoteInfo}/")
                 client.soTimeout = serverConfig.socketTimeout
                 cacheThreadPool.execute(ClientRunnable(httpServer, client, remoteInfo))
             } catch (e: Exception) {

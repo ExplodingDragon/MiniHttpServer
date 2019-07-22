@@ -20,9 +20,6 @@ public class Config {
     }
 
     public void initConfig(String[] args) {
-        if (args.length == 0) {
-            return;
-        }
         for (String arg : args) {
             if (isValue(arg, "--enable-debug", "-d")) {
                 debug = true;

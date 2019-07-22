@@ -38,11 +38,11 @@ class ServerConfig(private val serverPort: Int) {
      */
     var socketTimeout = 3000
 
-    var tempDirectory = File(System.getProperty(HttpKey.PROPERTY_SYSTEM_TEMP_DIR), HttpKey.PKG_NAME)
+    var tempDirectory = File(HttpKey.PROPERTY_SYSTEM_TEMP_DIR, HttpKey.LIB_NAME)
 
 
     init {
-        addHttpProperty(SERVER_PORT, Integer.toString(serverPort))
+        addHttpProperty(SERVER_PORT, serverPort.toString())
         //添加系统属性：端口号
     }
 

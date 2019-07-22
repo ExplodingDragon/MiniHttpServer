@@ -18,10 +18,28 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
     private val logger = Logger.getLogger(this)
 
     private val edit = Edit()
-    private var method = HttpKey.METHOD_GET
-    private var form = HashMap<String, String>()
+    var method = HttpKey.METHOD_GET
+    private set
+    private var formArray = HashMap<String, String>()
+    private var headerArray = HashMap<String, String?>()
 
 
+    var path:String = "/"
+    private set
+
+    /**
+     * # 得到
+     * @param key String
+     * @param defaultValue String?
+     * @return String?
+     */
+    fun getForm(key:String, defaultValue: String? = null):String?{
+        if (formArray.containsKey(key)){
+            return formArray[key]
+        }else{
+            return defaultValue
+        }
+    }
 
 
 
@@ -36,6 +54,19 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
         return edit
     }
 
+    /**
+     * # 判断是否为 POST 请求
+     *
+     * @return Boolean 判断是否为POST 请求
+     */
+    fun isPost() = method == HttpKey.METHOD_POST
+
+    fun getHeader(key: String, defaultValue: String): String {
+        var header = getHeader(key)
+        return  if (header == null) defaultValue else header
+    }
+
+    fun getHeader(key: String): String ? =headerArray[key]
     inner class Edit() {
 
         fun setMethod(method: String) {
@@ -46,11 +77,11 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
          *  # 添加表单
          *
          *
-         * 将 GET 的表单和POST下以``` application/x-www-form-urlencoded```
+         * 将 GET 的表单和POST下以``` application/x-www-formArray-urlencoded```
          * 表单添加到MAP 中。
          *
          * 格式如下：
-         * ```
+         * ``` bash
          * title=test&sub%5B%5D=1&sub%5B%5D=2&sub%5B%5D=3
          * ```
          * 但是需要将转义字符回转
@@ -76,7 +107,32 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
          * @param value String 数值
          */
         fun addForm(key:String,value:String){
-            form[key] = value
+            formArray[key] = value
+        }
+
+        /**
+         * # 指定请求的路径
+         * @param path String
+         */
+        fun setPath(path: String) {
+            this@HttpHeader.path = path
+
+        }
+
+        /**
+         * # 得到只读header对象
+         * @return HttpHeader 绑定的 Header 对象
+         */
+        fun getReader() = this@HttpHeader
+
+        /**
+         * # 添加一个Header Header 属性
+         *
+         * @param key String 键值对
+         * @param value String 数值
+         */
+        fun addHeader(key: String, value: String?) {
+            headerArray[key] = value
         }
     }
 

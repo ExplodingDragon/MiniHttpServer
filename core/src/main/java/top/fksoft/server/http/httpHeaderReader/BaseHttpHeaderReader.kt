@@ -7,6 +7,7 @@ import top.fksoft.server.http.utils.CloseUtils
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
+import kotlin.reflect.KClass
 
 /**
  *
@@ -26,7 +27,6 @@ import java.io.OutputStream
 abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
     private var runnable: ClientRunnable? = null
     private var config: ServerConfig? = null
-
     protected val inputStream: InputStream
         @Throws(IOException::class)
         get() = runnable!!.inputStream
@@ -53,27 +53,43 @@ abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
 
     /**
      *
-     * 解析HTTP Header 信息并归档
+     * # 解析HTTP Header 信息并归档
      *
      *
-     * 解析HTTP Header 中的信息，并将信息归档到 [HttpHeader] 中
+     * 解析HTTP Header 中的信息，并将信息归档到 [HttpHeader] 中;
+     * 在此方法中针对HTTP 1.1 头中的配置信息进行处理，但不处理POST表单
+     * 信息（如果有）
      *
-     * @param httpHeader
-     * @return
+     * example:
+     * ``` html
+     * POST http://www.example.com HTTP/1.1
+     * Content-Type: application/x-www-form-urlencoded;charset=utf-8
+     *
+     * ```
+     *
+     * @param httpHeader 有效信息存放的位置
+     * @return 是否为标准的 HTTP 请求（如果不是则会中断继续）
      */
     @Throws(Exception::class)
-    abstract fun readHeaderData(httpHeader: HttpHeader.Edit): Boolean
+    abstract fun readHeaderInfo(httpHeader: HttpHeader.Edit): Boolean
+
+
+    /**
+     * # 解析HTTP POST 下发送的表单数据
+     *
+     * @param httpHeader Edit
+     * @throws Exception
+     */
+    @Throws(Exception::class)
+    abstract fun readHeaderPostData(httpHeader: HttpHeader.Edit)
+
 
     companion object {
 
-
         @Throws(IllegalAccessException::class, InstantiationException::class)
-        fun createHttpHeaderReader(headerFactory: Class<out BaseHttpHeaderReader>): BaseHttpHeaderReader {
-            return headerFactory.newInstance()
+        fun createHttpHeaderReader(headerFactory: KClass<out BaseHttpHeaderReader>): BaseHttpHeaderReader {
+            return headerFactory.java.newInstance()
         }
 
-
-        val default: BaseHttpHeaderReader
-            get() = DefaultHttpHeaderReader()
     }
 }
