@@ -2,6 +2,7 @@ package top.fksoft.server.http.config
 
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
+import java.io.File
 
 /**
  *
@@ -21,21 +22,22 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
     var method = HttpKey.METHOD_GET
     private set
     private var formArray = HashMap<String, String>()
-    private var headerArray = HashMap<String, String?>()
+    private var headerArray = HashMap<String, String>()
 
 
     var path:String = "/"
     private set
 
     /**
-     * # 得到
-     * @param key String
-     * @param defaultValue String?
-     * @return String?
+     * # 得到表单数据
+     *  得到GET 或 POST 下
+     * @param key String 键值对
+     * @param defaultValue String
+     * @return String
      */
-    fun getForm(key:String, defaultValue: String? = null):String?{
+    fun getForm(key:String, defaultValue: String = ""):String{
         if (formArray.containsKey(key)){
-            return formArray[key]
+            return formArray[key]!!
         }else{
             return defaultValue
         }
@@ -61,12 +63,24 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
      */
     fun isPost() = method == HttpKey.METHOD_POST
 
-    fun getHeader(key: String, defaultValue: String): String {
+    /**
+     * # 得到 header 键值对
+     *
+     * 得到 Http Header 下键值对，如果键值对不存在则返回``` ```；
+     * 可自定义默认返回的字符串
+     *
+     * @param key String 键值对
+     * @param defaultValue String 如果不存在返回的数据
+     * @return String 返回的数据
+     */
+    fun getHeader(key: String, defaultValue: String= ""): String {
         var header = getHeader(key)
         return  if (header == null) defaultValue else header
     }
 
-    fun getHeader(key: String): String ? =headerArray[key]
+
+
+
     inner class Edit() {
 
         fun setMethod(method: String) {
@@ -109,7 +123,9 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
         fun addForm(key:String,value:String){
             formArray[key] = value
         }
-
+        fun addFormFile(key:String,path:File){
+            formArray["@POST_FILE_$key"] = path.absolutePath
+        }
         /**
          * # 指定请求的路径
          * @param path String
@@ -131,9 +147,12 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
          * @param key String 键值对
          * @param value String 数值
          */
-        fun addHeader(key: String, value: String?) {
+        fun addHeader(key: String, value: String) {
             headerArray[key] = value
         }
+
     }
+
+    data class PostItem(val key:String,val path:File)
 
 }

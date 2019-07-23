@@ -90,6 +90,7 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
     }
 
     override fun readHeaderPostData(httpHeader: HttpHeader.Edit) {
+        
     }
 
     @Throws(Exception::class)
