@@ -36,7 +36,7 @@ class ServerConfig(private val serverPort: Int) {
      *
      * @return 维持的时间，单位： ms
      */
-    var socketTimeout = 3000
+    var socketTimeout = 0
 
     var tempDirectory = File(HttpKey.PROPERTY_SYSTEM_TEMP_DIR, HttpKey.LIB_NAME)
 

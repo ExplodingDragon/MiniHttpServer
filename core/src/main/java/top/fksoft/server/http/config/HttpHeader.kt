@@ -1,8 +1,11 @@
 package top.fksoft.server.http.config
 
+import com.google.gson.Gson
+import jdkUtils.data.StringUtils
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
 import java.io.File
+import kotlin.random.Random
 
 /**
  *
@@ -17,16 +20,28 @@ import java.io.File
  */
 class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
     private val logger = Logger.getLogger(this)
-
+    private val POST_HEADER_STR = "@POST_FILE_"
     private val edit = Edit()
+
+    /**
+     * 服务器下的请求类型
+     */
     var method = HttpKey.METHOD_GET
     private set
     private var formArray = HashMap<String, String>()
     private var headerArray = HashMap<String, String>()
 
-
+    /**
+     * 请求的服务器文件路径（去除GET后缀）
+     */
     var path:String = "/"
     private set
+
+
+    /**
+     * 当前实例的唯一 Token
+     */
+    val headerSession = StringUtils.sha1Encryption("$remoteInfo${System.currentTimeMillis()}${Random.nextDouble()}")!!
 
     /**
      * # 得到表单数据
@@ -44,16 +59,15 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
     }
 
 
-
-    @Throws(Exception::class)
-    override fun close() {
-
-    }
-
-
-
-    fun edit(): Edit {
-        return edit
+    /**
+     * # 得到POST 指定的文件信息
+     *
+     * @param key String 键值对
+     * @return PostFileItem? 数据
+     */
+    fun getFormFile(key:String):PostFileItem?{
+        var value = formArray["$POST_HEADER_STR$key"]
+        return if (value!=null)Gson().fromJson(value,PostFileItem::class.java) else null
     }
 
     /**
@@ -74,9 +88,27 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
      * @return String 返回的数据
      */
     fun getHeader(key: String, defaultValue: String= ""): String {
-        var header = getHeader(key)
+        var header = headerArray[key]
         return  if (header == null) defaultValue else header
     }
+    @Throws(Exception::class)
+    override fun close() {
+        for (key in formArray.keys) {
+            if (key.indexOf(POST_HEADER_STR) != -1){
+                Gson().fromJson(formArray[key],PostFileItem::class.java).close()
+            }
+        }
+        formArray.clear()
+        headerArray.clear()
+    }
+
+
+
+    fun edit(): Edit {
+        return edit
+    }
+
+
 
 
 
@@ -121,10 +153,18 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
          * @param value String 数值
          */
         fun addForm(key:String,value:String){
-            formArray[key] = value
+            if (key.trim().isEmpty())
+                return
+            formArray[key] = value.trim()
         }
-        fun addFormFile(key:String,path:File){
-            formArray["@POST_FILE_$key"] = path.absolutePath
+
+        /**
+         * # 添加一个 POST 上传文件的表单
+         * @param key String POST 键值对
+         * @param item PostFileItem 保存的临时文件位置
+         */
+        fun addFormFile(key:String, item:PostFileItem){
+            formArray["$POST_HEADER_STR$key"] = Gson().toJson(item)
         }
         /**
          * # 指定请求的路径
@@ -148,11 +188,36 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
          * @param value String 数值
          */
         fun addHeader(key: String, value: String) {
-            headerArray[key] = value
+            headerArray[key] = value.trim()
+        }
+
+        /**
+         * # 仅用于打印 DEBUG 信息 调试  ...
+         */
+        fun printDebug() {
+            for (key in headerArray.keys) {
+                logger.debug("header's Key=$key,value=${headerArray[key]};")
+            }
+            for (key in formArray.keys) {
+                logger.debug("form's Key=$key,value=${formArray[key]};")
+            }
         }
 
     }
 
-    data class PostItem(val key:String,val path:File)
+    /**
+     * # POST 上传文件的实体类
+     *
+     * @property key String 文件键值对
+     * @property path File 保存的位置
+     * @property contentType String 文件类型
+     * @constructor
+     */
+    data class PostFileItem(val key:String, val path:File, val contentType:String):CloseUtils.Closeable{
+        override fun close() {
+            path.delete()
+        }
+
+    }
 
 }

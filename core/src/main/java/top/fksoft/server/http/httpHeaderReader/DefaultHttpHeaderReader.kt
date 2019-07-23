@@ -15,7 +15,7 @@ import java.net.URLDecoder
  *
  *
  * 注意：
- * 此类存在严重的安全问题，受数据方式的影响，
+ * 此类存在严重的安全问题，受取数据方式的影响，
  * 如果攻击者制造一个畸形的HTTP 请求，
  * 可能会造成内存泄漏的问题,切勿用于
  * 生产环境
@@ -86,11 +86,13 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
         }
         edit.setPath(if (i != -1) location.substring(0, i) else location)
         //指定请求路径
+
+        edit.printDebug()
+
         return true
     }
 
-    override fun readHeaderPostData(httpHeader: HttpHeader.Edit) {
-        
+    override fun readHeaderPostData(edit: HttpHeader.Edit) {
     }
 
     @Throws(Exception::class)

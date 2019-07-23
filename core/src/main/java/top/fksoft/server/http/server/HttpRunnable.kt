@@ -36,8 +36,9 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
         if (serverSocket.isClosed || !serverSocket.isBound) {
             throw IOException("套接字错误！")
         }
+        var timeout = (serverConfig.socketTimeout * 4).toLong()
         cacheThreadPool = ThreadPoolExecutor(0, Integer.MAX_VALUE,
-                (serverConfig.socketTimeout * 4).toLong(),
+                if (timeout == 0L) Long.MAX_VALUE else timeout,
                 TimeUnit.MILLISECONDS,
                 SynchronousQueue())
     }
@@ -55,7 +56,7 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
                 remoteInfo.update(remoteAddress, remotePort)
                 remoteInfo.setHostName(remote.hostName)
                 // 得到远程服务器信息
-                logger.debug("tcp://${remoteInfo}/")
+                logger.debug("tcp://$remoteInfo/")
                 client.soTimeout = serverConfig.socketTimeout
                 cacheThreadPool.execute(ClientRunnable(httpServer, client, remoteInfo))
             } catch (e: Exception) {
