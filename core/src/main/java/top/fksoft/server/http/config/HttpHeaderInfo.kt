@@ -18,7 +18,7 @@ import kotlin.random.Random
  * @author ExplodingDragon
  * @version 1.0
  */
-class HttpHeaderInfo(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
+class HttpHeaderInfo(val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
     private val logger = Logger.getLogger(this)
     private val POST_HEADER_STR = "@POST_FILE_"
     private val edit = Edit()
@@ -37,6 +37,11 @@ class HttpHeaderInfo(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable
     var path:String = "/"
     private set
 
+    /**
+     *  HTTP 协议的版本，默认 1.0
+     */
+    var httpVersion:Float = 1.0f
+    private set
 
     /**
      * 当前实例的唯一 Token
@@ -201,6 +206,10 @@ class HttpHeaderInfo(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable
             for (key in formArray.keys) {
                 logger.debug("form's Key=$key,value=${formArray[key]};")
             }
+        }
+
+        fun setHttpVersion(httpVersion: Float) {
+            this@HttpHeaderInfo.httpVersion = httpVersion
         }
 
     }

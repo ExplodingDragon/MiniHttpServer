@@ -3,11 +3,10 @@ package top.fksoft.server.http.runnable
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.NetworkInfo
-import top.fksoft.server.http.reader.BaseHttpHeaderReader
 import top.fksoft.server.http.logcat.Logger
+import top.fksoft.server.http.reader.BaseHttpHeaderReader
 import top.fksoft.server.http.runnable.base.BaseClientRunnable
 import top.fksoft.server.http.utils.CloseUtils
-
 import java.io.IOException
 import java.net.Socket
 
@@ -22,6 +21,7 @@ import java.net.Socket
 class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: NetworkInfo) : BaseClientRunnable(httpServer, client, info) {
     private val httpHeaderInfo: HttpHeaderInfo = HttpHeaderInfo(info)
     private var headerReader: BaseHttpHeaderReader? = null
+    private val logger = Logger.getLogger(ClientAcceptRunnable::class)
 
     @Throws(Exception::class)
     override fun execute() {
@@ -35,7 +35,7 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
         } else {
             throw IOException("无法解析 HTTP Header 的数据.具体信息查看上一条日志！")
         }
-        logger.debug("${httpHeaderInfo.method} ${httpHeaderInfo.path}")
+        logger.debug("method:${httpHeaderInfo.method}    path:${httpHeaderInfo.path}    version:${httpHeaderInfo.httpVersion}")
     }
 
     @Throws(IOException::class)
@@ -43,9 +43,6 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
         CloseUtils.close(headerReader, httpHeaderInfo)
     }
 
-    companion object {
-        private val logger = Logger.getLogger(ClientAcceptRunnable::class.java)
-    }
 
 
 }

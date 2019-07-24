@@ -59,7 +59,7 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
     override fun close() {
         clear()
         CloseUtils.close(client)
-        logger.debug("已关闭$remoteAddress 的连接.")
+        logger.info("已关闭$remoteAddress 的连接.")
     }
 
     /**

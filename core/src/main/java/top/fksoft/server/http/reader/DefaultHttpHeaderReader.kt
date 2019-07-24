@@ -1,9 +1,8 @@
 package top.fksoft.server.http.reader
 
-import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.HttpConstant
+import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.logcat.Logger
-
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URLDecoder
@@ -64,6 +63,7 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
 
         val i = location.indexOf('?')
         //开始判断请求类型
+        val infoReader = edit.getReader()
         if (httpType.startsWith(HttpConstant.METHOD_GET)) {
             edit.setMethod(HttpConstant.METHOD_GET)
             //GET
@@ -74,7 +74,7 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
             }
         } else if (httpType.startsWith(HttpConstant.METHOD_POST)) {
             edit.setMethod(HttpConstant.METHOD_POST)
-            if (edit.getReader().getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE,HttpConstant.UNKNOWN_VALUE) == HttpConstant.UNKNOWN_VALUE  ){
+            if (infoReader.getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE,HttpConstant.UNKNOWN_VALUE) == HttpConstant.UNKNOWN_VALUE  ){
                 //请求为 POST 但是不存在 Content-Type ，判定为畸形 http 请求
                 logger.warn("请求为 POST 但是不存在 Content-Type.")
              return false
@@ -86,8 +86,12 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
         }
         edit.setPath(if (i != -1) location.substring(0, i) else location)
         //指定请求路径
-
-        edit.printDebug()
+        edit.setHttpVersion(typeArray[2].substringAfter("HTTP/").toFloat())
+        if (infoReader.httpVersion > 1.1f){
+            logger.warn("无法处理HTTP版本大于1.1的 HTTP 连接：${infoReader.httpVersion}. -- ${infoReader.remoteInfo}")
+        }
+        //调试代码 ...
+//        edit.printDebug()
 
         return true
     }

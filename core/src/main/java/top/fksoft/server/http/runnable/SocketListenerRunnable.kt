@@ -61,7 +61,7 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
                 client.soTimeout = serverConfig.socketTimeout
                 cacheThreadPool.execute(ClientAcceptRunnable(httpServer, client, remoteInfo))
             } catch (e: Exception) {
-                logger.warn("在处理 $remoteInfo 的过程中出现异常.", e)
+                logger.error("在处理 $remoteInfo 的过程中出现异常.", e)
             }
 
         }
