@@ -1,7 +1,7 @@
 package top.fksoft.server.http.config
 
-import top.fksoft.server.http.httpHeaderReader.BaseHttpHeaderReader
-import top.fksoft.server.http.httpHeaderReader.DefaultHttpHeaderReader
+import top.fksoft.server.http.reader.BaseHttpHeaderReader
+import top.fksoft.server.http.reader.DefaultHttpHeaderReader
 
 
 /**
@@ -12,7 +12,7 @@ import top.fksoft.server.http.httpHeaderReader.DefaultHttpHeaderReader
  * @author ExplodingDragon
  * @version 1.0
  */
-object HttpKey {
+object HttpConstant {
 
 
     enum class PROPERTIES_KEY {

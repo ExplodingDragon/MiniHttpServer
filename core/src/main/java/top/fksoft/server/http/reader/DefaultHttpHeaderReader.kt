@@ -1,7 +1,7 @@
-package top.fksoft.server.http.httpHeaderReader
+package top.fksoft.server.http.reader
 
-import top.fksoft.server.http.config.HttpHeader
-import top.fksoft.server.http.config.HttpKey
+import top.fksoft.server.http.config.HttpHeaderInfo
+import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.logcat.Logger
 
 import java.io.BufferedReader
@@ -29,7 +29,7 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
     private val logger = Logger.getLogger(DefaultHttpHeaderReader::class)
 
     @Throws(Exception::class)
-    override fun readHeaderInfo(edit: HttpHeader.Edit): Boolean {
+    override fun readHeaderInfo(edit: HttpHeaderInfo.Edit): Boolean {
         val headerReader = BufferedReader(InputStreamReader(inputStream))
         val httpType = headerReader.readLine().trim()
         // 读取HTTP第一行的数据
@@ -45,7 +45,7 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
             return false
         }
         var location = typeArray[1]
-        location = URLDecoder.decode(location, HttpKey.CHARSET_UTF_8)
+        location = URLDecoder.decode(location, HttpConstant.CHARSET_UTF_8)
         //还原 URL 中的转义字符
         while (true){
             val line = headerReader.readLine().trim()
@@ -64,17 +64,17 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
 
         val i = location.indexOf('?')
         //开始判断请求类型
-        if (httpType.startsWith(HttpKey.METHOD_GET)) {
-            edit.setMethod(HttpKey.METHOD_GET)
+        if (httpType.startsWith(HttpConstant.METHOD_GET)) {
+            edit.setMethod(HttpConstant.METHOD_GET)
             //GET
             if (i != -1) {
                 var methodGetData = location.substring(i + 1).trim()
                 //得到 在GET 请求下附加的数据
                 edit.addForms(methodGetData)
             }
-        } else if (httpType.startsWith(HttpKey.METHOD_POST)) {
-            edit.setMethod(HttpKey.METHOD_POST)
-            if (edit.getReader().getHeader(HttpKey.HEADER_KEY_CONTENT_TYPE,HttpKey.UNKNOWN_VALUE) == HttpKey.UNKNOWN_VALUE  ){
+        } else if (httpType.startsWith(HttpConstant.METHOD_POST)) {
+            edit.setMethod(HttpConstant.METHOD_POST)
+            if (edit.getReader().getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE,HttpConstant.UNKNOWN_VALUE) == HttpConstant.UNKNOWN_VALUE  ){
                 //请求为 POST 但是不存在 Content-Type ，判定为畸形 http 请求
                 logger.warn("请求为 POST 但是不存在 Content-Type.")
              return false
@@ -92,7 +92,9 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
         return true
     }
 
-    override fun readHeaderPostData(edit: HttpHeader.Edit) {
+    override fun readHeaderPostData(edit: HttpHeaderInfo.Edit) : Boolean{
+        return false
+
     }
 
     @Throws(Exception::class)

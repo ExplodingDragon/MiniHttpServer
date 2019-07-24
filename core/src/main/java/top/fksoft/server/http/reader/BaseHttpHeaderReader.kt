@@ -1,8 +1,8 @@
-package top.fksoft.server.http.httpHeaderReader
+package top.fksoft.server.http.reader
 
-import top.fksoft.server.http.client.ClientRunnable
-import top.fksoft.server.http.config.HttpHeader
+import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ServerConfig
+import top.fksoft.server.http.runnable.ClientAcceptRunnable
 import top.fksoft.server.http.utils.CloseUtils
 import java.io.IOException
 import java.io.InputStream
@@ -25,7 +25,7 @@ import kotlin.reflect.KClass
  * @version 1.0
  */
 abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
-    private var runnable: ClientRunnable? = null
+    private var runnable: ClientAcceptRunnable? = null
     private var config: ServerConfig? = null
     protected val inputStream: InputStream
         @Throws(IOException::class)
@@ -45,7 +45,7 @@ abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
      * @param config
      * @param runnable
      */
-    fun onCreate(config: ServerConfig, runnable: ClientRunnable) {
+    fun onCreate(config: ServerConfig, runnable: ClientAcceptRunnable) {
         this.config = config
         this.runnable = runnable
     }
@@ -56,7 +56,7 @@ abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
      * # 解析HTTP Header 信息并归档
      *
      *
-     * 解析HTTP Header 中的信息，并将信息归档到 [HttpHeader] 中;
+     * 解析HTTP Header 中的信息，并将信息归档到 [HttpHeaderInfo] 中;
      * 在此方法中针对HTTP 1.1 头中的配置信息进行处理，但不处理POST表单
      * 信息（如果有）
      *
@@ -67,21 +67,24 @@ abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
      *
      * ```
      *
-     * @param httpHeader 有效信息存放的位置
+     * @param edit 有效信息存放的位置
      * @return 是否为标准的 HTTP 请求（如果不是则会中断继续）
      */
     @Throws(Exception::class)
-    abstract fun readHeaderInfo(httpHeader: HttpHeader.Edit): Boolean
+    abstract fun readHeaderInfo(edit: HttpHeaderInfo.Edit): Boolean
 
 
     /**
      * # 解析HTTP POST 下发送的表单数据
      *
+     * 此方法只会在 POST  请求的情况下被调用，
+     *
+     *
      * @param httpHeader Edit
      * @throws Exception
      */
     @Throws(Exception::class)
-    abstract fun readHeaderPostData(httpHeader: HttpHeader.Edit)
+    abstract fun readHeaderPostData(httpHeader: HttpHeaderInfo.Edit): Boolean
 
 
     companion object {

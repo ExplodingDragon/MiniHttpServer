@@ -1,10 +1,11 @@
-package top.fksoft.server.http.client
+package top.fksoft.server.http.runnable
 
 import top.fksoft.server.http.HttpServer
-import top.fksoft.server.http.config.HttpHeader
+import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.NetworkInfo
-import top.fksoft.server.http.httpHeaderReader.BaseHttpHeaderReader
+import top.fksoft.server.http.reader.BaseHttpHeaderReader
 import top.fksoft.server.http.logcat.Logger
+import top.fksoft.server.http.runnable.base.BaseClientRunnable
 import top.fksoft.server.http.utils.CloseUtils
 
 import java.io.IOException
@@ -18,8 +19,8 @@ import java.net.Socket
  * @version 1.0
  * @author ExplodingDragon
  */
-class ClientRunnable(httpServer: HttpServer, client: Socket, info: NetworkInfo) : BaseClientRunnable(httpServer, client, info) {
-    private val httpHeader: HttpHeader = HttpHeader(info)
+class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: NetworkInfo) : BaseClientRunnable(httpServer, client, info) {
+    private val httpHeaderInfo: HttpHeaderInfo = HttpHeaderInfo(info)
     private var headerReader: BaseHttpHeaderReader? = null
 
     @Throws(Exception::class)
@@ -28,22 +29,22 @@ class ClientRunnable(httpServer: HttpServer, client: Socket, info: NetworkInfo) 
         this.headerReader = httpHeaderReader
         httpHeaderReader.onCreate(httpServer.serverConfig, this)
         //初始化 HTTP 解析类
-        if (httpHeaderReader.readHeaderInfo(httpHeader.edit())) {
-            if(httpHeader.isPost())
-                httpHeaderReader.readHeaderPostData(httpHeader.edit())
+        if (httpHeaderReader.readHeaderInfo(httpHeaderInfo.edit())) {
+            if(httpHeaderInfo.isPost())
+                httpHeaderReader.readHeaderPostData(httpHeaderInfo.edit())
         } else {
             throw IOException("无法解析 HTTP Header 的数据.具体信息查看上一条日志！")
         }
-        logger.debug("${httpHeader.method} ${httpHeader.path}")
+        logger.debug("${httpHeaderInfo.method} ${httpHeaderInfo.path}")
     }
 
     @Throws(IOException::class)
     internal override fun clear() {
-        CloseUtils.close(headerReader, httpHeader)
+        CloseUtils.close(headerReader, httpHeaderInfo)
     }
 
     companion object {
-        private val logger = Logger.getLogger(ClientRunnable::class.java)
+        private val logger = Logger.getLogger(ClientAcceptRunnable::class.java)
     }
 
 

@@ -1,0 +1,8 @@
+{
+  "header": [
+    {
+      "Content-Type": "text/html"
+    }
+  ],
+  "html": "<html>\n<head>\n    <title>404 Not Found</title>\n</head>\n<body>\n<div style=\"text-align: center;\">\n    <h1>404 Not Found</h1>\n</div>\n<hr>\n<div style=\"text-align: center;\">MiniHttpServer Ver.1.0</div>\n</body>\n</html>\n"
+}

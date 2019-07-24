@@ -1,7 +1,6 @@
-package top.fksoft.server.http.server
+package top.fksoft.server.http.runnable
 
 import top.fksoft.server.http.HttpServer
-import top.fksoft.server.http.client.ClientRunnable
 import top.fksoft.server.http.config.NetworkInfo
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.logcat.Logger
@@ -27,16 +26,18 @@ import java.util.concurrent.TimeUnit
  *
  * @see java.lang.Runnable
  */
-class HttpRunnable @Throws(IOException::class)
+class SocketListenerRunnable @Throws(IOException::class)
+
 constructor(private val httpServer: HttpServer, private val serverSocket: ServerSocket) : Runnable, CloseUtils.Closeable {
     private val serverConfig: ServerConfig = httpServer.serverConfig
     private val cacheThreadPool: ExecutorService
+    private val logger = Logger.getLogger(SocketListenerRunnable::class)
 
     init {
         if (serverSocket.isClosed || !serverSocket.isBound) {
             throw IOException("套接字错误！")
         }
-        var timeout = (serverConfig.socketTimeout * 4).toLong()
+        val timeout = (serverConfig.socketTimeout * 4).toLong()
         cacheThreadPool = ThreadPoolExecutor(0, Integer.MAX_VALUE,
                 if (timeout == 0L) Long.MAX_VALUE else timeout,
                 TimeUnit.MILLISECONDS,
@@ -47,18 +48,18 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
         val localPort = serverSocket.localPort
         logger.info("HTTP 服务器启动正常，绑定端口为：$localPort .")
         while (!serverSocket.isClosed) {
-            val remoteInfo = NetworkInfo()
+            var remoteInfo :NetworkInfo? = null
             try {
                 val client = serverSocket.accept()
                 val remote = client.remoteSocketAddress as InetSocketAddress
                 val remoteAddress = remote.address.hostAddress
                 val remotePort = remote.port
-                remoteInfo.update(remoteAddress, remotePort)
-                remoteInfo.setHostName(remote.hostName)
+                remoteInfo = NetworkInfo(remoteAddress, remotePort)
+                remoteInfo.hostName = remote.hostName
                 // 得到远程服务器信息
-                logger.debug("tcp://$remoteInfo/")
+                logger.info("tcp${if(remoteInfo.isIpv6Host()) 6 else 4}://$remoteInfo/")
                 client.soTimeout = serverConfig.socketTimeout
-                cacheThreadPool.execute(ClientRunnable(httpServer, client, remoteInfo))
+                cacheThreadPool.execute(ClientAcceptRunnable(httpServer, client, remoteInfo))
             } catch (e: Exception) {
                 logger.warn("在处理 $remoteInfo 的过程中出现异常.", e)
             }
@@ -70,7 +71,7 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
      * 关闭Server
      *
      * 不应该手动调用此方法，应该调用 HttpServer#close()
-     * 来自动关闭
+     * 来关闭
      *
      * @throws Exception
      */
@@ -79,7 +80,4 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
         serverSocket.close()
     }
 
-    companion object {
-        private val logger = Logger.getLogger(HttpRunnable::class.java)
-    }
 }

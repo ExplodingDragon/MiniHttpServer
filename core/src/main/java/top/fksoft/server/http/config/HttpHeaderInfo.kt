@@ -18,7 +18,7 @@ import kotlin.random.Random
  * @author ExplodingDragon
  * @version 1.0
  */
-class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
+class HttpHeaderInfo(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
     private val logger = Logger.getLogger(this)
     private val POST_HEADER_STR = "@POST_FILE_"
     private val edit = Edit()
@@ -26,7 +26,7 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
     /**
      * 服务器下的请求类型
      */
-    var method = HttpKey.METHOD_GET
+    var method = HttpConstant.METHOD_GET
     private set
     private var formArray = HashMap<String, String>()
     private var headerArray = HashMap<String, String>()
@@ -75,7 +75,7 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
      *
      * @return Boolean 判断是否为POST 请求
      */
-    fun isPost() = method == HttpKey.METHOD_POST
+    fun isPost() = method == HttpConstant.METHOD_POST
 
     /**
      * # 得到 header 键值对
@@ -116,7 +116,7 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
     inner class Edit() {
 
         fun setMethod(method: String) {
-            this@HttpHeader.method = method;
+            this@HttpHeaderInfo.method = method;
         }
 
         /**
@@ -171,15 +171,15 @@ class HttpHeader(private val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
          * @param path String
          */
         fun setPath(path: String) {
-            this@HttpHeader.path = path
+            this@HttpHeaderInfo.path = path
 
         }
 
         /**
          * # 得到只读header对象
-         * @return HttpHeader 绑定的 Header 对象
+         * @return HttpHeaderInfo 绑定的 Header 对象
          */
-        fun getReader() = this@HttpHeader
+        fun getReader() = this@HttpHeaderInfo
 
         /**
          * # 添加一个Header Header 属性

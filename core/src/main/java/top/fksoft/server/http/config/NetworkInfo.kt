@@ -1,49 +1,31 @@
 package top.fksoft.server.http.config
 
-class NetworkInfo {
-    private var hostName: String? = null
-    var address: String? = null
-    var port = -1
+import java.net.Inet6Address
+import java.net.InetAddress
 
-    constructor(address: String, port: Int) {
-        update(address, port)
-    }
+/**
+ * # 网络主机信息
+ *
+ * 此数据类用于记录网络主机信息，
+ *
+ * @property ip String ip地址
+ * @property port Int 主机端口号
+ * @property hostName String? 主机网络名称 （如果有）
+ * @constructor
+ */
+data class NetworkInfo (val ip:String,val port:Int){
 
-    constructor() {}
+    var hostName:String? = ip
 
-    fun update(address: String, port: Int) {
-        this.address = address
-        this.port = port
-    }
-
-    fun update(info: NetworkInfo) {
-        this.address = info.address
-        this.port = info.port
-        this.hostName = info.hostName
-    }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || javaClass != other.javaClass) return false
-        val that = other as NetworkInfo?
-        return if (port != that!!.port) false else address == that.address
-    }
-
-    override fun hashCode(): Int {
-        var result = address!!.hashCode()
-        result = 31 * result + port
-        return result
-    }
-
-    fun setHostName(hostName: String) {
-        this.hostName = hostName
-    }
-
-    fun getHostName(): String? {
-        return if (hostName == null) address else hostName
-    }
+    /**
+     * # 判断当前网络主机地址是否为 IPv6 地址
+     *
+     * @return Boolean 是否为 IPv6 地址
+     */
+    fun isIpv6Host() =  InetAddress.getByName(ip) is Inet6Address
 
     override fun toString(): String {
-        return getHostName() + ":" + port
+        return "$hostName:$port"
     }
+
 }

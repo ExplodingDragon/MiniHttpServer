@@ -1,6 +1,6 @@
 package top.fksoft.server.http.config
 
-import top.fksoft.server.http.config.HttpKey.PROPERTIES_KEY.SERVER_PORT
+import top.fksoft.server.http.config.HttpConstant.PROPERTIES_KEY.SERVER_PORT
 import top.fksoft.server.http.logcat.Logger
 import java.io.File
 import java.io.IOException
@@ -38,7 +38,7 @@ class ServerConfig(private val serverPort: Int) {
      */
     var socketTimeout = 0
 
-    var tempDirectory = File(HttpKey.PROPERTY_SYSTEM_TEMP_DIR, HttpKey.LIB_NAME)
+    var tempDirectory = File(HttpConstant.PROPERTY_SYSTEM_TEMP_DIR, HttpConstant.LIB_NAME)
 
 
     init {
@@ -93,7 +93,7 @@ class ServerConfig(private val serverPort: Int) {
      * @param key 标准键值对
      * @return 数据
      */
-    fun getHttpProperty(key: HttpKey.PROPERTIES_KEY): String? {
+    fun getHttpProperty(key: HttpConstant.PROPERTIES_KEY): String? {
         return httpPropertiesMap["_DONT_REMOVE_2_EDIT_${key.name}" ]
     }
 
@@ -120,7 +120,7 @@ class ServerConfig(private val serverPort: Int) {
      * @param key 键值对
      * @param value 属性
      */
-    fun addHttpProperty(key: HttpKey.PROPERTIES_KEY, value: String) {
+    fun addHttpProperty(key: HttpConstant.PROPERTIES_KEY, value: String) {
         val keyStr = "_DONT_REMOVE_2_EDIT_${key.name}"
         if (!httpPropertiesMap.containsKey(keyStr)) {
             httpPropertiesMap[keyStr] = value

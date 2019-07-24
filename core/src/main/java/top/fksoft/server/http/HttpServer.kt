@@ -1,10 +1,10 @@
 package top.fksoft.server.http
 
-import top.fksoft.server.http.config.HttpKey
+import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.httpHeaderReader.BaseHttpHeaderReader
+import top.fksoft.server.http.reader.BaseHttpHeaderReader
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.server.HttpRunnable
+import top.fksoft.server.http.runnable.SocketListenerRunnable
 import java.io.IOException
 import java.util.concurrent.ThreadFactory
 import javax.net.ServerSocketFactory
@@ -33,7 +33,7 @@ class HttpServer
 @Throws(IOException::class)
 @JvmOverloads constructor(port: Int, factory: ServerSocketFactory = ServerSocketFactory.getDefault()) {
     private val logger = Logger.getLogger(HttpServer::class)
-    private val runnable: HttpRunnable
+    private val runnable: SocketListenerRunnable
     /**
      *
      * 服务器的所有配置信息,
@@ -46,11 +46,11 @@ class HttpServer
     /**
      * 解析 HTTP请求头的处理类
      */
-    var httpHeaderReader: KClass<out BaseHttpHeaderReader> = HttpKey.DEFAULT_HTTP_HEADER_READER.kotlin
+    var httpHeaderReader: KClass<out BaseHttpHeaderReader> = HttpConstant.DEFAULT_HTTP_HEADER_READER.kotlin
     init {
         val serverSocket = factory.createServerSocket(port) ?: throw NullPointerException()
         serverConfig = ServerConfig(port)
-        runnable = HttpRunnable(this, serverSocket)
+        runnable = SocketListenerRunnable(this, serverSocket)
     }
 
     fun start() {
