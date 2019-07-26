@@ -86,9 +86,16 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
         }
         edit.setPath(if (i != -1) location.substring(0, i) else location)
         //指定请求路径
-        edit.setHttpVersion(typeArray[2].substringAfter("HTTP/").toFloat())
+        try {
+            val httpVersion = typeArray[2].substringAfter("HTTP/").toFloat()
+            edit.setHttpVersion(httpVersion)
+        }catch (ignore:Exception){
+            logger.debug("在${infoReader.remoteInfo} 发现畸形HTTP 请求.",ignore)
+            return false
+        }
         if (infoReader.httpVersion > 1.1f){
-            logger.warn("无法处理HTTP版本大于1.1的 HTTP 连接：${infoReader.httpVersion}. -- ${infoReader.remoteInfo}")
+            logger.debug("无法处理HTTP版本大于1.1的 HTTP 连接：${infoReader.httpVersion}. -- ${infoReader.remoteInfo}")
+            return false
         }
         //调试代码 ...
 //        edit.printDebug()

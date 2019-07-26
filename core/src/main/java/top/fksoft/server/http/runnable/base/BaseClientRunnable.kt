@@ -9,6 +9,7 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 import java.net.Socket
+import java.net.SocketTimeoutException
 
 /**
  *
@@ -20,8 +21,9 @@ import java.net.Socket
  */
 abstract class BaseClientRunnable(protected val httpServer: HttpServer, protected val client: Socket, val remoteAddress: NetworkInfo)
     : Runnable, CloseUtils.Closeable {
-    protected val serverConfig: ServerConfig = httpServer.serverConfig
+    private val logger = Logger.getLogger(BaseClientRunnable::class.java)
 
+    protected val serverConfig: ServerConfig = httpServer.serverConfig
     val inputStream: InputStream
         @Throws(IOException::class)
         get() = client.getInputStream()
@@ -33,7 +35,12 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
         try {
             execute()
         } catch (e: Exception) {
-            logger.warn("在处理来自%s的Http请求中发生错误.", e, remoteAddress)
+            if (e is SocketTimeoutException) {
+                logger.warn("$remoteAddress 发送未知请求，已强制断开！")
+
+            } else {
+                logger.warn("在处理来自%s的Http请求中发生错误.", e, remoteAddress)
+            }
         }
 
         try {
@@ -59,7 +66,7 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
     override fun close() {
         clear()
         CloseUtils.close(client)
-        logger.info("已关闭$remoteAddress 的连接.")
+        logger.info("已完全关闭$remoteAddress 的连接.")
     }
 
     /**
@@ -72,7 +79,4 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
     @Throws(IOException::class)
     internal abstract fun clear()
 
-    companion object {
-        private val logger = Logger.getLogger(BaseClientRunnable::class.java)
-    }
 }

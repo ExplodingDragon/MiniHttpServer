@@ -5,6 +5,7 @@ import jdkUtils.data.StringUtils
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
 import java.io.File
+import java.nio.charset.Charset
 import kotlin.random.Random
 
 /**
@@ -19,6 +20,7 @@ import kotlin.random.Random
  * @version 1.0
  */
 class HttpHeaderInfo(val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
+    var charset: Charset = Charsets.UTF_8
     private val logger = Logger.getLogger(this)
     private val POST_HEADER_STR = "@POST_FILE_"
     private val edit = Edit()

@@ -58,7 +58,7 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
                 remoteInfo.hostName = remote.hostName
                 // 得到远程服务器信息
                 logger.info("tcp${if(remoteInfo.isIpv6Host()) 6 else 4}://$remoteInfo/")
-                client.soTimeout = serverConfig.socketTimeout
+                client.soTimeout = 3000
                 cacheThreadPool.execute(ClientAcceptRunnable(httpServer, client, remoteInfo))
             } catch (e: Exception) {
                 logger.error("在处理 $remoteInfo 的过程中出现异常.", e)

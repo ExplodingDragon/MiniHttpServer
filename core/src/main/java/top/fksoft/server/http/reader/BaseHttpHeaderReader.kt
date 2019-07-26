@@ -86,6 +86,16 @@ abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
     @Throws(Exception::class)
     abstract fun readHeaderPostData(httpHeader: HttpHeaderInfo.Edit): Boolean
 
+    /**
+     * # 调用此方法读取 POST 数据
+     * @param edit Edit
+     */
+    fun readHeader(edit: HttpHeaderInfo.Edit) {
+        if (edit.getReader().isPost()){
+            readHeaderPostData(edit)
+        }
+    }
+
 
     companion object {
 
