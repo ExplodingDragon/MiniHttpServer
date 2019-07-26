@@ -195,6 +195,22 @@ data class ResponseCode (val responseCode:Int,val codeMessage:String){
         @JvmStatic
         val HTTP_UNSUPPORTED_TYPE = ResponseCode(415,"UNSUPPORTED TYPE")
 
+        /**
+         * HTTP Status-Code 426: Unsupported Media Type.
+         *
+         * The 426 (Upgrade Required) status code indicates that the server
+         * refuses to perform the request using the current protocol but might
+         * be willing to do so after the client upgrades to a different
+         * protocol.  The server MUST send an Upgrade header field in a 426
+         * response to indicate the required protocol(s) (Section 6.7 of
+         * [RFC7230]).
+         *
+         *
+         */
+        @JvmStatic
+        val HTTP_UPGRADE_REQUIRED = ResponseCode(426,"UPGRADE REQUIRED")
+
+
         /* 5XX: server error */
 
         /**

@@ -2,6 +2,7 @@ package top.fksoft.server.http.reader
 
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpHeaderInfo
+import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.logcat.Logger
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -23,12 +24,12 @@ import java.net.URLDecoder
  * @author ExplodingDragon
  * @version 1.0
  */
-@Deprecated(message = "存在严重的安全问题！",level = DeprecationLevel.WARNING)
+@Deprecated(message = "存在严重的安全问题！", level = DeprecationLevel.WARNING)
 class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
     private val logger = Logger.getLogger(DefaultHttpHeaderReader::class)
 
     @Throws(Exception::class)
-    override fun readHeaderInfo(edit: HttpHeaderInfo.Edit): Boolean {
+    override fun readHeaderInfo(edit: HttpHeaderInfo.Edit): ResponseCode {
         val headerReader = BufferedReader(InputStreamReader(inputStream))
         val httpType = headerReader.readLine().trim()
         // 读取HTTP第一行的数据
@@ -41,22 +42,23 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
          */
         if (typeArray.size != 3) {
             logger.warn("未知协议：$httpType")
-            return false
+            return ResponseCode.HTTP_BAD_REQUEST
+            //第一行解析错误，无法得出协议，直接返回 400 错误
         }
         var location = typeArray[1]
         location = URLDecoder.decode(location, HttpConstant.CHARSET_UTF_8)
         //还原 URL 中的转义字符
-        while (true){
+        while (true) {
             val line = headerReader.readLine().trim()
             if (line == "") {
                 //达到HTTP HEADER 第一个末尾
-                break;
+                break
             }
             val spitIndex = line.indexOf(":")
             if (spitIndex == -1) {
                 throw IndexOutOfBoundsException("非法header 头！")
             }
-            edit.addHeader(line.substring(0,spitIndex),line.substring(spitIndex + 1))
+            edit.addHeader(line.substring(0, spitIndex), line.substring(spitIndex + 1))
             //添加完成所有 Header 信息
         }
 
@@ -68,42 +70,51 @@ class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
             edit.setMethod(HttpConstant.METHOD_GET)
             //GET
             if (i != -1) {
-                var methodGetData = location.substring(i + 1).trim()
+                val methodGetData = location.substring(i + 1).trim()
                 //得到 在GET 请求下附加的数据
                 edit.addForms(methodGetData)
             }
         } else if (httpType.startsWith(HttpConstant.METHOD_POST)) {
             edit.setMethod(HttpConstant.METHOD_POST)
-            if (infoReader.getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE,HttpConstant.UNKNOWN_VALUE) == HttpConstant.UNKNOWN_VALUE  ){
+            if (infoReader.getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE, HttpConstant.UNKNOWN_VALUE) == HttpConstant.UNKNOWN_VALUE) {
                 //请求为 POST 但是不存在 Content-Type ，判定为畸形 http 请求
                 logger.warn("请求为 POST 但是不存在 Content-Type.")
-             return false
+                return  ResponseCode.HTTP_NOT_ACCEPTABLE
+                //返回 406 错误
+
+            }
+            if (infoReader.getHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH, HttpConstant.UNKNOWN_VALUE) == HttpConstant.UNKNOWN_VALUE) {
+                logger.warn("请求为 POST 但是不存在 Content-Length.")
+                //请求为 POST 但是不存在 Content-Length ，判定为畸形 http 请求
+                return ResponseCode.HTTP_LENGTH_REQUIRED
+                //返回 411 错误
             }
         } else {
             //暂无法解析 除 GET 和 POST 以外的其他方法
             logger.warn("未知请求协议：$httpType")
-            return false
+            return ResponseCode.HTTP_BAD_METHOD
+            //协议错误，返回 405 错误
         }
         edit.setPath(if (i != -1) location.substring(0, i) else location)
         //指定请求路径
         try {
             val httpVersion = typeArray[2].substringAfter("HTTP/").toFloat()
             edit.setHttpVersion(httpVersion)
-        }catch (ignore:Exception){
-            logger.debug("在${infoReader.remoteInfo} 发现畸形HTTP 请求.",ignore)
-            return false
+        } catch (ignore: Exception) {
+            logger.debug("在${infoReader.remoteInfo} 发现畸形HTTP 请求.", ignore)
+            return ResponseCode.HTTP_UPGRADE_REQUIRED
         }
-        if (infoReader.httpVersion > 1.1f){
+        if (infoReader.httpVersion > 1.1f) {
             logger.debug("无法处理HTTP版本大于1.1的 HTTP 连接：${infoReader.httpVersion}. -- ${infoReader.remoteInfo}")
-            return false
+            return ResponseCode.HTTP_UPGRADE_REQUIRED
         }
         //调试代码 ...
 //        edit.printDebug()
 
-        return true
+        return return ResponseCode.HTTP_OK
     }
 
-    override fun readHeaderPostData(edit: HttpHeaderInfo.Edit) : Boolean{
+    override fun readHeaderPostData(edit: HttpHeaderInfo.Edit): Boolean {
         return false
 
     }

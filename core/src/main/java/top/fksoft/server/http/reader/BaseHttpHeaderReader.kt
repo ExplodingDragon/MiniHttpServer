@@ -1,6 +1,7 @@
 package top.fksoft.server.http.reader
 
 import top.fksoft.server.http.config.HttpHeaderInfo
+import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.runnable.ClientAcceptRunnable
 import top.fksoft.server.http.utils.CloseUtils
@@ -68,10 +69,10 @@ abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
      * ```
      *
      * @param edit 有效信息存放的位置
-     * @return 是否为标准的 HTTP 请求（如果不是则会中断继续）
+     * @return 解析是否存在问题
      */
     @Throws(Exception::class)
-    abstract fun readHeaderInfo(edit: HttpHeaderInfo.Edit): Boolean
+    abstract fun readHeaderInfo(edit: HttpHeaderInfo.Edit): ResponseCode
 
 
     /**

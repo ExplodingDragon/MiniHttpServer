@@ -4,6 +4,7 @@ import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.ClientResponse
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.NetworkInfo
+import top.fksoft.server.http.config.ResponseCode.Companion.HTTP_OK
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.reader.BaseHttpHeaderReader
 import top.fksoft.server.http.runnable.base.BaseClientRunnable
@@ -29,7 +30,8 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
     override fun execute() {
         headerReader.onCreate(httpServer.serverConfig, this)
         //初始化 HTTP 解析类
-        if (headerReader.readHeaderInfo(httpHeaderInfo.edit())) {
+        val responseCode = headerReader.readHeaderInfo(httpHeaderInfo.edit())
+        if (responseCode.equals(HTTP_OK)) {
             client.soTimeout = serverConfig.socketTimeout
             //协议识别 再放行tcp 连接维持时间
             clientResponse = ClientResponse(httpHeaderInfo, client)
