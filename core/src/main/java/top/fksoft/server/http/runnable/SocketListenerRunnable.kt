@@ -74,7 +74,6 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
             } catch (e: Exception) {
                 logger.error("在处理 $remoteInfo 的过程中出现异常.", e)
             }
-
         }
     }
 
