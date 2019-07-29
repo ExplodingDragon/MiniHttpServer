@@ -31,7 +31,7 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
         //初始化 HTTP 解析类
         val code = headerReader.readHeaderInfo(httpHeaderInfo.edit())
         clientResponse.responseCode = code
-        if (code.equals(HTTP_OK)) {
+        if (code == HTTP_OK) {
             //协议识别 再放行tcp 连接维持时间
             headerReader.readHeaderBody(httpHeaderInfo.edit())
             val findHttpExecute = httpServer.findHttpExecute.findHttpExecute(httpHeaderInfo)
@@ -50,7 +50,7 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
     }
 
     @Throws(IOException::class)
-    internal override fun clear() {
+    override fun clear() {
         CloseUtils.close(headerReader, httpHeaderInfo, clientResponse)
     }
 

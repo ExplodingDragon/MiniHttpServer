@@ -43,7 +43,7 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
         if (serverSocket.isClosed || !serverSocket.isBound) {
             throw IOException("套接字错误！")
         }
-        val timeout = (serverConfig.socketTimeout * 4).toLong()
+        val timeout = (serverConfig.socketTimeout * 4).run { toLong() }
         cacheThreadPool = ThreadPoolExecutor(0, Integer.MAX_VALUE,
                 if (timeout == 0L) Long.MAX_VALUE else timeout,
                 TimeUnit.MILLISECONDS,
@@ -62,7 +62,7 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
                 remoteInfo = NetworkInfo(remoteAddress, remotePort)
                 remoteInfo.hostName = remote.hostName
                 // 得到远程服务器信息
-                var remoteUrl = "tcp${if (remoteInfo.isIpv6Host()) 6 else 4}://$remoteInfo/"
+                val remoteUrl = "tcp${if (remoteInfo.isIpv6Host()) 6 else 4}://$remoteInfo/"
                 logger.info(remoteUrl)
                 client.soTimeout = serverConfig.socketTimeout
                 if (accept) {
@@ -74,7 +74,6 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
             } catch (e: Exception) {
                 logger.error("在处理 $remoteInfo 的过程中出现异常.", e)
             }
-
         }
     }
 

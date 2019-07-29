@@ -22,7 +22,7 @@ import java.net.SocketTimeoutException
  */
 abstract class BaseClientRunnable(protected val httpServer: HttpServer, protected val client: Socket, val remoteAddress: NetworkInfo)
     : Runnable, CloseUtils.Closeable {
-    private val logger = Logger.getLogger(this)
+    private val logger = Logger.getLogger(javaClass)
 
     protected val serverConfig: ServerConfig = httpServer.serverConfig
     val inputStream: InputStream
@@ -36,14 +36,10 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
         try {
             execute()
         } catch (e: Exception) {
-            if (e is SocketTimeoutException) {
-                logger.warn("$remoteAddress 发送未知请求，已强制断开！")
-
-            } else if (e is SocketException) {
-                logger.warn("$remoteAddress 远程主机强制断开连接！",e)
-
-            } else {
-                logger.warn("在处理来自%s的Http请求中发生错误.", e, remoteAddress)
+            when (e) {
+                is SocketTimeoutException -> logger.warn("$remoteAddress 发送未知请求，已强制断开！")
+                is SocketException -> logger.warn("$remoteAddress 远程主机强制断开连接！",e)
+                else -> logger.warn("在处理来自%s的Http请求中发生错误.", e, remoteAddress)
             }
         }
 

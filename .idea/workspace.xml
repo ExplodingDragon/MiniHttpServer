@@ -9,7 +9,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="fix bugs." />
+    <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="fix bugs.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/SocketListenerRunnable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/SocketListenerRunnable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/modules/target/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -92,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+            <state relative-caret-position="177">
+              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -101,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+            <state relative-caret-position="798">
+              <caret line="52" column="4" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -110,8 +116,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/SocketListenerRunnable.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            <state relative-caret-position="177">
+              <caret line="45" column="69" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -119,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+            <state relative-caret-position="177">
+              <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
               <folding>
                 <element signature="e#39#299#0" expanded="true" />
               </folding>
@@ -177,7 +183,6 @@
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ClientResponse.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/BaseHttpExecute.kt" />
         <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/fileArray.html" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt" />
         <option value="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/config/Config.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/logcat/FLog.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/logcat/LogFactory.kt" />
@@ -200,9 +205,10 @@
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpConstant.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultFindHttpExecute.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" />
         <option value="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/SocketListenerRunnable.kt" />
       </list>
     </option>
@@ -756,7 +762,7 @@
       <workItem from="1564294771414" duration="2370000" />
       <workItem from="1564320441225" duration="848000" />
       <workItem from="1564361895511" duration="20179000" />
-      <workItem from="1564403405318" duration="11139000" />
+      <workItem from="1564403405318" duration="11363000" />
     </task>
     <task id="LOCAL-00001" summary="fix bugs.">
       <created>1561946216653</created>
@@ -912,7 +918,21 @@
       <option name="project" value="LOCAL" />
       <updated>1564415449697</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fix bugs.">
+      <created>1564415589469</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1564415589469</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix bugs.">
+      <created>1564415635794</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1564415635794</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -927,7 +947,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291741000" />
+    <option name="totallyTimeSpent" value="291965000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -959,7 +979,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32908458" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32731378" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32844242" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32844242" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -967,7 +987,7 @@
       <window_info anchor="bottom" id="Android Profiler" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="14" weight="0.32908458" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="15" weight="0.32906976" />
-      <window_info anchor="bottom" id="Messages" order="16" weight="0.32906976" />
+      <window_info active="true" anchor="bottom" id="Messages" order="16" visible="true" weight="0.32844242" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1373,34 +1393,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="52" column="4" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+        <state relative-caret-position="177">
+          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
           <folding>
             <element signature="e#39#299#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/SocketListenerRunnable.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        <state relative-caret-position="177">
+          <caret line="45" column="69" selection-start-line="45" selection-start-column="68" selection-end-line="45" selection-end-column="69" />
         </state>
       </provider>
     </entry>
