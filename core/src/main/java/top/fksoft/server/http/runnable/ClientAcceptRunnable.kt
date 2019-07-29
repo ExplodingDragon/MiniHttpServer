@@ -3,8 +3,8 @@ package top.fksoft.server.http.runnable
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.client.ClientResponse
 import top.fksoft.server.http.config.HttpHeaderInfo
-import top.fksoft.server.http.config.NetworkInfo
 import top.fksoft.server.http.config.ResponseCode.Companion.HTTP_OK
+import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.factory.HeaderReaderFactory
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.runnable.base.BaseClientRunnable
@@ -32,7 +32,6 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
         val code = headerReader.readHeaderInfo(httpHeaderInfo.edit())
         clientResponse.responseCode = code
         if (code.equals(HTTP_OK)) {
-            client.soTimeout = serverConfig.socketTimeout
             //协议识别 再放行tcp 连接维持时间
             headerReader.readHeaderBody(httpHeaderInfo.edit())
             val findHttpExecute = httpServer.findHttpExecute.findHttpExecute(httpHeaderInfo)
@@ -41,7 +40,7 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
             try {
                 declaredConstructor.newInstance(httpHeaderInfo,clientResponse)
             }catch (e:Exception){
-                logger.error("在${remoteAddress} 下发生不可预知的异常！",e)
+                logger.error("在$remoteAddress 下发生不可预知的异常！",e)
             }
         }
         clientResponse.flashResponse()

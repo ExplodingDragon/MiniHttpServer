@@ -2,6 +2,7 @@ package top.fksoft.server.http.config
 
 import com.google.gson.Gson
 import jdkUtils.data.StringUtils
+import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
 import java.io.File
@@ -19,10 +20,9 @@ import kotlin.random.Random
  * @author ExplodingDragon
  * @version 1.0
  */
-class HttpHeaderInfo(val remoteInfo: NetworkInfo,val serverConfig: ServerConfig) : CloseUtils.Closeable {
+class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig) : CloseUtils.Closeable {
     var charset: Charset = Charsets.UTF_8
     private val logger = Logger.getLogger(this)
-    private val POST_HEADER_STR = "@POST_FILE_"
     private val edit = Edit()
 
     /**
@@ -230,5 +230,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo,val serverConfig: ServerConfig)
         }
 
     }
-
+companion object{
+    private const val POST_HEADER_STR = "@POST_FILE_"
+}
 }

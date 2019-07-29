@@ -1,8 +1,8 @@
 package top.fksoft.server.http.runnable.base
 
 import top.fksoft.server.http.HttpServer
-import top.fksoft.server.http.config.NetworkInfo
 import top.fksoft.server.http.config.ServerConfig
+import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
 import java.io.IOException

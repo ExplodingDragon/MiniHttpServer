@@ -3,78 +3,91 @@ package top.fksoft.server.http.logcat
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.PrintWriter
-import java.nio.charset.Charset
 
 abstract class Log {
 
 
-    enum class LogId {
+    abstract fun info(message: String, exception: Throwable? = null)
+
+    final fun info(message: String) {
+        info(message, null)
+    }
+
+    final fun info(message: String, exception: Throwable? = null, vararg args: Any) {
+        info(String.format(message, args), exception)
+    }
+
+    abstract fun debug(message: String, exception: Throwable? = null)
+
+    final fun debug(message: String) {
+        debug(message, null)
+    }
+
+    final fun debug(message: String, exception: Throwable? = null, vararg args: Any) {
+        debug(String.format(message, args), exception)
+    }
+
+    abstract fun warn(message: String, exception: Throwable? = null)
+
+    final fun warn(message: String) {
+        warn(message, null)
+    }
+
+    final fun warn(message: String, exception: Throwable? = null, vararg args: Any) {
+        warn(String.format(message, args), exception)
+    }
+
+    abstract fun error(message: String, exception: Throwable? = null)
+
+    final fun error(message: String) {
+        error(message, null)
+    }
+
+    final fun error(message: String, exception: Throwable? = null, vararg args: Any) {
+        error(String.format(message, args), exception)
+    }
+
+    companion object {
         /**
-         * 标准日志，用于打印服务器工作状态
+         *  LogCat 日志下调试代号
          */
-        INFO,
+        const val LOGGER_DEBUG = 0
         /**
-         * 调试日志，用于打印内部调试日志
+         *  LogCat 日志下普通输出代号
          */
-        DEBUG,
+        const val LOGGER_INFO = 1
         /**
-         * 警告日志
+         *  LogCat 日志下警告输出代号
          */
-        WARN,
+        const val LOGGER_WARN = 2
         /**
-         * 错误日志
+         *  LogCat 日志下错误代号
          */
-        ERROR
-    }
+        const val LOGGER_ERROR = 3
 
-    abstract fun info(message: String)
-
-    fun info(message: String, vararg t: Any) {
-        info(String.format(message, *t))
-    }
-
-    fun info(message: String, t: Throwable, vararg obj: Any) {
-        info(formatLogcat(String.format(message, *obj), t))
-    }
-
-    abstract fun debug(message: String)
-    fun debug(message: String, vararg t: Any) {
-        debug(String.format(message, *t))
-    }
-
-    fun debug(message: String, t: Throwable, vararg obj: Any) {
-        debug(formatLogcat(String.format(message, *obj), t))
-    }
-
-
-    abstract fun warn(message: String)
-
-    fun warn(message: String, t: Throwable, vararg obj: Any) {
-        warn(formatLogcat(String.format(message, *obj), t))
-    }
-
-    abstract fun error(message: String)
-
-    fun error(message: String, t: Throwable, vararg obj: Any) {
-        error(formatLogcat(String.format(message, *obj), t))
-    }
-
-    private fun formatLogcat(message: String, t: Throwable): String {
-        return String.format("%s\n%s", message, throwable2Str(t))
-    }
-
-    private fun throwable2Str(t: Throwable): String {
-        val outputStream = ByteArrayOutputStream()
-        val printWriter = PrintWriter(outputStream)
-        t.printStackTrace(printWriter)
-        printWriter.flush()
-        printWriter.close()
-        val result = String(outputStream.toByteArray(), Charset.defaultCharset())
-        try {
-            outputStream.close()
-        } catch (ignored: IOException) {
+        @JvmStatic
+        fun logIdName(id: Int): String {
+            return when (id) {
+                LOGGER_DEBUG -> "DEBUG"
+                LOGGER_INFO -> "INFO"
+                LOGGER_WARN -> "WARN"
+                LOGGER_ERROR -> "ERROR"
+                else -> "UNKNOWN"
+            }
         }
+        @JvmStatic
+        fun exceptionToString(exception: Throwable): String {
+            val outputStream = ByteArrayOutputStream()
+            val printWriter = PrintWriter(outputStream)
+            exception.printStackTrace(printWriter)
+            printWriter.flush()
+            printWriter.close()
+            try {
+                outputStream.close()
+            } catch (e: IOException) {
+            }
 
-        return result
+            return String(outputStream.toByteArray())
+        }
     }
 }

@@ -1,8 +1,8 @@
 package top.fksoft.server.http.runnable
 
 import top.fksoft.server.http.HttpServer
-import top.fksoft.server.http.config.NetworkInfo
 import top.fksoft.server.http.config.ServerConfig
+import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
 import java.io.IOException
@@ -29,6 +29,12 @@ import java.util.concurrent.TimeUnit
 class SocketListenerRunnable @Throws(IOException::class)
 
 constructor(private val httpServer: HttpServer, private val serverSocket: ServerSocket) : Runnable, CloseUtils.Closeable {
+
+    @Volatile
+    var accept: Boolean = false
+
+
+
     private val serverConfig: ServerConfig = httpServer.serverConfig
     private val cacheThreadPool: ExecutorService
     private val logger = Logger.getLogger(SocketListenerRunnable::class)
@@ -45,10 +51,9 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
     }
 
     override fun run() {
-        val localPort = serverSocket.localPort
-        logger.info("HTTP 服务器启动正常，绑定端口为：$localPort .")
+        logger.info("HTTP 服务器启动正常，绑定端口为：${serverSocket.localPort} .")
         while (!serverSocket.isClosed) {
-            var remoteInfo :NetworkInfo? = null
+            var remoteInfo : NetworkInfo? = null
             try {
                 val client = serverSocket.accept()
                 val remote = client.remoteSocketAddress as InetSocketAddress
@@ -57,9 +62,15 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
                 remoteInfo = NetworkInfo(remoteAddress, remotePort)
                 remoteInfo.hostName = remote.hostName
                 // 得到远程服务器信息
-                logger.info("tcp${if(remoteInfo.isIpv6Host()) 6 else 4}://$remoteInfo/")
-                client.soTimeout = 3000
-                cacheThreadPool.execute(ClientAcceptRunnable(httpServer, client, remoteInfo))
+                var remoteUrl = "tcp${if (remoteInfo.isIpv6Host()) 6 else 4}://$remoteInfo/"
+                logger.info(remoteUrl)
+                client.soTimeout = serverConfig.socketTimeout
+                if (accept) {
+                    cacheThreadPool.execute(ClientAcceptRunnable(httpServer, client, remoteInfo))
+                }else{
+                    logger.info("服务器处于关闭状态，$remoteUrl 已被丢弃")
+                    client.close()
+                }
             } catch (e: Exception) {
                 logger.error("在处理 $remoteInfo 的过程中出现异常.", e)
             }
@@ -79,5 +90,6 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
     override fun close() {
         serverSocket.close()
     }
+
 
 }

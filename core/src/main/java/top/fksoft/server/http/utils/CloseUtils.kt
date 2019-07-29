@@ -30,7 +30,6 @@ object CloseUtils {
     }
 
     interface Closeable {
-
         @Throws(Exception::class)
         fun close()
 

@@ -47,7 +47,6 @@ public class Config {
             logger.debug("已开启DEBUG模式,可能会输出隐私信息，如非调试，请勿打开！");
         }
         if (printConfig){
-
         }
     }
 }

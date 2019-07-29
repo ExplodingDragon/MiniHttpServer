@@ -1,10 +1,8 @@
 package top.fksoft.execute;
 
 import top.fksoft.execute.config.Config;
-import top.fksoft.execute.config.LogListener;
 import top.fksoft.server.http.HttpServer;
 import top.fksoft.server.http.config.ServerConfig;
-import top.fksoft.server.http.logcat.LogCat;
 import top.fksoft.server.http.logcat.Logger;
 
 import java.io.File;
@@ -14,7 +12,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LogCat.setListener(new LogListener());
         Config config = Config.newInstance();
         config.initConfig(args);
         config.printConfig();

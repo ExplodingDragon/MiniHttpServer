@@ -12,18 +12,18 @@ import top.fksoft.server.http.factory.FindHttpExecuteFactory
  */
 class DefaultFindHttpExecute(config: ServerConfig) : FindHttpExecuteFactory(config) {
 
-    override fun findHttpExecute(info: HttpHeaderInfo): Class<out BaseHttpExecute>{
-
+    override fun findHttpExecute(info: HttpHeaderInfo): Class<out BaseHttpExecute> {
         val path = info.path.trim()
-        if (path.endsWith('/')){
-            var httpExecuteBinder = serverConfig.httpExecuteMap[path.substring(0, path.lastIndexOf('/')).trim()]
-            if (httpExecuteBinder!= null && httpExecuteBinder.bindDirectory){
-                return httpExecuteBinder.executeClass
-            }
-        }else{
-            var httpExecuteBinder = serverConfig.httpExecuteMap[path.substring(0, path.lastIndexOf('/')).trim()]
-            if (httpExecuteBinder!= null && !httpExecuteBinder.bindDirectory){
-                return httpExecuteBinder.executeClass
+        val httpExecuteBinder = serverConfig.httpExecuteMap[path.substring(0, path.lastIndexOf('/')).trim()]
+        httpExecuteBinder?.let {
+            if (path.endsWith('/')) {
+                if (it.bindDirectory) {
+                    return it.executeClass
+                }
+            } else {
+                if (!it.bindDirectory) {
+                    return it.executeClass
+                }
             }
         }
         return FileHttpExecute::class.java

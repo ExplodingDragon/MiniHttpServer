@@ -2,6 +2,7 @@ package top.fksoft.server.http.config
 
 import top.fksoft.server.http.config.HttpConstant.PROPERTIES_KEY.SERVER_PORT
 import top.fksoft.server.http.logcat.Logger
+import top.fksoft.server.http.utils.CloseUtils
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.ConcurrentHashMap
@@ -17,20 +18,15 @@ import java.util.concurrent.ConcurrentHashMap
  * @author ExplodingDragon
  * @version 1.0
  */
-class ServerConfig(private val serverPort: Int) {
+class ServerConfig(val serverPort :Int):CloseUtils.Closeable{
+
+
     private val logger = Logger.getLogger(ServerConfig::class)
-
-    fun getServerPort():Int = serverPort
-
     private val httpPropertiesMap = ConcurrentHashMap<String, String>()
+
 
     val httpExecuteMap = ConcurrentHashMap<String, HttpExecuteBinder>()
 
-    /**
-     * # 得到绑定的迭代
-     */
-    val httpExecuteMapIterator
-        get() = httpExecuteMap.iterator()
 
     /**
      *
@@ -44,7 +40,7 @@ class ServerConfig(private val serverPort: Int) {
      *
      * @return 维持的时间，单位： ms
      */
-    var socketTimeout = 0
+    var socketTimeout = 3000
 
     var tempDirectory = File(HttpConstant.PROPERTY_SYSTEM_TEMP_DIR, HttpConstant.LIB_NAME)
     var workDirectory = tempDirectory
@@ -150,5 +146,6 @@ class ServerConfig(private val serverPort: Int) {
             return true
         }
     }
-
+    override fun close() {
+    }
 }

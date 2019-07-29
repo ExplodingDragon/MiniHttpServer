@@ -1,9 +1,9 @@
 package top.fksoft.server.http.factory
 
-import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.config.ServerConfig
+import top.fksoft.server.http.factory.defaultFactory.DefaultHeaderReader
 import top.fksoft.server.http.runnable.ClientAcceptRunnable
 import top.fksoft.server.http.utils.CloseUtils
 import java.io.IOException
@@ -106,7 +106,7 @@ abstract class HeaderReaderFactory : CloseUtils.Closeable {
             return headerFactory.java.newInstance()
         }
         @JvmStatic
-        fun getDefault() = HttpConstant.DEFAULT_HTTP_HEADER_READER.kotlin
+        fun getDefault() = DefaultHeaderReader::class
 
     }
 }

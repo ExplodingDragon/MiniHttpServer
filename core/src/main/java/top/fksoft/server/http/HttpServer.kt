@@ -3,9 +3,12 @@ package top.fksoft.server.http
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.factory.FindHttpExecuteFactory
 import top.fksoft.server.http.factory.HeaderReaderFactory
+import top.fksoft.server.http.factory.LogFactory
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.runnable.SocketListenerRunnable
+import top.fksoft.server.http.utils.CloseUtils
 import java.io.IOException
+import java.net.SocketException
 import java.util.concurrent.ThreadFactory
 import javax.net.ServerSocketFactory
 import kotlin.reflect.KClass
@@ -31,44 +34,43 @@ class HttpServer
  * @throws IOException 如果发生绑定错误
  */
 @Throws(IOException::class)
-@JvmOverloads constructor(port: Int, factory: ServerSocketFactory = ServerSocketFactory.getDefault()) {
-    private val logger = Logger.getLogger(HttpServer::class)
-    private val runnable: SocketListenerRunnable
+@JvmOverloads constructor(private val serverPort:Int,private val factory: ServerSocketFactory = ServerSocketFactory.getDefault()) :CloseUtils.Closeable{
+
     /**
      *
      * 服务器的所有配置信息,
      *
      */
-    val serverConfig: ServerConfig
+    val serverConfig: ServerConfig = ServerConfig(serverPort)
     /**
      * 服务器路径查询方法
      */
-    val findHttpExecute: FindHttpExecuteFactory
-        get() =  FindHttpExecuteFactory.getDefault(serverConfig)
-    private var httpThread: Thread? = null
+    val findHttpExecute =  FindHttpExecuteFactory.getDefault(serverConfig)
 
     /**
      * 解析 HTTP请求头的处理类
      */
     var httpHeaderReader: KClass<out HeaderReaderFactory> = HeaderReaderFactory.getDefault()
+
+
+    private val logger = Logger.getLogger(HttpServer::class)
+    private val serverSocket = factory.createServerSocket(serverConfig.serverPort) ?: throw SocketException("端口无法绑定的问题")
+    private val runnable = SocketListenerRunnable(this, serverSocket)
+    private val httpThread: Thread = HttpThreadFactory().newThread(runnable)
     init {
-        val serverSocket = factory.createServerSocket(port) ?: throw NullPointerException()
-        serverConfig = ServerConfig(port)
-        runnable = SocketListenerRunnable(this, serverSocket)
+        if (!serverConfig.init()) {
+            throw IOException("在初始化过程发生问题.")
+        }
+        httpThread.start()
     }
 
     fun start() {
-        if (httpThread == null) {
-            if (!serverConfig.init()) {
-                throw IOException("在初始化过程发生问题.")
-            }
-            httpThread = HttpThreadFactory().newThread(runnable)
-            httpThread!!.start()
-            logger.info("监听线程已开启")
-        } else {
-            logger.warn("已开启过监听线程")
-        }
+        runnable.accept = true
     }
+    fun pause() {
+        runnable.accept = false
+    }
+
 
     private inner class HttpThreadFactory : ThreadFactory {
         override fun newThread(r: Runnable): Thread {
@@ -80,6 +82,13 @@ class HttpServer
             }
             return thread
         }
+    }
+
+    override fun close() {
+    }
+    companion object{
+        @JvmStatic
+        var loggerFactory:LogFactory = LogFactory.default
     }
 
 }

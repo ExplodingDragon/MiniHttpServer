@@ -1,9 +1,9 @@
 package top.fksoft.server.http.factory
 
 import top.fksoft.server.http.client.BaseHttpExecute
-import top.fksoft.server.http.config.HttpConstant.DEFAULT_HTTP_FIND_EXECUTE
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ServerConfig
+import top.fksoft.server.http.factory.defaultFactory.DefaultFindHttpExecute
 
 /**
  * @author ExplodingDragon
@@ -21,6 +21,8 @@ abstract class FindHttpExecuteFactory protected constructor(config: ServerConfig
 
 
     companion object{
-        fun getDefault(config: ServerConfig): FindHttpExecuteFactory = DEFAULT_HTTP_FIND_EXECUTE.getDeclaredConstructor(ServerConfig::class.java).newInstance(config)
+        fun getDefault(config: ServerConfig): FindHttpExecuteFactory = default.getDeclaredConstructor(ServerConfig::class.java).newInstance(config)
+        @JvmStatic
+        val default = DefaultFindHttpExecute::class.java
     }
 }

@@ -1,4 +1,4 @@
-package top.fksoft.server.http.config
+package top.fksoft.server.http.config.bean
 
 import java.net.Inet6Address
 import java.net.InetAddress
