@@ -24,6 +24,14 @@ class ServerConfig(private val serverPort: Int) {
 
     private val httpPropertiesMap = ConcurrentHashMap<String, String>()
 
+    val httpExecuteMap = ConcurrentHashMap<String, HttpExecuteBinder>()
+
+    /**
+     * # 得到绑定的迭代
+     */
+    val httpExecuteMapIterator
+        get() = httpExecuteMap.iterator()
+
     /**
      *
      * HTTP 连接的维持时间
@@ -39,6 +47,7 @@ class ServerConfig(private val serverPort: Int) {
     var socketTimeout = 0
 
     var tempDirectory = File(HttpConstant.PROPERTY_SYSTEM_TEMP_DIR, HttpConstant.LIB_NAME)
+    var workDirectory = tempDirectory
 
 
     init {
@@ -128,5 +137,18 @@ class ServerConfig(private val serverPort: Int) {
     }
 
 
+    /**
+     * 添加一个监听方法
+     * @param binder HttpExecuteBinder
+     * @return Boolean
+     */
+    fun addHttpExecuteBinder(binder: HttpExecuteBinder):Boolean{
+        if (httpExecuteMap.contains(binder.path)) {
+            return false
+        }else{
+            httpExecuteMap[binder.path] = binder.copy()
+            return true
+        }
+    }
 
 }

@@ -1,5 +1,6 @@
-package top.fksoft.server.http.reader
+package top.fksoft.server.http.factory
 
+import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.config.ServerConfig
@@ -19,13 +20,13 @@ import kotlin.reflect.KClass
  * 包括 HTTP 协议、请求的类型、请求头的所有信息，以及包括POST请求的
  * 表单信息，如果是文件上传则保存到指定的临时目录
  *
- * @see DefaultHttpHeaderReader 默认实现
+ * @see DefaultHeaderReaderFactory 默认实现
  *
  *
  * @author ExplodingDragon
  * @version 1.0
  */
-abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
+abstract class HeaderReaderFactory : CloseUtils.Closeable {
     private var runnable: ClientAcceptRunnable? = null
     private var config: ServerConfig? = null
     protected val inputStream: InputStream
@@ -91,7 +92,7 @@ abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
      * # 调用此方法读取 POST 数据
      * @param edit Edit
      */
-    fun readHeader(edit: HttpHeaderInfo.Edit) {
+    fun readHeaderBody(edit: HttpHeaderInfo.Edit) {
         if (edit.getReader().isPost()){
             readHeaderPostData(edit)
         }
@@ -99,11 +100,13 @@ abstract class BaseHttpHeaderReader : CloseUtils.Closeable {
 
 
     companion object {
-
+        @JvmStatic
         @Throws(IllegalAccessException::class, InstantiationException::class)
-        fun createHttpHeaderReader(headerFactory: KClass<out BaseHttpHeaderReader>): BaseHttpHeaderReader {
+        fun createHttpHeaderReader(headerFactory: KClass<out HeaderReaderFactory>): HeaderReaderFactory {
             return headerFactory.java.newInstance()
         }
+        @JvmStatic
+        fun getDefault() = HttpConstant.DEFAULT_HTTP_HEADER_READER.kotlin
 
     }
 }

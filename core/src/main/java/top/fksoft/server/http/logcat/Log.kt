@@ -21,6 +21,9 @@ abstract class Log {
          * 警告日志
          */
         WARN,
+        /**
+         * 错误日志
+         */
         ERROR
     }
 

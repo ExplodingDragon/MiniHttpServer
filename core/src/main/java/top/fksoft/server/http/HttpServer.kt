@@ -1,8 +1,8 @@
 package top.fksoft.server.http
 
-import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.reader.BaseHttpHeaderReader
+import top.fksoft.server.http.factory.FindHttpExecuteFactory
+import top.fksoft.server.http.factory.HeaderReaderFactory
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.runnable.SocketListenerRunnable
 import java.io.IOException
@@ -40,13 +40,17 @@ class HttpServer
      *
      */
     val serverConfig: ServerConfig
-
+    /**
+     * 服务器路径查询方法
+     */
+    val findHttpExecute: FindHttpExecuteFactory
+        get() =  FindHttpExecuteFactory.getDefault(serverConfig)
     private var httpThread: Thread? = null
 
     /**
      * 解析 HTTP请求头的处理类
      */
-    var httpHeaderReader: KClass<out BaseHttpHeaderReader> = HttpConstant.DEFAULT_HTTP_HEADER_READER.kotlin
+    var httpHeaderReader: KClass<out HeaderReaderFactory> = HeaderReaderFactory.getDefault()
     init {
         val serverSocket = factory.createServerSocket(port) ?: throw NullPointerException()
         serverConfig = ServerConfig(port)
@@ -71,7 +75,7 @@ class HttpServer
             val thread = Thread(r, "AcceptThread")
             thread.priority = Thread.MAX_PRIORITY
             thread.setUncaughtExceptionHandler { t, e ->
-                Logger.getLogger(r.javaClass)
+                Logger.getLogger(r)
                         .error("[ ${t.name} ] 发生未捕获的错误，可将错误信息通过issues告诉开发者!", e)
             }
             return thread

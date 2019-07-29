@@ -1,7 +1,9 @@
 package top.fksoft.server.http.config
 
-import top.fksoft.server.http.reader.BaseHttpHeaderReader
-import top.fksoft.server.http.reader.DefaultHttpHeaderReader
+import top.fksoft.server.http.factory.FindHttpExecuteFactory
+import top.fksoft.server.http.factory.HeaderReaderFactory
+import top.fksoft.server.http.factory.defaultFactory.DefaultFindHttpExecute
+import top.fksoft.server.http.factory.defaultFactory.DefaultHeaderReader
 
 
 /**
@@ -23,11 +25,16 @@ object HttpConstant {
 
     }
 
+    const val HEADER_VALUE_TEXT_HTML: String = "text/html;charset=utf-8"
     const val UNKNOWN_VALUE: String = "_unknown"
     /**
      * 默认的 HTTP Header 的解析工具类
      */
-    val DEFAULT_HTTP_HEADER_READER:Class<out BaseHttpHeaderReader>  = DefaultHttpHeaderReader::class.java
+    val DEFAULT_HTTP_HEADER_READER:Class<out HeaderReaderFactory>  = DefaultHeaderReader::class.java
+    /**
+     * 默认的 http 路径解析工具
+     */
+    val DEFAULT_HTTP_FIND_EXECUTE:Class<out FindHttpExecuteFactory>  = DefaultFindHttpExecute::class.java
 
     /**
      * Http 下的GET 请求表示方法
@@ -68,10 +75,7 @@ object HttpConstant {
      * 浏览器语言
      */
     const val HEADER_KEY_ACCEPT_LANGUAGE = "Accept-Language"
-    /**
-     *
-     */
-    const val HEADER_KEY_ACCEPT = "Accept"
+
     const val HEADER_KEY_CONTENT_LENGTH = "Content-Length"
     const val HEADER_KEY_CONTENT_TYPE = "Content-Type"
 
@@ -85,15 +89,15 @@ object HttpConstant {
 
     const val HTTP_MAX_HEADER_LEN = 5200
 
-
-    fun getValue(src: String, key: String, spit: String = ";"): String? {
-        for (line in src.split(spit.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()) {
-            if (line.contains(key)) {
-                return line.substring(line.indexOf(key) + key.length)
-            }
-        }
-        return null
-    }
+//
+//    fun getValue(src: String, key: String, spit: String = ";"): String? {
+//        for (line in src.split(spit.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()) {
+//            if (line.contains(key)) {
+//                return line.substring(line.indexOf(key) + key.length)
+//            }
+//        }
+//        return null
+//    }
 
 
 }

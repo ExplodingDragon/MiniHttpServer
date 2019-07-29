@@ -1,8 +1,9 @@
-package top.fksoft.server.http.reader
+package top.fksoft.server.http.factory.defaultFactory
 
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
+import top.fksoft.server.http.factory.HeaderReaderFactory
 import top.fksoft.server.http.logcat.Logger
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -25,8 +26,8 @@ import java.net.URLDecoder
  * @version 1.0
  */
 @Deprecated(message = "存在严重的安全问题！", level = DeprecationLevel.WARNING)
-class DefaultHttpHeaderReader : BaseHttpHeaderReader() {
-    private val logger = Logger.getLogger(DefaultHttpHeaderReader::class)
+class DefaultHeaderReader : HeaderReaderFactory() {
+    private val logger = Logger.getLogger(DefaultHeaderReader::class)
 
     @Throws(Exception::class)
     override fun readHeaderInfo(edit: HttpHeaderInfo.Edit): ResponseCode {

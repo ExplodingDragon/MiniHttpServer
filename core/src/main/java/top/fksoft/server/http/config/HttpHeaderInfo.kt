@@ -19,7 +19,7 @@ import kotlin.random.Random
  * @author ExplodingDragon
  * @version 1.0
  */
-class HttpHeaderInfo(val remoteInfo: NetworkInfo) : CloseUtils.Closeable {
+class HttpHeaderInfo(val remoteInfo: NetworkInfo,val serverConfig: ServerConfig) : CloseUtils.Closeable {
     var charset: Charset = Charsets.UTF_8
     private val logger = Logger.getLogger(this)
     private val POST_HEADER_STR = "@POST_FILE_"

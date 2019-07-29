@@ -8,6 +8,7 @@ import java.io.IOException
  */
 object CloseUtils {
 
+    @JvmStatic
     @Throws(Exception::class)
     fun close(vararg close: Closeable?) {
         for (closeable in close) {
@@ -18,7 +19,7 @@ object CloseUtils {
         }
 
     }
-
+    @JvmStatic
     @Throws(IOException::class)
     fun close(vararg close: java.io.Closeable) {
         for (closeable in close) {
@@ -32,6 +33,7 @@ object CloseUtils {
 
         @Throws(Exception::class)
         fun close()
+
 
     }
 }

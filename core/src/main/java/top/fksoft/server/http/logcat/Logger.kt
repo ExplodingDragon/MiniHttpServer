@@ -34,7 +34,6 @@ class Logger private constructor(private val name: String) : Log() {
     }
 
     private fun callback(info: Log.LogId, message: String) {
-
         LogCat.listener.callback(info, String.format("%s - %-5S - %s - %s",
                 format.format(System.currentTimeMillis()),
                 info.name,

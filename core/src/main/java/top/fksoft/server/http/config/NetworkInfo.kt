@@ -15,7 +15,7 @@ import java.net.InetAddress
  */
 data class NetworkInfo (val ip:String,val port:Int){
 
-    var hostName:String? = ip
+    var hostName:String = ip
 
     /**
      * # 判断当前网络主机地址是否为 IPv6 地址
