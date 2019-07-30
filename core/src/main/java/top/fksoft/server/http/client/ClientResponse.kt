@@ -76,19 +76,17 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client:
     override fun close() {
     }
 
-    fun writeFile(file: File) {
-        if (file.isFile) {
-            var application = ContentTypeUtils.file2Application(file)
-            responseContentType = application
-            addResponseHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH, file.length().toString())
-            responseInputStream = FileInputStream(file)
-            logger.debug("flush ${file.absolutePath}.")
-        } else {
-            responseCode = ResponseCode.HTTP_NOT_FOUND
-            logger.debug("flush not found.")
-            responseContentType = HttpConstant.HEADER_VALUE_TEXT_HTML
-            responseInputStream = javaClass.getResource("/res/resultHtml/404.html").openStream()
-        }
+    fun writeFile(file: File) = if (file.isFile) {
+        var application = ContentTypeUtils.file2Application(file)
+        responseContentType = application
+        addResponseHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH, file.length().toString())
+        responseInputStream = FileInputStream(file)
+        logger.debug("输出文件： ${file.absolutePath}.")
+    } else {
+        responseCode = ResponseCode.HTTP_NOT_FOUND
+        logger.debug("文件[$file]不存在！")
+        responseContentType = HttpConstant.HEADER_VALUE_TEXT_HTML
+        responseInputStream = javaClass.getResource("/res/resultHtml/404.html").openStream()
     }
 
     fun flashResponse() {
@@ -96,7 +94,7 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client:
             printHeader()
             var output = outputStream
             if (responseInputStream != null) {
-                logger.debug("Input len:" + responseInputStream!!.available())
+                logger.debug("输出流大小:" + responseInputStream!!.available())
                 var b = ByteArray(4096)
                 var read: Int
                 while (true) {

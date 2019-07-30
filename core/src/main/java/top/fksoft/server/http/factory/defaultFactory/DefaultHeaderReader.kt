@@ -5,9 +5,9 @@ import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.factory.HeaderReaderFactory
 import top.fksoft.server.http.logcat.Logger
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import top.fksoft.server.http.utils.Line2ByteReaderUtils
 import java.net.URLDecoder
+import java.nio.charset.Charset
 
 /**
  *
@@ -31,8 +31,9 @@ class DefaultHeaderReader : HeaderReaderFactory() {
 
     @Throws(Exception::class)
     override fun readHeaderInfo(edit: HttpHeaderInfo.Edit): ResponseCode {
-        val headerReader = BufferedReader(InputStreamReader(inputStream))
-        val httpType = headerReader.readLine().trim()
+        val headerReader = Line2ByteReaderUtils(inputStream,Charsets.UTF_8)
+//        val headerReader = BufferedReader(InputStreamReader(inputStream))
+        val httpType = headerReader.readLine()!!.trim()
         // 读取HTTP第一行的数据
         val typeArray = httpType.split(" ")
         /*
@@ -50,7 +51,7 @@ class DefaultHeaderReader : HeaderReaderFactory() {
         location = URLDecoder.decode(location, HttpConstant.CHARSET_UTF_8)
         //还原 URL 中的转义字符
         while (true) {
-            val line = headerReader.readLine().trim()
+            val line = headerReader.readLine()!!.trim()
             if (line == "") {
                 //达到HTTP HEADER 第一个末尾
                 break
@@ -116,7 +117,16 @@ class DefaultHeaderReader : HeaderReaderFactory() {
     }
 
     override fun readHeaderPostData(edit: HttpHeaderInfo.Edit): Boolean {
-        return false
+        val reader = edit.getReader()
+        val contentType = reader.getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE)
+        val contentLength = reader.getHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH).toInt()
+        val charset = HttpConstant.getValue(contentType,"charset=",defaultResult = "UTF-8")
+        if (HttpConstant.HEADER_CONTENT_TYPE_URLENCODED in contentType){
+            val readerUtils = Line2ByteReaderUtils(inputStream, Charset.forName(charset))
+            val line = readerUtils.readLine()
+            edit.addForms(URLDecoder.decode(line,charset))
+        }
+        return true
 
     }
 

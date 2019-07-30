@@ -19,13 +19,13 @@ open class FileHttpExecute protected constructor(headerInfo: HttpHeaderInfo, res
         val workDirectory = headerInfo.serverConfig.workDirectory
         var acceptFile = File(workDirectory, headerInfo.path.substring(1))
         if (headerInfo.path.endsWith('/')) {
-            var string = StringUtils.inputStreamToString(javaClass.getResource(HttpConstant.EXAMPLE_FILE_PATH_1).openStream(),FileUtils.UTF_8)
-                    string = string.replace("%path%", headerInfo.path)
+            var string = StringUtils.inputStreamToString(javaClass.getResource(HttpConstant.EXAMPLE_FILE_PATH_1).openStream(), FileUtils.UTF_8)
+            string = string.replace("%path%", headerInfo.path)
             var stringBuilder = StringBuilder()
-            stringBuilder.append("<tr><td>上级目录</td><td>-</td><td>-</td><td><a href=\"..\"><button> 访问</button></a></td></tr>\n")
+            stringBuilder.append("<tr><td class=\"back\">上级目录</td><td>-</td><td>-</td><td><a href=\"..\">" +
+                    "<button> 访问</button></a></td></tr>\n")
 
             if (acceptFile.isDirectory) {
-
                 var listFiles = acceptFile.listFiles().asList()
                 FileUtils.sort(listFiles)
                 for (file in listFiles) {
@@ -40,15 +40,14 @@ open class FileHttpExecute protected constructor(headerInfo: HttpHeaderInfo, res
                         length = 0
                     }
                     stringBuilder.append("<tr><td>$name</td><td>${
-                    FileUtils.bytesToString(length.toDouble(),0)}</td><td>$date</td><td><a href=\" $href \"><button> 访问</button></a></td></tr>\n")
+                    FileUtils.bytesToString(length.toDouble(), 0)}" +
+                            "</td><td>$date</td><td><a href=\" $href \"><button> 访问</button></a></td></tr>\n")
                 }
             }
             string = string.replace("%table%", stringBuilder.toString())
-
             response.println(string)
         } else {
             response.writeFile(acceptFile)
         }
-
     }
 }

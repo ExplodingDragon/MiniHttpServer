@@ -22,7 +22,7 @@ import java.net.SocketTimeoutException
  */
 abstract class BaseClientRunnable(protected val httpServer: HttpServer, protected val client: Socket, val remoteAddress: NetworkInfo)
     : Runnable, CloseUtils.Closeable {
-    private val logger = Logger.getLogger(javaClass)
+    private val logger = Logger.getLogger(BaseClientRunnable::class)
 
     protected val serverConfig: ServerConfig = httpServer.serverConfig
     val inputStream: InputStream

@@ -68,7 +68,7 @@ abstract class BaseHttpExecute protected constructor(headerInfo: HttpHeaderInfo,
      * @throws Exception
      */
     @Throws(Exception::class)
-    protected fun doPost(headerInfo: HttpHeaderInfo, response: ClientResponse) {
+    protected open fun doPost(headerInfo: HttpHeaderInfo, response: ClientResponse) {
         doGet(headerInfo, response)
     }
 

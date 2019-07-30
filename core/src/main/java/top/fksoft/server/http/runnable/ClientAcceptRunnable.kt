@@ -34,6 +34,11 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
         if (code == HTTP_OK) {
             //协议识别 再放行tcp 连接维持时间
             headerReader.readHeaderBody(httpHeaderInfo.edit())
+
+            if (logger.debug){
+            //打印post 日志信息
+                httpHeaderInfo.edit().printDebug()
+            }
             val findHttpExecute = httpServer.findHttpExecute.findHttpExecute(httpHeaderInfo)
             val declaredConstructor = findHttpExecute.getDeclaredConstructor(HttpHeaderInfo::class.java, ClientResponse::class.java)
             declaredConstructor.isAccessible = true

@@ -40,7 +40,7 @@ class ServerConfig(val serverPort :Int):CloseUtils.Closeable{
      *
      * @return 维持的时间，单位： ms
      */
-    var socketTimeout:Int = 3000
+    var socketTimeout:Int = 0
 
     var tempDirectory = File(HttpConstant.PROPERTY_SYSTEM_TEMP_DIR, HttpConstant.LIB_NAME)
     var workDirectory = tempDirectory

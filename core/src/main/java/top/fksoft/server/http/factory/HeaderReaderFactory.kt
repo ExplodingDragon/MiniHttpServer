@@ -29,9 +29,16 @@ import kotlin.reflect.KClass
 abstract class HeaderReaderFactory : CloseUtils.Closeable {
     private var runnable: ClientAcceptRunnable? = null
     private var config: ServerConfig? = null
+    private var ignoreInputStream:InputStream? = null
     protected val inputStream: InputStream
         @Throws(IOException::class)
-        get() = runnable!!.inputStream
+        get() {
+            if(ignoreInputStream == null){
+                ignoreInputStream = runnable!!.inputStream
+            }
+            return ignoreInputStream!!
+        }
+
 
     protected val outputStream: OutputStream
         @Throws(IOException::class)
@@ -92,10 +99,11 @@ abstract class HeaderReaderFactory : CloseUtils.Closeable {
      * # 调用此方法读取 POST 数据
      * @param edit Edit
      */
-    fun readHeaderBody(edit: HttpHeaderInfo.Edit) {
+    fun readHeaderBody(edit: HttpHeaderInfo.Edit):Boolean {
         if (edit.getReader().isPost()){
-            readHeaderPostData(edit)
-        }
+            return readHeaderPostData(edit)
+        }else
+            return false
     }
 
 

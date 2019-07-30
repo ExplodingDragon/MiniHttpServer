@@ -5,7 +5,9 @@ import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
+import java.io.ByteArrayInputStream
 import java.io.File
+import java.io.InputStream
 import java.nio.charset.Charset
 import kotlin.random.Random
 
@@ -29,21 +31,21 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * 服务器下的请求类型
      */
     var method = HttpConstant.METHOD_GET
-    private set
+        private set
     private var formArray = HashMap<String, String>()
     private var headerArray = HashMap<String, String>()
 
     /**
      * 请求的服务器文件路径（去除GET后缀）
      */
-    var path:String = "/"
-    private set
+    var path: String = "/"
+        private set
 
     /**
      *  HTTP 协议的版本，默认 1.0
      */
-    var httpVersion:Float = 1.0f
-    private set
+    var httpVersion: Float = 1.0f
+        private set
 
     /**
      * 当前实例的唯一 Token
@@ -57,14 +59,29 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * @param defaultValue String
      * @return String
      */
-    fun getForm(key:String, defaultValue: String = ""):String{
-        if (formArray.containsKey(key)){
+    fun getForm(key: String, defaultValue: String = ""): String {
+        if (formArray.containsKey(key)) {
             return formArray[key]!!
-        }else{
+        } else {
             return defaultValue
         }
     }
 
+    private var rawPostInputStream: InputStream = ByteArrayInputStream(ByteArray(0))
+
+    /**
+     * # 得到 原始POST 数据
+     *
+     * 如果POST 下 Content-Type 无法解析，那么
+     * 可以调用此方法来得到原始POST 数据，
+     * 但是如果其可以解析，那么将无法得到任何信息
+     *
+     *
+     * @return InputStream
+     */
+    fun getRawPostForm(): InputStream {
+        return rawPostInputStream
+    }
 
     /**
      * # 得到POST 指定的文件信息
@@ -72,9 +89,9 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * @param key String 键值对
      * @return PostFileItem? 数据
      */
-    fun getFormFile(key:String):PostFileItem?{
+    fun getFormFile(key: String): PostFileItem? {
         var value = formArray["$POST_HEADER_STR$key"]
-        return if (value!=null)Gson().fromJson(value,PostFileItem::class.java) else null
+        return if (value != null) Gson().fromJson(value, PostFileItem::class.java) else null
     }
 
     /**
@@ -94,15 +111,16 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * @param defaultValue String 如果不存在返回的数据
      * @return String 返回的数据
      */
-    fun getHeader(key: String, defaultValue: String= ""): String {
+    fun getHeader(key: String, defaultValue: String = ""): String {
         var header = headerArray[key]
-        return  if (header == null) defaultValue else header
+        return if (header == null) defaultValue else header
     }
+
     @Throws(Exception::class)
     override fun close() {
         for (key in formArray.keys) {
-            if (key.indexOf(POST_HEADER_STR) != -1){
-                Gson().fromJson(formArray[key],PostFileItem::class.java).close()
+            if (key.indexOf(POST_HEADER_STR) != -1) {
+                Gson().fromJson(formArray[key], PostFileItem::class.java).close()
             }
         }
         formArray.clear()
@@ -110,18 +128,17 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
     }
 
 
-
     fun edit(): Edit {
         return edit
     }
 
 
-
-
-
-
     inner class Edit() {
 
+        /**
+         * # 指定请求的类型
+         * @param method String
+         */
         fun setMethod(method: String) {
             this@HttpHeaderInfo.method = method;
         }
@@ -146,8 +163,8 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
             for (formStr in formArray.split(delimiter.toRegex()).filter { it != "" }) {
                 var index = formStr.indexOf('=')
                 if (index != -1) {
-                    addForm(formStr.substring(0, index),formStr.substring(index + 1))
-                }else{
+                    addForm(formStr.substring(0, index), formStr.substring(index + 1))
+                } else {
                     logger.debug("无法格式化此字段：$formStr .")
                 }
 
@@ -159,7 +176,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
          * @param key String 键值对
          * @param value String 数值
          */
-        fun addForm(key:String,value:String){
+        fun addForm(key: String, value: String) {
             if (key.trim().isEmpty())
                 return
             formArray[key] = value.trim()
@@ -170,9 +187,10 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
          * @param key String POST 键值对
          * @param item PostFileItem 保存的临时文件位置
          */
-        fun addFormFile(key:String, item:PostFileItem){
+        fun addFormFile(key: String, item: PostFileItem) {
             formArray["$POST_HEADER_STR$key"] = Gson().toJson(item)
         }
+
         /**
          * # 指定请求的路径
          * @param path String
@@ -213,8 +231,16 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
         fun setHttpVersion(httpVersion: Float) {
             this@HttpHeaderInfo.httpVersion = httpVersion
         }
+        /**
+         * 指定原始post 数据
+         * @param input InputStream
+         */
+        fun setRawPostInputStream(input: InputStream) {
+            rawPostInputStream = input
+        }
 
     }
+
 
     /**
      * # POST 上传文件的实体类
@@ -224,13 +250,14 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * @property contentType String 文件类型
      * @constructor
      */
-    data class PostFileItem(val key:String, val path:File, val contentType:String):CloseUtils.Closeable{
+    data class PostFileItem(val key: String, val path: File, val contentType: String) : CloseUtils.Closeable {
         override fun close() {
             path.delete()
         }
 
     }
-companion object{
-    private const val POST_HEADER_STR = "@POST_FILE_"
-}
+
+    companion object {
+        private const val POST_HEADER_STR = "@POST_FILE_"
+    }
 }

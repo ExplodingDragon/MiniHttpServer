@@ -76,4 +76,19 @@ object HttpConstant {
 
 
 
+    const val HEADER_CONTENT_TYPE_URLENCODED: String = "application/x-www-form-urlencoded"
+
+
+    /**
+     * 在集合下得到
+     */
+    fun getValue(src: String, key: String, spit: String = ";", defaultResult:String = ""): String {
+        for (line in src.split(spit.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()) {
+            if (line.contains(key)) {
+                return line.substring(line.indexOf(key) + key.length)
+            }
+        }
+        return defaultResult
+    }
+
 }
