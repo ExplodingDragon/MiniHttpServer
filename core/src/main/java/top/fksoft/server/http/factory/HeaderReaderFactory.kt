@@ -93,17 +93,17 @@ abstract class HeaderReaderFactory : CloseUtils.Closeable {
      * @throws Exception
      */
     @Throws(Exception::class)
-    abstract fun readHeaderPostData(httpHeader: HttpHeaderInfo.Edit): Boolean
+    abstract fun readHeaderPostData(httpHeader: HttpHeaderInfo.Edit): ResponseCode
 
     /**
      * # 调用此方法读取 POST 数据
      * @param edit Edit
      */
-    fun readHeaderBody(edit: HttpHeaderInfo.Edit):Boolean {
+    fun readHeaderBody(edit: HttpHeaderInfo.Edit):ResponseCode {
         if (edit.getReader().isPost()){
             return readHeaderPostData(edit)
         }else
-            return false
+            return ResponseCode.HTTP_OK
     }
 
 

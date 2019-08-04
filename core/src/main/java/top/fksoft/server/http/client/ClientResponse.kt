@@ -86,7 +86,6 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client:
         responseCode = ResponseCode.HTTP_NOT_FOUND
         logger.debug("文件[$file]不存在！")
         responseContentType = HttpConstant.HEADER_VALUE_TEXT_HTML
-        responseInputStream = javaClass.getResource("/res/resultHtml/404.html").openStream()
     }
 
     fun flashResponse() {

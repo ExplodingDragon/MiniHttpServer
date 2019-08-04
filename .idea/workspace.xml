@@ -9,22 +9,22 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="fix bugs.">
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReaderUtils.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/T3.kt" afterDir="false" />
+    <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/50X.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/test/java/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/config/HttpHeaderInfoTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/BaseHttpExecute.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/BaseHttpExecute.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/ClientResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/ClientResponse.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpConstant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpConstant.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/example/FileHttpExecute.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/example/FileHttpExecute.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ResponseCode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ResponseCode.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/HeaderReaderFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/HeaderReaderFactory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/FileArray.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/FileArray.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/T3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CloseUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CloseUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReaderUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReaderUtils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/T3.kt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/modules/target/" />
@@ -44,7 +44,7 @@
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="275" />
+    <option name="myElementSize" value="308" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -119,11 +119,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/example/FileHttpExecute.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="46" column="69" selection-start-line="46" selection-start-column="69" selection-end-line="46" selection-end-column="69" />
+            <state relative-caret-position="-261">
+              <caret line="21" column="78" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="710">
+              <caret line="151" column="29" selection-start-line="151" selection-end-line="152" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/ClientResponse.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+              <folding>
+                <element signature="e#39#420#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/resultHtml/50X.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CloseUtils.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReaderUtils.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+              <folding>
+                <element signature="e#38#86#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ResponseCode.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="268" column="59" lean-forward="true" selection-start-line="268" selection-start-column="59" selection-end-line="268" selection-end-column="59" />
+              <folding>
+                <element signature="e#39#159#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,10 +206,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit4 Test Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin File" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
     <option name="SCHEME" value="Project" />
@@ -158,13 +230,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/reader/BaseHttpHeaderReader.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/NetworkInfo.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/FindHttpExecuteFactory.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/BaseHttpExecute.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultFindHttpExecute.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpExecuteBinder.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/example/FileHttpExecute.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/HttpTypeUtils.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/HttpTypeUtils.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/bean/Response.kt" />
@@ -172,7 +237,6 @@
         <option value="$PROJECT_DIR$/core/build.gradle" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/ContentTypeUtils.kt" />
         <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/404.json" />
-        <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/404.html" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ClientResponse.kt" />
         <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/fileArray.html" />
         <option value="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/config/Config.java" />
@@ -186,7 +250,6 @@
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/FindHttpExecuteFactory.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/logcat/Logger.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultLog.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CloseUtils.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/bean/NetworkInfo.kt" />
         <option value="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/Test2.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/HttpServer.kt" />
@@ -195,20 +258,29 @@
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/SocketListenerRunnable.kt" />
         <option value="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/T3.java" />
         <option value="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/T3.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpConstant.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReader.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReaderUtils.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/HeaderReaderFactory.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReaderUtils.kt" />
         <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/FileArray.html" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/BaseHttpExecute.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/example/FileHttpExecute.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/HeaderReaderFactory.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpConstant.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/RandomAccessByteArray.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/ByteArrayRandom.java" />
+        <option value="$PROJECT_DIR$/core/src/test/java/Test.kt" />
+        <option value="$PROJECT_DIR$/core/src/test/java/Test.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt" />
+        <option value="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/config/HttpHeaderInfoTest.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CloseUtils.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReaderUtils.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/BaseHttpExecute.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/ClientResponse.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/404.html" />
+        <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/50X.html" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ResponseCode.kt" />
       </list>
     </option>
   </component>
@@ -226,8 +298,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -446,7 +516,7 @@
               <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
               <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
               <item name="tests" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
@@ -474,6 +544,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -501,14 +573,15 @@
       <recent name="top.fksoft.server.http.bean" />
       <recent name="top.fksoft.server.http.factory.defaultFactory" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="top.fksoft.server.http.client" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="top.fksoft.server.http.config" />
       <recent name="top.fksoft.server.http" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Workspace\Intellij\httpServer\core" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Workspace\Intellij\httpServer\core\src\main\resources\res\resultHtml" />
@@ -519,8 +592,8 @@
       <recent name="top.fksoft.server.http.config" />
       <recent name="top.fksoft.server.http.client" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Workspace\Intellij\httpServer\core" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="top.fksoft.server.http.client" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -586,6 +659,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="httpServer.core" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="top.fksoft.server.http.Test2" />
       <module name="httpServer.core" />
@@ -598,26 +678,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="Test.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;top.fksoft.server.http.Test.test&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":core:cleanTest" />
-            <option value=":core:test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
     </configuration>
     <configuration name="httpServer" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -687,17 +747,17 @@
       <item itemvalue="Application.Test2" />
       <item itemvalue="Gradle.httpServer:cli [build]" />
       <item itemvalue="Gradle.httpServer" />
-      <item itemvalue="Gradle.Test.test" />
       <item itemvalue="Kotlin.top.fksoft.server.http.Test" />
       <item itemvalue="Kotlin.top.fksoft.server.http.Test2" />
+      <item itemvalue="Application.Test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test" />
         <item itemvalue="Gradle.httpServer" />
         <item itemvalue="Kotlin.top.fksoft.server.http.Test2" />
         <item itemvalue="Application.Test2" />
         <item itemvalue="Kotlin.top.fksoft.server.http.Test" />
-        <item itemvalue="Gradle.Test.test" />
       </list>
     </recent_temporary>
   </component>
@@ -768,7 +828,11 @@
       <workItem from="1564320441225" duration="848000" />
       <workItem from="1564361895511" duration="20179000" />
       <workItem from="1564403405318" duration="11440000" />
-      <workItem from="1564453002344" duration="15830000" />
+      <workItem from="1564453002344" duration="15853000" />
+      <workItem from="1564552344660" duration="2399000" />
+      <workItem from="1564660274196" duration="1262000" />
+      <workItem from="1564707354674" duration="6535000" />
+      <workItem from="1564879012437" duration="9265000" />
     </task>
     <task id="LOCAL-00001" summary="fix bugs.">
       <created>1561946216653</created>
@@ -945,7 +1009,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564415814994</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fix bugs.">
+      <created>1564496080882</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1564496080883</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -960,7 +1031,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307872000" />
+    <option name="totallyTimeSpent" value="327356000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1028,42 +1099,6 @@
     <MESSAGE value="fix bugs." />
     <option name="LAST_COMMIT_MESSAGE" value="fix bugs." />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt</url>
-          <line>125</line>
-          <properties />
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt</url>
-          <line>124</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt</url>
-          <line>123</line>
-          <properties />
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt</url>
-          <line>128</line>
-          <properties />
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt</url>
-          <line>126</line>
-          <properties />
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
       <path>
@@ -1081,6 +1116,7 @@
     <SUITE FILE_PATH="coverage/httpServer$Test2.ic" NAME="Test2 Coverage Results" MODIFIED="1563981812855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>top.fksoft.server.http.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/httpServer$Test.ic" NAME="Test Coverage Results" MODIFIED="1564881247969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/httpServer$Main__1_.ic" NAME="Main (1) Coverage Results" MODIFIED="1561965524599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>top.fksoft.execute.*</FILTER>
     </SUITE>
@@ -1096,73 +1132,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cli/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="45" column="12" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/HttpTypeUtils.kt" />
-    <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.5/c5b4c491aecb72e7c32a78da0b5c6b9cda8dee0f/gson-2.8.5-sources.jar!/com/google/gson/reflect/TypeToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="60" column="12" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/application.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="3" lean-forward="true" selection-end-line="1377" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/bean/Response.kt" />
-    <entry file="file://$PROJECT_DIR$/core/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/resultHtml/404.json" />
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/bean/HeaderItem.kt" />
-    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/resultHtml/404.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" selection-start-line="2" selection-end-line="5" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.21/b8815e48fb45e94821287365bd9ce8623f459ac7/kotlin-stdlib-1.3.21-sources.jar!/kotlin/io/Console.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="78" column="25" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/lang/Exception.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="44" column="40" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/util/Formatter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="2516" column="33" selection-start-line="2516" selection-start-column="20" selection-end-line="2516" selection-end-column="33" />
-          <folding>
-            <element signature="e#102732#102733#0" expanded="true" />
-            <element signature="e#102778#102779#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
@@ -1261,13 +1230,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/ClassUtils.kt" />
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CloseUtils.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/bean/NetworkInfo.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
@@ -1289,13 +1251,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/Test2.kt" />
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/HttpServer.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="66" column="11" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -1303,20 +1258,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/T3.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="22" column="96" selection-start-line="22" selection-start-column="96" selection-end-line="22" selection-end-column="96" />
         </state>
       </provider>
     </entry>
@@ -1351,16 +1292,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReaderUtils.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-          <folding>
-            <element signature="e#38#160#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/resultHtml/FileArray.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -1369,20 +1300,6 @@
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/BaseHttpExecute.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="70" column="29" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="125" column="42" selection-start-line="125" selection-start-column="42" selection-end-line="125" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1396,24 +1313,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt">
+    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/InputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="218" column="7" selection-start-line="218" selection-start-column="7" selection-end-line="218" selection-end-column="7" />
+        <state relative-caret-position="283">
+          <caret line="44" column="44" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ResponseCode.kt">
+    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-133">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+        <state relative-caret-position="283">
+          <caret line="148" column="13" selection-start-line="148" selection-start-column="13" selection-end-line="148" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.21/b8815e48fb45e94821287365bd9ce8623f459ac7/kotlin-stdlib-1.3.21-sources.jar!/kotlin/Arrays.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/DataInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="148" column="19" selection-start-line="148" selection-start-column="10" selection-end-line="148" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/RandomAccessFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="58" column="59" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/util/RandomAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="698">
+          <caret line="66" column="17" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/ByteArrayRandom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="48" lean-forward="true" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/T3.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/FileInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="57" column="29" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpConstant.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="84" column="80" selection-start-line="84" selection-start-column="80" selection-end-line="84" selection-end-column="80" />
+        <state relative-caret-position="168">
+          <caret line="25" column="43" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/config/HttpHeaderInfoTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="123" column="74" selection-start-line="123" selection-start-column="74" selection-end-line="123" selection-end-column="74" />
+          <folding>
+            <element signature="e#39#418#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/HttpServer.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1424,27 +1427,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CloseUtils.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/BaseHttpExecute.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/HeaderReaderFactory.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+        <state relative-caret-position="112">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/example/FileHttpExecute.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-261">
+          <caret line="21" column="78" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="151" column="29" selection-start-line="151" selection-end-line="152" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/resultHtml/50X.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/resultHtml/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReaderUtils.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+          <folding>
+            <element signature="e#38#86#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/ClientResponse.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-186">
-          <caret line="86" column="25" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
+        <state relative-caret-position="159">
+          <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
           <folding>
             <element signature="e#39#420#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/example/FileHttpExecute.kt">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ResponseCode.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="46" column="69" selection-start-line="46" selection-start-column="69" selection-end-line="46" selection-end-column="69" />
+        <state relative-caret-position="100">
+          <caret line="268" column="59" lean-forward="true" selection-start-line="268" selection-start-column="59" selection-end-line="268" selection-end-column="59" />
+          <folding>
+            <element signature="e#39#159#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

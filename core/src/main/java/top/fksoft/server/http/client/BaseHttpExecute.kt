@@ -8,30 +8,10 @@ import top.fksoft.server.http.utils.CloseUtils
  * @author ExplodingDragon
  * @version 1.0
  */
-abstract class BaseHttpExecute protected constructor(headerInfo: HttpHeaderInfo, response: ClientResponse) : CloseUtils.Closeable {
+abstract class BaseHttpExecute protected constructor(private val headerInfo: HttpHeaderInfo,private val  response: ClientResponse) : CloseUtils.Closeable {
     protected var logger = Logger.getLogger(javaClass.kotlin)
 
-    init {
-        try {
-            if (!init(headerInfo)) {
-                throw RuntimeException("无法通过init")
-            }
-            if (headerInfo.isPost()) {
-                doPost(headerInfo, response)
-            } else {
-                doGet(headerInfo, response)
-            }
-        } catch (e: Exception) {
-            logger.warn("在 ${headerInfo.remoteInfo} 中发生异常！",e)
-        } finally {
-            try {
-                CloseUtils.close(this)
-            } catch (e: Exception) {
-                logger.warn("在 ${headerInfo.remoteInfo} 结束生命周期中发生异常！",e)
-            }
-
-        }
-    }
+    var hasPost = false
 
     /**
      *
@@ -80,5 +60,28 @@ abstract class BaseHttpExecute protected constructor(headerInfo: HttpHeaderInfo,
     @Throws(Exception::class)
     override fun close() {
 
+    }
+
+    @Throws(Exception::class)
+    fun execute(){
+        try {
+            if (!init(headerInfo)) {
+                throw RuntimeException("无法通过init")
+            }
+            if (headerInfo.isPost()) {
+                doPost(headerInfo, response)
+            } else {
+                doGet(headerInfo, response)
+            }
+        } catch (e: Exception) {
+            logger.warn("在 ${headerInfo.remoteInfo} 中发生异常！",e)
+        } finally {
+            try {
+                CloseUtils.close(this)
+            } catch (e: Exception) {
+                logger.warn("在 ${headerInfo.remoteInfo} 结束生命周期中发生异常！",e)
+            }
+
+        }
     }
 }

@@ -1,8 +1,6 @@
 package top.fksoft.server.http.utils
 
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.io.InputStream
+import java.io.*
 import java.nio.charset.Charset
 
 /**
@@ -63,6 +61,46 @@ class Line2ByteReaderUtils(private val inputStream: InputStream, private val cha
         }
         outputStream.reset()
         outputStream.close()
+        return result
+    }
+
+    /**
+     * 将位置移动到下一行
+     * @return Boolean
+     */
+    fun nextLine() :Boolean{
+        return readLine() != null
+    }
+
+    fun saveFile(output: File, length: Int): Boolean {
+        var result = false
+        val outputStream = FileOutputStream(output)
+        try {
+            result = copy(outputStream, length)
+        }catch (ignore:Exception){}
+        finally {
+            outputStream.close()
+        }
+        return result
+    }
+
+    fun copy(output: OutputStream, length: Int): Boolean{
+        var result = false
+        var len2 = 0
+        try {
+            val bytes = ByteArray(1024)
+                while (true){
+                    if (inputStream.available() == 0) {
+                        return len2 >=length
+                    }
+                    val readSize = inputStream.read(bytes, 0, bytes.size)
+                    len2 += readSize
+                    output.write(bytes,0,readSize)
+                    output.flush()
+                }
+                result = true
+        }catch (e:Exception){
+        }
         return result
     }
 

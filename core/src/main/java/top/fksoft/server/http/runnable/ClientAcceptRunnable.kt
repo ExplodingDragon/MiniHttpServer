@@ -3,6 +3,7 @@ package top.fksoft.server.http.runnable
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.client.ClientResponse
 import top.fksoft.server.http.config.HttpHeaderInfo
+import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.config.ResponseCode.Companion.HTTP_OK
 import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.factory.HeaderReaderFactory
@@ -33,8 +34,6 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
         clientResponse.responseCode = code
         if (code == HTTP_OK) {
             //协议识别 再放行tcp 连接维持时间
-            headerReader.readHeaderBody(httpHeaderInfo.edit())
-
             if (logger.debug){
             //打印post 日志信息
                 httpHeaderInfo.edit().printDebug()
@@ -43,11 +42,21 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
             val declaredConstructor = findHttpExecute.getDeclaredConstructor(HttpHeaderInfo::class.java, ClientResponse::class.java)
             declaredConstructor.isAccessible = true
             try {
-                declaredConstructor.newInstance(httpHeaderInfo,clientResponse)
+                val execute = declaredConstructor.newInstance(httpHeaderInfo, clientResponse)
+                if (execute.hasPost) {
+                    headerReader.readHeaderBody(httpHeaderInfo.edit())
+                }
+                if(httpHeaderInfo.isPost() && !execute.hasPost){
+                    clientResponse.responseCode = ResponseCode.HTTP_BAD_METHOD
+                }else{
+                    execute.execute()
+                }
             }catch (e:Exception){
                 logger.error("在$remoteAddress 下发生不可预知的异常！",e)
+                clientResponse.responseCode = ResponseCode.HTTP_UNAVAILABLE
             }
         }
+
         clientResponse.flashResponse()
 
 

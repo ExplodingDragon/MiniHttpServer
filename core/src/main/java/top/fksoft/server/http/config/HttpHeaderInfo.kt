@@ -7,6 +7,7 @@ import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
 import java.io.ByteArrayInputStream
 import java.io.File
+import java.io.FileInputStream
 import java.io.InputStream
 import java.nio.charset.Charset
 import kotlin.random.Random
@@ -67,7 +68,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
         }
     }
 
-    private var rawPostInputStream: InputStream = ByteArrayInputStream(ByteArray(0))
+    private var rawPostInputStream:InputStream = ByteArrayInputStream(ByteArray(0))
 
     /**
      * # 得到 原始POST 数据
@@ -121,6 +122,16 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
         for (key in formArray.keys) {
             if (key.indexOf(POST_HEADER_STR) != -1) {
                 Gson().fromJson(formArray[key], PostFileItem::class.java).close()
+            }
+        }
+        rawPostInputStream.close()
+        if (rawPostInputStream is FileInputStream) run {
+            val field = FileInputStream::class.java.getDeclaredField("path")
+            field.isAccessible = true
+            val path = field.get(rawPostInputStream).toString()
+            val file = File(path)
+            if (file.isFile) {
+                file.delete()
             }
         }
         formArray.clear()
@@ -233,7 +244,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
         }
         /**
          * 指定原始post 数据
-         * @param input InputStream
+         * @param input File
          */
         fun setRawPostInputStream(input: InputStream) {
             rawPostInputStream = input
