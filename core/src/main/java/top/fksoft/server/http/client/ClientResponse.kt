@@ -23,7 +23,7 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client:
     var responseContentType: String = HttpConstant.HEADER_VALUE_TEXT_HTML
     var responseInputStream: InputStream? = null
     private val responseMap = ConcurrentHashMap<String, String>()
-    var isPrintHeader = false
+    private var isPrintHeader = false
     private var ignorePrintWriter: PrintWriter? = null
     val outputStream: OutputStream
         get() = client.getOutputStream()

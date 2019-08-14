@@ -1,13 +1,14 @@
 package top.fksoft.server.http.factory.defaultFactory
 
-import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.factory.HeaderReaderFactory
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.Line2ByteReaderUtils
-import java.io.*
+import top.fksoft.server.http.utils.AutoByteArray
+import top.fksoft.server.http.utils.AutoByteArraySearch
+import top.fksoft.server.http.utils.DataReaderUtils
+import java.io.File
 import java.net.URLDecoder
 import java.nio.charset.Charset
 
@@ -33,7 +34,7 @@ class DefaultHeaderReader : HeaderReaderFactory() {
 
     @Throws(Exception::class)
     override fun readHeaderInfo(edit: HttpHeaderInfo.Edit): ResponseCode {
-        val headerReader = Line2ByteReaderUtils(inputStream,Charsets.UTF_8)
+        val headerReader = DataReaderUtils(inputStream,Charsets.UTF_8)
 //        val headerReader = BufferedReader(InputStreamReader(inputStream))
         val httpType = headerReader.readLine()!!.trim()
         // 读取HTTP第一行的数据
@@ -116,7 +117,6 @@ class DefaultHeaderReader : HeaderReaderFactory() {
         return ResponseCode.HTTP_OK
     }
 
-    private var postInputStream:InputStream = ByteArrayInputStream(ByteArray(0))
 
     override fun readHeaderPostData(edit: HttpHeaderInfo.Edit): ResponseCode {
 
@@ -124,34 +124,20 @@ class DefaultHeaderReader : HeaderReaderFactory() {
         val contentType = headerInfo.getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE)
         val contentLength = headerInfo.getHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH).toInt()
         val charset = HttpConstant.getValue(contentType,"charset=",defaultResult = "UTF-8")
-        val readerUtils = Line2ByteReaderUtils(inputStream, Charset.forName(charset))
+        val readerUtils = DataReaderUtils(inputStream, Charset.forName(charset))
+
 
         val output = File(headerInfo.serverConfig.tempDirectory, "${headerInfo.headerSession}_RAW_POST")
-        if (contentLength > HttpConstant.MAX_RAM_CLIENT_SIZE){
-            if (!readerUtils.saveFile(output,contentLength)) {
-                logger.debug("保存POST RAW 时出现问题.")
-                return ResponseCode.HTTP_BAD_REQUEST
-            }
-            logger.debug("使用本地文件保存POST数据：[${output.absolutePath}]")
-            edit.setRawPostInputStream(FileInputStream(output))
-            postInputStream = FileInputStream(output)
-        }else{
-            val byteArrayOutputStream = ByteArrayOutputStream()
-            if (!readerUtils.copy(byteArrayOutputStream,contentLength)){
-                logger.debug("复制POST RAW 到内存中时出现问题.")
-                return ResponseCode.HTTP_BAD_REQUEST
-            }
-            val byteArray = byteArrayOutputStream.toByteArray()
-            logger.debug("使用动态内存分配来保存 POST 数据。")
-            edit.setRawPostInputStream(ByteArrayInputStream(byteArray))
-            postInputStream = ByteArrayInputStream(byteArray)
+        val array = AutoByteArray(contentLength.toLong(), output)
+        val stream = array.openOutputStream()
+        if (!readerUtils.copy(stream,contentLength)) {
+            return ResponseCode.HTTP_BAD_REQUEST
         }
-
-
+        edit.setRawPostByteArray(array)
         if (HttpConstant.HEADER_CONTENT_TYPE_URLENCODED in contentType){
             //此为普通的POST 请求方式，可以用类似于GET 数据解析的方式来进行解析
-
-            val line = StringUtils.inputStreamToString(postInputStream,charset)
+            val line = String(array.toByteArray())
+            logger.debug("raw Post data:$line")
             edit.addForms(URLDecoder.decode(line,charset))
         }else if (HttpConstant.HEADER_CONTENT_TYPE_FORM_DATA in contentType){
             //另一种标准POST请求的方式
@@ -160,6 +146,7 @@ class DefaultHeaderReader : HeaderReaderFactory() {
                 //不存在POST 分割字符串，所以此POST 请求异常
                 return ResponseCode.HTTP_BAD_REQUEST
             }
+            val arraySearch = AutoByteArraySearch(array)
 
 
 
@@ -170,7 +157,6 @@ class DefaultHeaderReader : HeaderReaderFactory() {
 
     @Throws(Exception::class)
     override fun close() {
-        postInputStream.close()
     }
 
 }

@@ -1,13 +1,18 @@
 package top.fksoft.server.http.utils
 
-import java.io.*
+import top.fksoft.server.http.logcat.Logger
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+import java.io.InputStream
+import java.io.OutputStream
 import java.nio.charset.Charset
 
 /**
  * @author ExplodingDragon
  * @version 1.0
  */
-class Line2ByteReaderUtils(private val inputStream: InputStream, private val charset: Charset = Charsets.UTF_8) {
+class DataReaderUtils(private val inputStream: InputStream, private val charset: Charset = Charsets.UTF_8) {
+    private val logger = Logger.getLogger(DataReaderUtils::class)
     init {
         if (inputStream.available() == 0) {
             throw IOException("无法读取到更多数据！")
@@ -72,17 +77,6 @@ class Line2ByteReaderUtils(private val inputStream: InputStream, private val cha
         return readLine() != null
     }
 
-    fun saveFile(output: File, length: Int): Boolean {
-        var result = false
-        val outputStream = FileOutputStream(output)
-        try {
-            result = copy(outputStream, length)
-        }catch (ignore:Exception){}
-        finally {
-            outputStream.close()
-        }
-        return result
-    }
 
     fun copy(output: OutputStream, length: Int): Boolean{
         var result = false
@@ -100,6 +94,7 @@ class Line2ByteReaderUtils(private val inputStream: InputStream, private val cha
                 }
                 result = true
         }catch (e:Exception){
+            logger.debug("copy error.",e)
         }
         return result
     }

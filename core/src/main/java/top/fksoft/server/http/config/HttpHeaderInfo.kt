@@ -4,11 +4,9 @@ import com.google.gson.Gson
 import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
+import top.fksoft.server.http.utils.AutoByteArray
 import top.fksoft.server.http.utils.CloseUtils
-import java.io.ByteArrayInputStream
 import java.io.File
-import java.io.FileInputStream
-import java.io.InputStream
 import java.nio.charset.Charset
 import kotlin.random.Random
 
@@ -68,8 +66,8 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
         }
     }
 
-    private var rawPostInputStream:InputStream = ByteArrayInputStream(ByteArray(0))
 
+    private var rawPostArray = AutoByteArray(0)
     /**
      * # 得到 原始POST 数据
      *
@@ -78,10 +76,10 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * 但是如果其可以解析，那么将无法得到任何信息
      *
      *
-     * @return InputStream
+     * @return AutoByteArray
      */
-    fun getRawPostForm(): InputStream {
-        return rawPostInputStream
+    fun getRawPostArray(): AutoByteArray{
+        return rawPostArray
     }
 
     /**
@@ -124,16 +122,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
                 Gson().fromJson(formArray[key], PostFileItem::class.java).close()
             }
         }
-        rawPostInputStream.close()
-        if (rawPostInputStream is FileInputStream) run {
-            val field = FileInputStream::class.java.getDeclaredField("path")
-            field.isAccessible = true
-            val path = field.get(rawPostInputStream).toString()
-            val file = File(path)
-            if (file.isFile) {
-                file.delete()
-            }
-        }
+        getRawPostArray().close()
         formArray.clear()
         headerArray.clear()
     }
@@ -246,8 +235,8 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
          * 指定原始post 数据
          * @param input File
          */
-        fun setRawPostInputStream(input: InputStream) {
-            rawPostInputStream = input
+        fun setRawPostByteArray(array: AutoByteArray) {
+            rawPostArray = array
         }
 
     }

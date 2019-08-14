@@ -1,16 +1,12 @@
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.lang.reflect.Field;
+import jdkUtils.io.FileUtils;
 
 /**
  * @author ExplodingDragon
  * @version 1.0
  */
 public class Test {
-    public static void main(String[] args) throws IOException {
-        Field[] declaredFields = FileInputStream.class.getDeclaredFields();
-        for (Field declaredField : declaredFields) {
-            System.err.println(declaredField.getName());
-        }
+    @org.junit.Test
+    public void test(){
+        System.out.println("FileUtils.bytesToString(148295782398L, 0) = " + FileUtils.bytesToString(148295782398L, 1));
     }
 }

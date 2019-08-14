@@ -14,6 +14,9 @@ import java.util.*
  * @version 1.0
  */
 open class FileHttpExecute protected constructor(headerInfo: HttpHeaderInfo, response: ClientResponse) : BaseHttpExecute(headerInfo, response) {
+    init {
+        hasPost = true
+    }
     @Throws(Exception::class)
     override fun doGet(headerInfo: HttpHeaderInfo, response: ClientResponse) {
         val workDirectory = headerInfo.serverConfig.workDirectory
@@ -40,7 +43,7 @@ open class FileHttpExecute protected constructor(headerInfo: HttpHeaderInfo, res
                         length = 0
                     }
                     stringBuilder.append("<tr><td>$name</td><td>${
-                    FileUtils.bytesToString(length.toDouble(), 0)}" +
+                    FileUtils.bytesToString(length.toDouble(), 2)}" +
                             "</td><td>$date</td><td><a href=\" $href \"><button> 访问</button></a></td></tr>\n")
                 }
             }

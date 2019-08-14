@@ -34,23 +34,21 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
         clientResponse.responseCode = code
         if (code == HTTP_OK) {
             //协议识别 再放行tcp 连接维持时间
-            if (logger.debug){
-            //打印post 日志信息
-                httpHeaderInfo.edit().printDebug()
-            }
             val findHttpExecute = httpServer.findHttpExecute.findHttpExecute(httpHeaderInfo)
             val declaredConstructor = findHttpExecute.getDeclaredConstructor(HttpHeaderInfo::class.java, ClientResponse::class.java)
             declaredConstructor.isAccessible = true
             try {
                 val execute = declaredConstructor.newInstance(httpHeaderInfo, clientResponse)
                 if (execute.hasPost) {
-                    headerReader.readHeaderBody(httpHeaderInfo.edit())
+                    clientResponse.responseCode = headerReader.readHeaderBody(httpHeaderInfo.edit())
                 }
+
                 if(httpHeaderInfo.isPost() && !execute.hasPost){
                     clientResponse.responseCode = ResponseCode.HTTP_BAD_METHOD
-                }else{
+                }else if (clientResponse.responseCode == HTTP_OK){
                     execute.execute()
                 }
+
             }catch (e:Exception){
                 logger.error("在$remoteAddress 下发生不可预知的异常！",e)
                 clientResponse.responseCode = ResponseCode.HTTP_UNAVAILABLE
@@ -58,9 +56,12 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, info: Network
         }
 
         clientResponse.flashResponse()
+        if (logger.debug){
+            //打印post 日志信息
+            httpHeaderInfo.edit().printDebug()
+        }
 
-
-        logger.debug("method:${httpHeaderInfo.method}    path:${httpHeaderInfo.path}    version:${httpHeaderInfo.httpVersion}")
+        logger.info("METHOD:${httpHeaderInfo.method}    PATH:${httpHeaderInfo.path}    ResponseCode:${clientResponse.responseCode}")
     }
 
     @Throws(IOException::class)
