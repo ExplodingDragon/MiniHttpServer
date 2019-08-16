@@ -3,6 +3,7 @@ package top.fksoft.server.http.utils
 import jdkUtils.data.StringUtils
 import top.fksoft.server.http.logcat.Logger
 import java.io.*
+import java.nio.charset.Charset
 import java.util.*
 import kotlin.random.Random
 
@@ -12,9 +13,9 @@ import kotlin.random.Random
  * @author ExplodingDragon
  * @version 1.0
  */
-public class AutoByteArray(private val arraySize: Long, private val tempFile: File = getTempPath(arraySize)) : Closeable {
-    private val logger = Logger.getLogger(AutoByteArray::class)
-    private val list = LinkedList<FileOutputStream>()
+public class LongByteArray(private val arraySize: Long, private val tempFile: File = getTempPath(arraySize)) : Closeable {
+    private val logger = Logger.getLogger(LongByteArray::class)
+    private val list = LinkedList<Closeable>()
     /**
      * 表示是否使用本地临时文件
      */
@@ -134,11 +135,23 @@ public class AutoByteArray(private val arraySize: Long, private val tempFile: Fi
                 return fileOutputStream
             }
         } else {
-            return AutoByteArrayOutputStream(byteArray)
+            return LongByteArrayOutputStream(byteArray)
         }
     }
 
     fun length(): Long = if (useTempFile) tempRandomAccessFile!!.length() else byteArray.size.toLong()
+
+    fun openSearch() = LongByteArraySearch(this)
+
+    override fun toString(): String {
+        return toString(Charsets.UTF_8)
+    }
+    fun toString(charset: Charset): String {
+        if (!useTempFile){
+            return String(byteArray,charset)
+        }
+        return super.toString()
+    }
 
 
     companion object {

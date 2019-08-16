@@ -1,10 +1,9 @@
 package top.fksoft.server.http.config
 
-import com.google.gson.Gson
 import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.AutoByteArray
+import top.fksoft.server.http.utils.LongByteArray
 import top.fksoft.server.http.utils.CloseUtils
 import java.io.File
 import java.nio.charset.Charset
@@ -67,20 +66,9 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
     }
 
 
-    private var rawPostArray = AutoByteArray(0)
-    /**
-     * # 得到 原始POST 数据
-     *
-     * 如果POST 下 Content-Type 无法解析，那么
-     * 可以调用此方法来得到原始POST 数据，
-     * 但是如果其可以解析，那么将无法得到任何信息
-     *
-     *
-     * @return AutoByteArray
-     */
-    fun getRawPostArray(): AutoByteArray{
-        return rawPostArray
-    }
+    var rawPostArray = LongByteArray(0)
+        private set
+
 
     /**
      * # 得到POST 指定的文件信息
@@ -90,7 +78,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      */
     fun getFormFile(key: String): PostFileItem? {
         var value = formArray["$POST_HEADER_STR$key"]
-        return if (value != null) Gson().fromJson(value, PostFileItem::class.java) else null
+        return if (value != null) PostFileItem.formString(value) else null
     }
 
     /**
@@ -119,10 +107,10 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
     override fun close() {
         for (key in formArray.keys) {
             if (key.indexOf(POST_HEADER_STR) != -1) {
-                Gson().fromJson(formArray[key], PostFileItem::class.java).close()
+                PostFileItem.formString(formArray[key]!!).close()
             }
         }
-        getRawPostArray().close()
+        rawPostArray.close()
         formArray.clear()
         headerArray.clear()
     }
@@ -188,7 +176,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
          * @param item PostFileItem 保存的临时文件位置
          */
         fun addFormFile(key: String, item: PostFileItem) {
-            formArray["$POST_HEADER_STR$key"] = Gson().toJson(item)
+            formArray["$POST_HEADER_STR$key"] = item.toString()
         }
 
         /**
@@ -231,13 +219,15 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
         fun setHttpVersion(httpVersion: Float) {
             this@HttpHeaderInfo.httpVersion = httpVersion
         }
+
         /**
          * 指定原始post 数据
          * @param input File
          */
-        fun setRawPostByteArray(array: AutoByteArray) {
+        fun setRawPostByteArray(array: LongByteArray) {
             rawPostArray = array
         }
+
 
     }
 
@@ -250,9 +240,29 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * @property contentType String 文件类型
      * @constructor
      */
-    data class PostFileItem(val key: String, val path: File, val contentType: String) : CloseUtils.Closeable {
+    data class PostFileItem(val key: String,private val path: File, val contentType: String) : CloseUtils.Closeable {
+
         override fun close() {
             path.delete()
+        }
+
+
+
+        override fun toString(): String = StringBuilder()
+                .append("<key>").append(key).append("</key>").append('\n')
+                .append("<path>").append(path).append("</path>").append('\n')
+                .append("<contentType>").append(contentType).append("</contentType>").toString()
+
+        companion object {
+            fun formString(str: String): PostFileItem {
+                val key = StringUtils.subString(str, "<key>", "</key>")
+                val path = StringUtils.subString(str, "<path>", "</path>")
+                val contentType = StringUtils.subString(str, "<contentType>", "</contentType>")
+                if (key == null || path == null || contentType == null) {
+                    throw ClassFormatError()
+                }
+                return PostFileItem(key, File(path), contentType)
+            }
         }
 
     }

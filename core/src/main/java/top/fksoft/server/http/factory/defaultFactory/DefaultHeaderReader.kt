@@ -5,8 +5,7 @@ import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.factory.HeaderReaderFactory
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.AutoByteArray
-import top.fksoft.server.http.utils.AutoByteArraySearch
+import top.fksoft.server.http.utils.LongByteArray
 import top.fksoft.server.http.utils.DataReaderUtils
 import java.io.File
 import java.net.URLDecoder
@@ -128,7 +127,7 @@ class DefaultHeaderReader : HeaderReaderFactory() {
 
 
         val output = File(headerInfo.serverConfig.tempDirectory, "${headerInfo.headerSession}_RAW_POST")
-        val array = AutoByteArray(contentLength.toLong(), output)
+        val array = LongByteArray(contentLength.toLong(), output)
         val stream = array.openOutputStream()
         if (!readerUtils.copy(stream,contentLength)) {
             return ResponseCode.HTTP_BAD_REQUEST
@@ -146,8 +145,9 @@ class DefaultHeaderReader : HeaderReaderFactory() {
                 //不存在POST 分割字符串，所以此POST 请求异常
                 return ResponseCode.HTTP_BAD_REQUEST
             }
-            val arraySearch = AutoByteArraySearch(array)
-
+            val pat = "--$boundary\r\n".toByteArray()
+            val arraySearch = array.openSearch()
+            val spitArray = arraySearch.spitAll(pat)
 
 
         }

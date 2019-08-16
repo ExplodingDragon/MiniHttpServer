@@ -9,7 +9,7 @@ import java.nio.charset.Charset
 /**
  * @author ExplodingDragon
  */
-class AutoByteArrayOutputStream(private val bytes: ByteArray) : OutputStream() {
+class LongByteArrayOutputStream(private val bytes: ByteArray) : OutputStream() {
     val arraySize:Int = bytes.size
 
     private var count: Int = 0
