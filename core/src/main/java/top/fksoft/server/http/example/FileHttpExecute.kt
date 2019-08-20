@@ -17,40 +17,35 @@ open class FileHttpExecute protected constructor(headerInfo: HttpHeaderInfo, res
     init {
         hasPost = true
     }
+
     @Throws(Exception::class)
     override fun doGet(headerInfo: HttpHeaderInfo, response: ClientResponse) {
         val workDirectory = headerInfo.serverConfig.workDirectory
         var acceptFile = File(workDirectory, headerInfo.path.substring(1))
         if (headerInfo.path.endsWith('/')) {
             var string = StringUtils.inputStreamToString(javaClass.getResource(HttpConstant.EXAMPLE_FILE_PATH_1).openStream(), FileUtils.UTF_8)
-            string = string.replace("%path%", headerInfo.path)
+            string = string.replace("%PATH%", headerInfo.path)
             var stringBuilder = StringBuilder()
-            stringBuilder.append("<tr><td class=\"back\">上级目录</td><td>-</td><td>-</td><td><a href=\"..\">" +
-                    "<button> 访问</button></a></td></tr>\n")
-
             if (acceptFile.isDirectory) {
                 var listFiles = acceptFile.listFiles().asList()
                 FileUtils.sort(listFiles)
                 for (file in listFiles) {
-                    var href = file.name
-
-                    var length = file.length()
-                    var date = String.format("%20s", Date(file.lastModified()).toString())
                     var name = file.name
+                    var length = file.length()
+                    var lengthStr = FileUtils.bytesToString(length.toDouble(), 2)
+                    var date = String.format("%20s", Date(file.lastModified()).toString())
                     if (file.isDirectory) {
-                        href = "$href/"
                         name = "$name/"
-                        length = 0
+                        lengthStr = "-"
                     }
-                    stringBuilder.append("<tr><td>$name</td><td>${
-                    FileUtils.bytesToString(length.toDouble(), 2)}" +
-                            "</td><td>$date</td><td><a href=\" $href \"><button> 访问</button></a></td></tr>\n")
+                    stringBuilder.append("<tr><td><a href=\"$name\">$name</a><td>$date</td><td>$lengthStr</td></tr>")
                 }
+                string = string.replace("%TABLE%", stringBuilder.toString())
+                response.println(string)
             }
-            string = string.replace("%table%", stringBuilder.toString())
-            response.println(string)
         } else {
             response.writeFile(acceptFile)
         }
     }
+
 }

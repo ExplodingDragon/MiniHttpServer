@@ -121,6 +121,8 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
         return edit
     }
 
+    fun containsHeader(key: String) = headerArray.containsKey(key)
+
 
     inner class Edit() {
 

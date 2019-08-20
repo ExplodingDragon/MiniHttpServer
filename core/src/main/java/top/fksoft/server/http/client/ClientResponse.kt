@@ -1,5 +1,6 @@
 package top.fksoft.server.http.client
 
+import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
@@ -8,7 +9,10 @@ import top.fksoft.server.http.utils.CloseUtils
 import top.fksoft.server.http.utils.ContentTypeUtils
 import java.io.*
 import java.net.Socket
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.ConcurrentHashMap
+import kotlin.collections.ArrayList
 
 /**
  * # 响应客户端的信息
@@ -82,30 +86,138 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client:
         addResponseHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH, file.length().toString())
         responseInputStream = FileInputStream(file)
         logger.debug("输出文件： ${file.absolutePath}.")
+        setValidation(Date(file.lastModified()), StringUtils.md5Encryption("${file.lastModified()}-${file.length()}"))
     } else {
         responseCode = ResponseCode.HTTP_NOT_FOUND
         logger.debug("文件[$file]不存在！")
         responseContentType = HttpConstant.HEADER_VALUE_TEXT_HTML
     }
 
+
     fun flashResponse() {
+        val available = responseInputStream?.let {
+            if (responseInputStream is FileInputStream) {
+                val declaredField = FileInputStream::class.java.getDeclaredField("path")
+                declaredField.isAccessible = true
+                File(declaredField.get(responseInputStream).toString()).length()
+            } else {
+                responseInputStream!!.available().toLong()
+            }
+        }.let {
+            if (it == null) {
+                0
+            } else {
+                it
+            }
+        }
+        val rangeList = ArrayList<String>()
+        responseInputStream?.let {
+            if (headerInfo.containsHeader("Range")) {
+                val allRange = headerInfo.getHeader("Range")
+                logger.debug("发现断点续传请求！$allRange")
+
+                if (headerInfo.containsHeader("If-Range")) {
+                    val ifRange = headerInfo.getHeader("If-Range")
+                    val range1 = responseMap["Last-Modified"].let {
+                        it ?: HttpConstant.UNKNOWN_VALUE
+                    }
+                    val range2 = responseMap["ETag"].let {
+                        it ?: HttpConstant.UNKNOWN_VALUE
+                    }
+                    if (ifRange == range1 || ifRange == range2 && responseInputStream is FileInputStream) {
+                        val rangeData = allRange.split("=")[1]
+                        val ranges = rangeData.split(",")
+                        for ((index, range) in ranges.withIndex()) {
+                            val i = range.indexOf("-")
+                            if (i == 0) {
+                                rangeList.add("${available - 1 - range.substring(1).toLong()}-${available - 1} ")
+                            } else if (i == range.length - 1) {
+                                val toLong = range.substring(0, i).toLong()
+                                rangeList.add("$toLong-${available - 1}")
+                            } else {
+                                rangeList.add(range)
+                            }
+                        }
+                        if (logger.debug) {
+                            logger.debug("发现断点续传请求！${Arrays.toString(rangeList.toTypedArray())}")
+                        }
+                        responseCode = ResponseCode.HTTP_PARTIAL
+                        var length: Long = 0
+                        for (range in rangeList) {
+                            val split = range.split('-')
+                            val start = split[0].toLong()
+                            val end = split[1].toLong()
+                            length += end - start
+                        }
+                        addResponseHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH, "$length")
+
+                        addResponseHeader("Content-Range", "bytes ${rangeData}/$available")
+                    } else {
+                        logger.debug("断点续传格式错误改为标准返回！")
+                    }
+                }
+
+            }
+        }
         if (!isPrintHeader) {
             printHeader()
             var output = outputStream
-            if (responseInputStream != null) {
-                logger.debug("输出流大小:" + responseInputStream!!.available())
-                var b = ByteArray(4096)
-                var read: Int
-                while (true) {
-                    read = responseInputStream!!.read(b, 0, b.size)
-                    if (-1 == read) {
-                        break
+            responseInputStream?.let {
+
+
+                if (rangeList.size != 0 && responseInputStream is FileInputStream) {
+                    val declaredField = FileInputStream::class.java.getDeclaredField("path")
+                    declaredField.isAccessible = true
+                    val accessFile = RandomAccessFile(File(declaredField.get(responseInputStream).toString()), "r")
+                    val b = ByteArray(1024)
+                    for (range in rangeList) {
+                        val split = range.split('-')
+                        val start = split[0].toLong()
+                        val end = split[1].toLong()
+                        accessFile.seek(start)
+                        var len = end - start
+                        while (true){
+                            if (len >= b.size){
+                                len -= accessFile.read(b,0,b.size)
+                                output.write(b)
+                            }else{
+                                accessFile.read(b,0,len.toInt())
+                                output.write(b,0,len.toInt())
+                                break
+                            }
+                            output.flush()
+                        }
                     }
-                    output.write(b, 0, read)
-                    output.flush()
+                } else {
+                    logger.debug("输出流大小:$available")
+                    var b = ByteArray(4096)
+                    var read: Int
+                    while (true) {
+                        read = it.read(b, 0, b.size)
+                        if (-1 == read) {
+                            break
+                        }
+                        output.write(b, 0, read)
+                        output.flush()
+
+                    }
                 }
             }
+
         }
+    }
+
+    private val format = SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss", Locale.ENGLISH)
+
+    /**
+     * # 指定校验值
+     *
+     * @param lastModified String
+     * @param eTag String
+     */
+    fun setValidation(lastModified: Date, eTag: String) {
+        addResponseHeader("Last-Modified", "${format.format(lastModified)} GMT")
+        addResponseHeader("ETag", eTag)
     }
 
     fun addResponseHeader(key2: String, value: String) {
