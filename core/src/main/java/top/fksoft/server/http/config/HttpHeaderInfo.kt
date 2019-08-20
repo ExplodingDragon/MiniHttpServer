@@ -3,9 +3,9 @@ package top.fksoft.server.http.config
 import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.LongByteArray
 import top.fksoft.server.http.utils.CloseUtils
-import java.io.File
+import top.fksoft.server.http.utils.longByte.LongByteArray
+import java.io.Closeable
 import java.nio.charset.Charset
 import kotlin.random.Random
 
@@ -30,8 +30,9 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      */
     var method = HttpConstant.METHOD_GET
         private set
-    private var formArray = HashMap<String, String>()
-    private var headerArray = HashMap<String, String>()
+    private val formArray = HashMap<String, String>()
+    private val headerArray = HashMap<String, String>()
+    private val postFileArray = HashMap<String, PostFileItem>()
 
     /**
      * 请求的服务器文件路径（去除GET后缀）
@@ -66,7 +67,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
     }
 
 
-    var rawPostArray = LongByteArray(0)
+    var rawPostArray = LongByteArray()
         private set
 
 
@@ -77,8 +78,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * @return PostFileItem? 数据
      */
     fun getFormFile(key: String): PostFileItem? {
-        var value = formArray["$POST_HEADER_STR$key"]
-        return if (value != null) PostFileItem.formString(value) else null
+        return postFileArray[key]
     }
 
     /**
@@ -105,12 +105,13 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
 
     @Throws(Exception::class)
     override fun close() {
-        for (key in formArray.keys) {
-            if (key.indexOf(POST_HEADER_STR) != -1) {
-                PostFileItem.formString(formArray[key]!!).close()
+        synchronized(postFileArray) {
+            for (entry in postFileArray.iterator()) {
+                entry.value.close()
             }
         }
         rawPostArray.close()
+        postFileArray.clear()
         formArray.clear()
         headerArray.clear()
     }
@@ -176,7 +177,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
          * @param item PostFileItem 保存的临时文件位置
          */
         fun addFormFile(key: String, item: PostFileItem) {
-            formArray["$POST_HEADER_STR$key"] = item.toString()
+            postFileArray[key] = item
         }
 
         /**
@@ -214,6 +215,12 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
             for (key in formArray.keys) {
                 logger.debug("form's Key=$key,value=${formArray[key]};")
             }
+            for (key in postFileArray.keys) {
+                val postFileItem = postFileArray[key]!!
+                val search = postFileItem.longByteArray.openSearch()
+                val md5:String = search.calculate("MD5").toUpperCase()
+                logger.debug("form's File Key=$key,MD5=$md5;")
+            }
         }
 
         fun setHttpVersion(httpVersion: Float) {
@@ -236,38 +243,19 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * # POST 上传文件的实体类
      *
      * @property key String 文件键值对
-     * @property path File 保存的位置
+     * @property path LongByteArray 保存的位置
      * @property contentType String 文件类型
      * @constructor
      */
-    data class PostFileItem(val key: String,private val path: File, val contentType: String) : CloseUtils.Closeable {
-
+    data class PostFileItem(val key: String,  val longByteArray: LongByteArray, val contentType: String, val fileName:String) : Closeable {
         override fun close() {
-            path.delete()
+            longByteArray.close()
         }
 
 
-
-        override fun toString(): String = StringBuilder()
-                .append("<key>").append(key).append("</key>").append('\n')
-                .append("<path>").append(path).append("</path>").append('\n')
-                .append("<contentType>").append(contentType).append("</contentType>").toString()
-
-        companion object {
-            fun formString(str: String): PostFileItem {
-                val key = StringUtils.subString(str, "<key>", "</key>")
-                val path = StringUtils.subString(str, "<path>", "</path>")
-                val contentType = StringUtils.subString(str, "<contentType>", "</contentType>")
-                if (key == null || path == null || contentType == null) {
-                    throw ClassFormatError()
-                }
-                return PostFileItem(key, File(path), contentType)
-            }
-        }
 
     }
 
     companion object {
-        private const val POST_HEADER_STR = "@POST_FILE_"
     }
 }

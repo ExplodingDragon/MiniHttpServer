@@ -26,7 +26,7 @@ object HttpConstant {
     const val MAX_RAM_CLIENT_SIZE: Int = 64 * 1024
     const val EXAMPLE_FILE_PATH_1: String = "/res/resultHtml/FileArray.html"
     const val HEADER_VALUE_TEXT_HTML: String = "text/html;charset=utf-8"
-    const val UNKNOWN_VALUE: String = "_unknown"
+    const val UNKNOWN_VALUE: String = "_！@#￥%……&￥@unknown"
     /**
      * Http 下的GET 请求表示方法
      */
@@ -49,11 +49,9 @@ object HttpConstant {
      */
     var LIB_NAME = "MiniHttpServer"
 
-    const val CHARSET_GBK = "GBK"
 
 
 
-    const val CHARSET_UTF_8 = "UTF-8"
     /**
      *  浏览器类型
      */

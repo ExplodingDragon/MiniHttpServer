@@ -1,4 +1,4 @@
-package top.fksoft.server.http.utils
+package top.fksoft.server.http.utils.longByte
 
 import java.io.IOException
 import java.io.OutputStream

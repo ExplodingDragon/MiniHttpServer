@@ -1,12 +1,13 @@
 package top.fksoft.server.http.factory.defaultFactory
 
+import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.factory.HeaderReaderFactory
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.LongByteArray
 import top.fksoft.server.http.utils.DataReaderUtils
+import top.fksoft.server.http.utils.longByte.LongByteArray
 import java.io.File
 import java.net.URLDecoder
 import java.nio.charset.Charset
@@ -50,7 +51,7 @@ class DefaultHeaderReader : HeaderReaderFactory() {
             //第一行解析错误，无法得出协议，直接返回 400 错误
         }
         var location = typeArray[1]
-        location = URLDecoder.decode(location, HttpConstant.CHARSET_UTF_8)
+        location = URLDecoder.decode(location, Charsets.UTF_8.name())
         //还原 URL 中的转义字符
         while (true) {
             val line = headerReader.readLine()!!.trim()
@@ -126,8 +127,9 @@ class DefaultHeaderReader : HeaderReaderFactory() {
         val readerUtils = DataReaderUtils(inputStream, Charset.forName(charset))
 
 
-        val output = File(headerInfo.serverConfig.tempDirectory, "${headerInfo.headerSession}_RAW_POST")
-        val array = LongByteArray(contentLength.toLong(), output)
+        val rawFileName = "${headerInfo.headerSession}_RAW_POST"
+        val output = File(headerInfo.serverConfig.tempDirectory, rawFileName)
+        val array = LongByteArray(output, contentLength.toLong())
         val stream = array.openOutputStream()
         if (!readerUtils.copy(stream,contentLength)) {
             return ResponseCode.HTTP_BAD_REQUEST
@@ -147,8 +149,48 @@ class DefaultHeaderReader : HeaderReaderFactory() {
             }
             val pat = "--$boundary\r\n".toByteArray()
             val arraySearch = array.openSearch()
-            val spitArray = arraySearch.spitAll(pat)
+            val spitArray = arraySearch.spitAll(pat,addEndIndex = false).map { it + pat.size }
+            val rawEndIndex = arraySearch.search("\r\n--$boundary--".toByteArray())
+            for ((index,value) in spitArray.withIndex()) {
+                val line = arraySearch.readLine(value)!!
+                val name = StringUtils.subString(HttpConstant.getValue(line, "name="),"\"","\"")
+                val fileName =  HttpConstant.getValue(line, "filename=",defaultResult = HttpConstant.UNKNOWN_VALUE)
+                if (fileName != HttpConstant.UNKNOWN_VALUE){
+                    // 表示这是一个文件
+                    val nextLineIndex = arraySearch.getNextLineIndex(value)
+                    val contentType = arraySearch.readLine(nextLineIndex)!!.split("Content-Type:")[1]
+                    val fileIndex = arraySearch.getNextLineIndex(value,2)
 
+                    val fileEnd:Long = kotlin.run {
+                        if (index < spitArray.size - 1){
+                            var nextItemStartIndex = spitArray[index + 1] - pat.size
+                            for (i in 0 .. 1){
+                                val char = array[nextItemStartIndex - 1].toChar()
+                                if (char == '\r' || char == '\n'){
+                                    nextItemStartIndex--
+                                }
+                            }
+                            return@run nextItemStartIndex
+                        }else{
+                            return@run rawEndIndex
+                        }
+                    }
+                    val postFile = File(headerInfo.serverConfig.tempDirectory,"${rawFileName}_$name" )
+
+                    val newArray:LongByteArray = array.copyOfNewArray(fileIndex,fileEnd,postFile)
+                    edit.addFormFile(name, HttpHeaderInfo.PostFileItem(name,contentType = contentType,longByteArray = newArray,fileName = fileName))
+
+
+                }else{
+                    //这只是一个普通字符串类型
+                    val nextLineIndex = arraySearch.getNextLineIndex(value,1)
+                    val length = (arraySearch.lineEndIndex(nextLineIndex) - nextLineIndex).toInt()
+                    val bytes = array.toByteArray(nextLineIndex, length)
+                    val string = String(bytes,edit.getReader().charset)
+                    edit.addForm(name,string)
+
+                }
+            }
 
         }
         return ResponseCode.HTTP_OK
