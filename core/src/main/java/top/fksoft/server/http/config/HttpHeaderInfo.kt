@@ -220,7 +220,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
             }
             for (key in postFileArray.keys) {
                 val postFileItem = postFileArray[key]!!
-                val search = postFileItem.autoByteArray.openSearch()
+                val search = postFileItem.autoByteArray.search
                 val md5:String = search.calculate("MD5").toUpperCase()
                 logger.debug("form's File Key=$key,MD5=$md5;")
             }

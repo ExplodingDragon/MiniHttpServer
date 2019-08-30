@@ -26,7 +26,7 @@ object HttpConstant {
     const val MAX_RAM_CLIENT_SIZE: Int = 64 * 1024
     const val EXAMPLE_FILE_PATH_1: String = "/res/resultHtml/FileArray.html"
     const val HEADER_VALUE_TEXT_HTML: String = "text/html;charset=utf-8"
-    const val UNKNOWN_VALUE: String = "_！@#￥%……&￥@unknown"
+    const val UNKNOWN_VALUE: String = "_ExplodingFKL_By_unknown"
     /**
      * Http 下的GET 请求表示方法
      */

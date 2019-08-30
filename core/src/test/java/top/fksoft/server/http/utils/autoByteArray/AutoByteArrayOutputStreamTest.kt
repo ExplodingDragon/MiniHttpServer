@@ -30,6 +30,7 @@ class AutoByteArrayOutputStreamTest {
         assertTrue(auto.autoByteArray is FileAutoByteArray)
     }
 
+
     @After
     fun after(): Unit {
         auto.autoByteArray.close()

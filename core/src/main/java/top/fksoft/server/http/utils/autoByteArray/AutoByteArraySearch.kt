@@ -37,7 +37,7 @@ class AutoByteArraySearch(private val autoByteArray: AutoByteArray) {
      * @param index Long 切割起始位置
      * @return LongArray 得到的切割位置
      */
-    fun spit(pat: ByteArray, index: Long = 0): LongArray {
+    fun spit(pat: ByteArray, index: Long = 0): LinkedList<Long> {
         if (index < 0 || pat.isEmpty()) {
             throw IndexOutOfBoundsException("index < 0 || pat.isEmpty() => index = $index")
         }
@@ -62,73 +62,81 @@ class AutoByteArraySearch(private val autoByteArray: AutoByteArray) {
                     list.add(search + patSize)
                 }
             }
-            startIndex += search + patSize
+            startIndex = search + 1
         }
-        if (list.last == (autoByteArray.size - 1)) {
-            list.removeLast()
-        } else {
-            list.add(autoByteArray.size)
+        if (list.last != (autoByteArray.size - 1)) {
+            list.add(autoByteArray.size - 1)
         }
 
-        return list.toLongArray()
+        return list
     }
 
 
-    fun readLine(index: Long, charset: Charset = Charsets.UTF_8): String? {
-        val lineEndIndex = lineEndIndex(index)
-        if (lineEndIndex == -1L)
-            return null
-        return autoByteArray.toString(index, (lineEndIndex - index).toInt(), charset)
-    }
-
-    fun lineEndIndex(index: Long): Long {
+    /**
+     * 从索引位置开始读取一行
+     *
+     * @param index Long 索引位置
+     * @param charset Charset 编码
+     * @return String? 返回字符串（null 表示没有下一行）
+     */
+    fun readLine(index: Long = 0, charset: Charset = Charsets.UTF_8): String? {
         if (index >= autoByteArray.size) {
-            throw IndexOutOfBoundsException("index > array.size")
+            throw java.lang.IndexOutOfBoundsException("startIndex >= autoByteArray.size")
         }
-        for (startIndex in index until autoByteArray.size) {
-            val char = autoByteArray[startIndex].toChar()
+        var startIndex = index
+        var char = autoByteArray[startIndex].toChar()
+        if (char == '\r' || char == '\n') {
+            startIndex++
+            char = autoByteArray[startIndex].toChar()
             if (char == '\r' || char == '\n') {
-                return startIndex
+                return ""
+            }
+        }
+        val l = readLineEndIndex(startIndex)
+        if (l == -1L) {
+            return null
+        }
+        return autoByteArray.toByteArray(startIndex, l).toString(charset)
+    }
+
+    fun readLineEndIndex(index: Long = 0): Long {
+        if (index >= autoByteArray.size) {
+            throw java.lang.IndexOutOfBoundsException("startIndex >= autoByteArray.size")
+        }
+        var startIndex = index
+        var char = autoByteArray[startIndex].toChar()
+        if (char == '\r' || char == '\n') {
+            startIndex++
+            char = autoByteArray[startIndex].toChar()
+            if (char == '\r' || char == '\n') {
+                return index
+            }
+        }
+        val rSearch = byteSearch('\r'.toByte(), startIndex)
+        val nSearch = byteSearch('\n'.toByte(), startIndex)
+        if (rSearch == -1L && nSearch == -1L) {
+            return -1
+        }
+        if (rSearch == -1L) {
+            return nSearch
+        }
+        if (nSearch == -1L) {
+            return rSearch
+        }
+        return if (rSearch > nSearch) nSearch else rSearch
+    }
+
+
+    private fun byteSearch(pat: Byte, index: Long): Long {
+        var startIndex = index
+        while (startIndex < autoByteArray.size) {
+            if (autoByteArray[startIndex] == pat) {
+                return startIndex - 1
+            } else {
+                startIndex++
             }
         }
         return -1
-    }
-
-    fun nextLineStartIndex(index: Long): Long {
-        if (index >= autoByteArray.size) {
-            throw IndexOutOfBoundsException("index > array.size")
-        }
-        for (value in (index until autoByteArray.size)) {
-            val char = autoByteArray[value].toChar()
-            val nextChar = autoByteArray[value + 1].toChar()
-
-            if (char == '\r') {
-                if (nextChar == '\n') {
-                    return value + 2
-                } else {
-                    return value + 1
-                }
-            }
-            if (char == '\n') {
-                if (nextChar == '\r') {
-                    return value + 2
-                } else {
-                    return value + 1
-                }
-            }
-        }
-        return -1
-    }
-
-    fun getNextLineIndex(index: Long, lineSize: Int = 0): Long {
-        if (index >= autoByteArray.size) {
-            throw IndexOutOfBoundsException("index > array.size")
-        }
-        var result: Long = index
-        for (i in 0..lineSize) {
-            result = nextLineStartIndex(result)
-        }
-        return result
     }
 
     private fun getSundayIndex(pat: ByteArray, byte: Byte): Int {
@@ -143,7 +151,7 @@ class AutoByteArraySearch(private val autoByteArray: AutoByteArray) {
 
     @Throws(IndexOutOfBoundsException::class)
     private fun sundaySearch(pat: ByteArray, index: Long = 0): Long {
-        val m = autoByteArray.size - index
+        val m = autoByteArray.size
         val n = pat.size
         if (m < 0) {
             throw IndexOutOfBoundsException()
@@ -169,10 +177,32 @@ class AutoByteArraySearch(private val autoByteArray: AutoByteArray) {
             i += skip
         }
         return -1
-
     }
 
-    fun calculate(method: String): String = CalculateUtils.getMD5(autoByteArray.openInputStream(), method)
+    fun calculate(method: String): String = CalculateUtils.getCalculate(autoByteArray.openInputStream(), method)
+
+    fun readLines(index: Long, lineSize: Int): Long {
+        var result = index
+        for (i in 0 .. lineSize) {
+            result = readLineEndIndex(result + 1)
+            if (result == -1L) {
+                return -1L
+            }
+        }
+        for (i in 0 .. 1){
+            val l = result + 1
+            if (l < autoByteArray.size){
+                var char = autoByteArray[l].toChar()
+                if (char == '\r' || char == '\n') {
+                    result++
+                }
+            }else{
+                break
+            }
+        }
+        return result + 1
+
+    }
 
 
 }

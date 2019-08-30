@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
  * @version 1.0
  */
 public class CalculateUtils {
-    public static String getMD5(InputStream is,String method) throws NoSuchAlgorithmException, IOException {
+    public static String getCalculate(InputStream is, String method) throws NoSuchAlgorithmException, IOException {
         StringBuffer md5 = new StringBuffer();
         MessageDigest md = MessageDigest.getInstance(method);
         byte[] dataBytes = new byte[1024];

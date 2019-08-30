@@ -1,6 +1,7 @@
 package top.fksoft.server.http.factory.defaultFactory
 
 import top.fksoft.server.http.config.HttpConstant
+import top.fksoft.server.http.config.HttpConstant.UNKNOWN_VALUE
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.factory.HeaderReaderFactory
@@ -30,7 +31,6 @@ import java.nio.charset.Charset
 @Deprecated(message = "存在严重的安全问题！", level = DeprecationLevel.WARNING)
 class DefaultHeaderReader : HeaderReaderFactory() {
     private val logger = Logger.getLogger(DefaultHeaderReader::class)
-
     @Throws(Exception::class)
     override fun readHeaderInfo(edit: HttpHeaderInfo.Edit): ResponseCode {
         val headerReader = DataReaderUtils(inputStream, Charsets.UTF_8)
@@ -80,14 +80,14 @@ class DefaultHeaderReader : HeaderReaderFactory() {
             }
         } else if (httpType.startsWith(HttpConstant.METHOD_POST)) {
             edit.setMethod(HttpConstant.METHOD_POST)
-            if (infoReader.getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE, HttpConstant.UNKNOWN_VALUE) == HttpConstant.UNKNOWN_VALUE) {
+            if (infoReader.getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE, UNKNOWN_VALUE) == UNKNOWN_VALUE) {
                 //请求为 POST 但是不存在 Content-Type ，判定为畸形 http 请求
                 logger.warn("请求为 POST 但是不存在 Content-Type.")
                 return ResponseCode.HTTP_NOT_ACCEPTABLE
                 //返回 406 错误
 
             }
-            if (infoReader.getHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH, HttpConstant.UNKNOWN_VALUE) == HttpConstant.UNKNOWN_VALUE) {
+            if (infoReader.getHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH, UNKNOWN_VALUE) == UNKNOWN_VALUE) {
                 logger.warn("请求为 POST 但是不存在 Content-Length.")
                 //请求为 POST 但是不存在 Content-Length ，判定为畸形 http 请求
                 return ResponseCode.HTTP_LENGTH_REQUIRED
@@ -124,17 +124,14 @@ class DefaultHeaderReader : HeaderReaderFactory() {
         val contentLength = headerInfo.getHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH).toInt()
         val charset = HttpConstant.getValue(contentType, "charset=", defaultResult = "UTF-8")
         val dataReaderUtils = DataReaderUtils(inputStream, Charset.forName(charset))
-
-
         val rawFileName = "${headerInfo.headerSession}_RAW_POST"
-
         val output = File(headerInfo.serverConfig.tempDirectory, rawFileName)
         val autoByteArrayOutputStream = AutoByteArrayOutputStream(output)
-
         if (!dataReaderUtils.copy(autoByteArrayOutputStream, contentLength)) {
             return ResponseCode.HTTP_BAD_REQUEST
         }
         val autoByteArray = autoByteArrayOutputStream.autoByteArray
+        val search = autoByteArray.search
         edit.setRawPostByteArray(autoByteArray)
         val arraySearch = autoByteArray.openSearch()
         if (HttpConstant.HEADER_CONTENT_TYPE_URLENCODED in contentType) {
@@ -144,14 +141,36 @@ class DefaultHeaderReader : HeaderReaderFactory() {
             edit.addForms(URLDecoder.decode(line, charset))
         } else if (HttpConstant.HEADER_CONTENT_TYPE_FORM_DATA in contentType) {
             //另一种标准POST请求的方式
-            val boundary = HttpConstant.getValue(contentType, "boundary=", HttpConstant.UNKNOWN_VALUE)
-            if (boundary == HttpConstant.UNKNOWN_VALUE) {
+            val boundary = HttpConstant.getValue(contentType, "boundary=", UNKNOWN_VALUE)
+            if (boundary == UNKNOWN_VALUE) {
                 //不存在POST 分割字符串，所以此POST 请求异常
                 logger.warn("boundary not found.")
                 return ResponseCode.HTTP_BAD_REQUEST
             }
             val postDataSpit = "--$boundary\r\n".toByteArray()
-            val postDataEndSpit = "\r\n--$boundary--".toByteArray()
+            val postDataEndSpit = "--$boundary--".toByteArray()
+            val postArgs = search.spit(postDataSpit)
+            postArgs.removeLast()
+            postArgs.addLast(search.search(postDataEndSpit) -1 )
+            //处理尾部索引
+            logger.debug("POST 请求下存在 ${postArgs.size / 2} 个数据块.")
+            for (i in postArgs.indices step 2) {
+                val start = postArgs[i]
+                val end = postArgs[i + 1] - 2
+                val typeLine = search.readLine(start)!!
+                val name = HttpConstant.getValue(typeLine, "name=", defaultResult = UNKNOWN_VALUE).replace("\"", "")
+                val fileName = HttpConstant.getValue(typeLine, "filename=", defaultResult = UNKNOWN_VALUE)
+                if (fileName == UNKNOWN_VALUE) {
+                    //表示此POST块为表单
+                    val index = search.readLines(start, 2)
+                    val data = autoByteArray.toByteArray(index, end).toString(Charsets.UTF_8)
+                    logger.debug("POST DATA ${(i + 2)/2}:[name=$name,data=$data]")
+                    edit.addForm(name,data)
+                } else {
+                    //表示此POST块为文件
+
+                }
+            }
 
 
         }

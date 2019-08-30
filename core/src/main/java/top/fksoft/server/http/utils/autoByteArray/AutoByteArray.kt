@@ -17,7 +17,7 @@ interface AutoByteArray : Closeable {
         return String(toByteArray2(offset, length), charset)
     }
 
-    fun toByteArray(start: Long, end: Long) = toByteArray2(start, (end - start).toInt())
+    fun toByteArray(start: Long, end: Long) = toByteArray2(start, (end - start + 1).toInt())
     fun toByteArray2(start: Long, length: Int): ByteArray {
         if (length == 0) {
             return ByteArray(0)

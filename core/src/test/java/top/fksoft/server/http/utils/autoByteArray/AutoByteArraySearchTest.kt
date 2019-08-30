@@ -9,7 +9,7 @@ import org.junit.Test
  * @version 1.0
  */
 class AutoByteArraySearchTest {
-    private val str = "Hello world!My name is ExplodingFKL."
+    private val str = "Hello world!My name is ExplodingFKL.\r\n but I like Chinese.\n\n\n\n\n"
     private val byteArray = str.toByteArray(Charsets.US_ASCII)
     private val arrayAutoByteArray = ArrayAutoByteArray(byteArray)
     private val search = arrayAutoByteArray.search
@@ -23,13 +23,32 @@ class AutoByteArraySearchTest {
 
     @Test
     fun spit() {
-        val spit = search.spit(pat)
-        assertEquals(arrayAutoByteArray.toString(spit[0], (spit[1] - spit[0]).toInt()),"Hello")
-        assertEquals(arrayAutoByteArray.toByteArray(spit[0], spit[1] ).toString(Charsets.US_ASCII),"Hello")
+        val array = ArrayAutoByteArray("ABCDEFGHIJKLNMOPQRSTUVWXYZ0123456789ABCDEFGHIJKLNMOPQRSTUVWXYZ0123456789ABCDEFGHIJKLNMOPQRSTUVWXYZ0123456789ABCDEFGHIJKLNMOPQRSTUVWXYZ0123456789ABCDEFGHIJKLNMOPQRSTUVWXYZ0123456789".toByteArray(Charsets.US_ASCII))
+        println(array.size)
+        println(array.search.search("123".toByteArray(Charsets.US_ASCII), 102))
+        val spit = array.search.spit("123".toByteArray())
+        for (l in spit.indices.step(2)) {
+            val start = spit[l]
+            val end = spit[l + 1]
+            println(array.toByteArray(start, end).toString(Charsets.US_ASCII))
+        }
+    }
+
+    @Test
+    fun readLine() {
+        assertEquals(search.readLine(),"Hello world!My name is ExplodingFKL.")
+
+    }
+
+    @Test
+    fun toByteArray(){
+        println(arrayAutoByteArray.toByteArray(0, 5).toString(Charsets.US_ASCII))
     }
 
     @After
     fun after() {
         arrayAutoByteArray.close()
     }
+
+
 }
