@@ -1,13 +1,12 @@
 package top.fksoft.server.http.factory.defaultFactory
 
-import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.factory.HeaderReaderFactory
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.DataReaderUtils
-import top.fksoft.server.http.utils.longByte.LongByteArray
+import top.fksoft.server.http.utils.autoByteArray.AutoByteArrayOutputStream
 import java.io.File
 import java.net.URLDecoder
 import java.nio.charset.Charset
@@ -34,7 +33,7 @@ class DefaultHeaderReader : HeaderReaderFactory() {
 
     @Throws(Exception::class)
     override fun readHeaderInfo(edit: HttpHeaderInfo.Edit): ResponseCode {
-        val headerReader = DataReaderUtils(inputStream,Charsets.UTF_8)
+        val headerReader = DataReaderUtils(inputStream, Charsets.UTF_8)
 //        val headerReader = BufferedReader(InputStreamReader(inputStream))
         val httpType = headerReader.readLine()!!.trim()
         // 读取HTTP第一行的数据
@@ -84,7 +83,7 @@ class DefaultHeaderReader : HeaderReaderFactory() {
             if (infoReader.getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE, HttpConstant.UNKNOWN_VALUE) == HttpConstant.UNKNOWN_VALUE) {
                 //请求为 POST 但是不存在 Content-Type ，判定为畸形 http 请求
                 logger.warn("请求为 POST 但是不存在 Content-Type.")
-                return  ResponseCode.HTTP_NOT_ACCEPTABLE
+                return ResponseCode.HTTP_NOT_ACCEPTABLE
                 //返回 406 错误
 
             }
@@ -123,74 +122,37 @@ class DefaultHeaderReader : HeaderReaderFactory() {
         val headerInfo = edit.run { getReader() }
         val contentType = headerInfo.getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE)
         val contentLength = headerInfo.getHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH).toInt()
-        val charset = HttpConstant.getValue(contentType,"charset=",defaultResult = "UTF-8")
-        val readerUtils = DataReaderUtils(inputStream, Charset.forName(charset))
+        val charset = HttpConstant.getValue(contentType, "charset=", defaultResult = "UTF-8")
+        val dataReaderUtils = DataReaderUtils(inputStream, Charset.forName(charset))
 
 
         val rawFileName = "${headerInfo.headerSession}_RAW_POST"
+
         val output = File(headerInfo.serverConfig.tempDirectory, rawFileName)
-        val array = LongByteArray(output, contentLength.toLong())
-        val stream = array.openOutputStream()
-        if (!readerUtils.copy(stream,contentLength)) {
+        val autoByteArrayOutputStream = AutoByteArrayOutputStream(output)
+
+        if (!dataReaderUtils.copy(autoByteArrayOutputStream, contentLength)) {
             return ResponseCode.HTTP_BAD_REQUEST
         }
-        edit.setRawPostByteArray(array)
-        if (HttpConstant.HEADER_CONTENT_TYPE_URLENCODED in contentType){
+        val autoByteArray = autoByteArrayOutputStream.autoByteArray
+        edit.setRawPostByteArray(autoByteArray)
+        val arraySearch = autoByteArray.openSearch()
+        if (HttpConstant.HEADER_CONTENT_TYPE_URLENCODED in contentType) {
             //此为普通的POST 请求方式，可以用类似于GET 数据解析的方式来进行解析
-            val line = String(array.toByteArray())
+            val line = autoByteArray.toString()
             logger.debug("raw Post data:$line")
-            edit.addForms(URLDecoder.decode(line,charset))
-        }else if (HttpConstant.HEADER_CONTENT_TYPE_FORM_DATA in contentType){
+            edit.addForms(URLDecoder.decode(line, charset))
+        } else if (HttpConstant.HEADER_CONTENT_TYPE_FORM_DATA in contentType) {
             //另一种标准POST请求的方式
             val boundary = HttpConstant.getValue(contentType, "boundary=", HttpConstant.UNKNOWN_VALUE)
-            if (boundary == HttpConstant.UNKNOWN_VALUE){
+            if (boundary == HttpConstant.UNKNOWN_VALUE) {
                 //不存在POST 分割字符串，所以此POST 请求异常
+                logger.warn("boundary not found.")
                 return ResponseCode.HTTP_BAD_REQUEST
             }
-            val pat = "--$boundary\r\n".toByteArray()
-            val arraySearch = array.openSearch()
-            val spitArray = arraySearch.spitAll(pat,addEndIndex = false).map { it + pat.size }
-            val rawEndIndex = arraySearch.search("\r\n--$boundary--".toByteArray())
-            for ((index,value) in spitArray.withIndex()) {
-                val line = arraySearch.readLine(value)!!
-                val name = StringUtils.subString(HttpConstant.getValue(line, "name="),"\"","\"")
-                val fileName =  HttpConstant.getValue(line, "filename=",defaultResult = HttpConstant.UNKNOWN_VALUE)
-                if (fileName != HttpConstant.UNKNOWN_VALUE){
-                    // 表示这是一个文件
-                    val nextLineIndex = arraySearch.getNextLineIndex(value)
-                    val contentType = arraySearch.readLine(nextLineIndex)!!.split("Content-Type:")[1]
-                    val fileIndex = arraySearch.getNextLineIndex(value,2)
+            val postDataSpit = "--$boundary\r\n".toByteArray()
+            val postDataEndSpit = "\r\n--$boundary--".toByteArray()
 
-                    val fileEnd:Long = kotlin.run {
-                        if (index < spitArray.size - 1){
-                            var nextItemStartIndex = spitArray[index + 1] - pat.size
-                            for (i in 0 .. 1){
-                                val char = array[nextItemStartIndex - 1].toChar()
-                                if (char == '\r' || char == '\n'){
-                                    nextItemStartIndex--
-                                }
-                            }
-                            return@run nextItemStartIndex
-                        }else{
-                            return@run rawEndIndex
-                        }
-                    }
-                    val postFile = File(headerInfo.serverConfig.tempDirectory,"${rawFileName}_$name" )
-
-                    val newArray:LongByteArray = array.copyOfNewArray(fileIndex,fileEnd,postFile)
-                    edit.addFormFile(name, HttpHeaderInfo.PostFileItem(name,contentType = contentType,longByteArray = newArray,fileName = fileName))
-
-
-                }else{
-                    //这只是一个普通字符串类型
-                    val nextLineIndex = arraySearch.getNextLineIndex(value,1)
-                    val length = (arraySearch.lineEndIndex(nextLineIndex) - nextLineIndex).toInt()
-                    val bytes = array.toByteArray(nextLineIndex, length)
-                    val string = String(bytes,edit.getReader().charset)
-                    edit.addForm(name,string)
-
-                }
-            }
 
         }
         return ResponseCode.HTTP_OK

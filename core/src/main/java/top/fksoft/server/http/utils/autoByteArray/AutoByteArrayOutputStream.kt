@@ -15,7 +15,8 @@ class AutoByteArrayOutputStream(private val tempFile: File = getTempFile("${Rand
     private var isClose: Boolean = false
     private var byteArray = ByteArray(32)
     private var byteArraySize = 0
-    private var useByteArray: Boolean = tempFile.isFile.not()
+    var useByteArray: Boolean = tempFile.isFile.not()
+    private set
 
     private val tempFileOutputStream by lazy {
         FileOutputStream(tempFile)
@@ -30,6 +31,15 @@ class AutoByteArrayOutputStream(private val tempFile: File = getTempFile("${Rand
         } else {
             tempFile.length()
         }
+
+    val autoByteArray by lazy {
+        close()
+        if (useByteArray){
+             ArrayAutoByteArray(byteArray.copyOf(byteArraySize))
+        }else{
+             FileAutoByteArray(tempFile)
+        }
+    }
 
 
 
@@ -77,9 +87,7 @@ class AutoByteArrayOutputStream(private val tempFile: File = getTempFile("${Rand
 
     @Synchronized
     override fun close() {
-        if (isClose) {
-            throw RuntimeException("This is already closed.")
-        } else {
+        if (!isClose) {
             isClose = true
             if (!useByteArray) {
                 tempFileOutputStream.close()

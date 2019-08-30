@@ -7,7 +7,6 @@ import top.fksoft.server.http.factory.defaultFactory.DefaultHeaderReader
 import top.fksoft.server.http.runnable.ClientAcceptRunnable
 import top.fksoft.server.http.utils.CloseUtils
 import java.io.IOException
-import java.io.InputStream
 import java.io.OutputStream
 import kotlin.reflect.KClass
 
@@ -29,15 +28,10 @@ import kotlin.reflect.KClass
 abstract class HeaderReaderFactory : CloseUtils.Closeable {
     private var runnable: ClientAcceptRunnable? = null
     private var config: ServerConfig? = null
-    private var ignoreInputStream:InputStream? = null
-    protected val inputStream: InputStream
-        @Throws(IOException::class)
-        get() {
-            if(ignoreInputStream == null){
-                ignoreInputStream = runnable!!.inputStream
-            }
-            return ignoreInputStream!!
-        }
+    protected val inputStream by lazy {
+        runnable!!.inputStream
+    }
+
 
 
     protected val outputStream: OutputStream

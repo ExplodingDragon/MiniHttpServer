@@ -8,16 +8,29 @@
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearch.kt" line="66" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/responseData/BaseResponseData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/responseData/DefaultResponseData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArray.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArrayOutputStream.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/FileAutoByteArray.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/AutoByteArrayOutputStreamTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/ArrayAutoByteArray.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearch.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/DefaultAutoByteArray.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArrayOutputStreamTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearchTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/test/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/test/java/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/HeaderReaderFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/HeaderReaderFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArray.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArray.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArrayOutputStream.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArrayOutputStream.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/FileAutoByteArray.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/FileAutoByteArray.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArray.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArrayOutputStream.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArraySearch.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/test/java/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/AutoByteArrayOutputStreamTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/LongByteArraySearchTest.kt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/modules/target/" />
@@ -131,83 +144,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArrayOutputStream.kt">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearch.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArray.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="172">
+              <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
               <folding>
-                <element signature="e#52#103#0" expanded="true" />
+                <element signature="e#52#153#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearchTest.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-11">
+              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+              <folding>
+                <element signature="e#52#133#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/FileAutoByteArray.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="16" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="16" />
-              <folding>
-                <element signature="e#52#98#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArray.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="81" column="12" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/AutoByteArrayOutputStreamTest.kt">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+              <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="836">
+              <caret line="52" column="21" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="533">
+              <caret line="154" selection-start-line="154" selection-end-line="154" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1026">
+              <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
               <folding>
-                <element signature="e#38#83#0" expanded="true" />
+                <element signature="e#38#232#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArrayOutputStream.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.21/224a3bcfa1c088dd5d7c4a3958a68427b44c65dc/kotlin-stdlib-common-1.3.21-sources.jar!/kotlin/random/Random.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3629">
-              <caret line="194" column="20" selection-start-line="194" selection-start-column="20" selection-end-line="194" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpConstant.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="817">
-              <caret line="43" column="79" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -219,9 +214,9 @@
       <list>
         <option value="Interface" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin File" />
         <option value="Class" />
         <option value="JUnit4 Test Class" />
-        <option value="Kotlin File" />
       </list>
     </option>
     <option name="SCHEME" value="Project" />
@@ -246,15 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/404.html" />
-        <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/50X.html" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ResponseCode.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/AutoByteArray.java" />
-        <option value="$PROJECT_DIR$/core/src/test/java/JFXTest.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/ByteArrayOutputStream.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/ByteArray2OutputStream.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/Line2ByteReaderUtils.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/ClientAcceptRunnable.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/ByteSearch.java" />
@@ -274,15 +260,12 @@
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpConstant.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArraySearch.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CalculateUtils.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArray.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/logcat/Log.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" />
         <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/FileArray.jsp" />
         <option value="$PROJECT_DIR$/core/src/main/resources/res/resultHtml/FileArray.html" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/example/FileHttpExecute.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CloseUtils.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/ClientResponse.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/BaseResponseData.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/responseData/BaseResponseData.java" />
@@ -295,8 +278,20 @@
         <option value="$PROJECT_DIR$/core/src/test/java/Test.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/AutoByteArrayOutputStream.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArrayOutputStream.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/ArrayAutoByteArray.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArrayOutputStream.kt" />
+        <option value="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArrayOutputStreamTest.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArray.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/DefaultAutoByteArray.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/DefaultAutoByteArray.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/HeaderReaderFactory.kt" />
+        <option value="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearchTest0.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArray.kt" />
+        <option value="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearchTest.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/FileAutoByteArray.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearch.kt" />
       </list>
     </option>
   </component>
@@ -321,6 +316,103 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="http" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="http" type="462c0819:PsiDirectoryNode" />
+              <item name="factory" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="http" type="462c0819:PsiDirectoryNode" />
+              <item name="runnable" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="http" type="462c0819:PsiDirectoryNode" />
+              <item name="runnable" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="http" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="http" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="autoByteArray" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="tests" type="f7eae187:NonAndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="tests" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="autoByteArray" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="resources" type="f7eae187:NonAndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="resources" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
+              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
+              <item name="resources" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="resultHtml" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -442,83 +534,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="autoByteArray" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="longByte" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="tests" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="resources" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="resources" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="resources" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="resultHtml" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -549,6 +564,7 @@
       <recent name="top.fksoft.server.http.client" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="top.fksoft.server.http.utils.autoByteArray" />
       <recent name="top.fksoft.server.http.utils" />
       <recent name="top.fksoft.server.http.config" />
       <recent name="top.fksoft.server.http" />
@@ -589,7 +605,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.AutoByteArrayOutputStreamTest.run">
+  <component name="RunManager" selected="Application.Http Server">
     <configuration default="true" type="AndroidJUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -634,6 +650,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AutoByteArrayOutputStreamTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;top.fksoft.server.http.utils.autoByteArray.AutoByteArrayOutputStreamTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":core:cleanTest" />
+            <option value=":core:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="AutoByteArrayOutputStreamTest.run" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -654,12 +690,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AutoByteArraySearchTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AutoByteArrayOutputStreamTest.testSize" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;top.fksoft.server.http.utils.AutoByteArraySearchTest&quot;" />
+        <option name="scriptParameters" value="--tests &quot;top.fksoft.server.http.utils.autoByteArray.AutoByteArrayOutputStreamTest.testSize&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -679,7 +715,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;top.fksoft.server.http.utils.AutoByteArraySearchTest.search&quot;" />
+        <option name="scriptParameters" value="--tests &quot;top.fksoft.server.http.utils.autoByteArray.AutoByteArraySearchTest.search&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -694,12 +730,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AutoByteArraySearchTest.spitAll" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AutoByteArraySearchTest.spit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;top.fksoft.server.http.utils.AutoByteArraySearchTest.spitAll&quot;" />
+        <option name="scriptParameters" value="--tests &quot;top.fksoft.server.http.utils.autoByteArray.AutoByteArraySearchTest.spit&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -712,23 +748,6 @@
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="httpServer" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="httpServer:cli [build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
@@ -754,19 +773,19 @@
       <item itemvalue="Android App.phoneCli" />
       <item itemvalue="Application.Http Server" />
       <item itemvalue="Gradle.httpServer:cli [build]" />
-      <item itemvalue="Gradle.httpServer" />
-      <item itemvalue="Gradle.AutoByteArraySearchTest.search" />
-      <item itemvalue="Gradle.AutoByteArraySearchTest.spitAll" />
-      <item itemvalue="Gradle.AutoByteArraySearchTest" />
       <item itemvalue="Gradle.AutoByteArrayOutputStreamTest.run" />
+      <item itemvalue="Gradle.AutoByteArrayOutputStreamTest.testSize" />
+      <item itemvalue="Gradle.AutoByteArrayOutputStreamTest" />
+      <item itemvalue="Gradle.AutoByteArraySearchTest.search" />
+      <item itemvalue="Gradle.AutoByteArraySearchTest.spit" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.AutoByteArrayOutputStreamTest.run" />
-        <item itemvalue="Gradle.AutoByteArraySearchTest" />
-        <item itemvalue="Gradle.AutoByteArraySearchTest.spitAll" />
+        <item itemvalue="Gradle.AutoByteArraySearchTest.spit" />
         <item itemvalue="Gradle.AutoByteArraySearchTest.search" />
-        <item itemvalue="Gradle.httpServer" />
+        <item itemvalue="Gradle.AutoByteArrayOutputStreamTest" />
+        <item itemvalue="Gradle.AutoByteArrayOutputStreamTest.testSize" />
+        <item itemvalue="Gradle.AutoByteArrayOutputStreamTest.run" />
       </list>
     </recent_temporary>
   </component>
@@ -872,7 +891,9 @@
       <workItem from="1566744479813" duration="603000" />
       <workItem from="1566745125031" duration="423000" />
       <workItem from="1566801992212" duration="2283000" />
-      <workItem from="1566805266794" duration="19838000" />
+      <workItem from="1566805266794" duration="20036000" />
+      <workItem from="1566953450089" duration="9122000" />
+      <workItem from="1567060199875" duration="19884000" />
     </task>
     <task id="LOCAL-00001" summary="fix bugs.">
       <created>1561946216653</created>
@@ -1098,43 +1119,50 @@
       <option name="project" value="LOCAL" />
       <updated>1566316779158</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="臨時保存">
+      <created>1566919195588</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1566919195588</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AutoByteArraySearchTest_spitAll - 2019.08.16 at 21h 30m 42s.xml">
-      <configuration name="AutoByteArraySearchTest.spitAll" configurationId="GradleRunConfiguration" />
+    <history-entry file="AutoByteArraySearchTest_search - 2019.08.30 at 09h 16m 17s.xml">
+      <configuration name="AutoByteArraySearchTest.search" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AutoByteArraySearchTest_spitAll - 2019.08.16 at 21h 31m 17s.xml">
-      <configuration name="AutoByteArraySearchTest.spitAll" configurationId="GradleRunConfiguration" />
+    <history-entry file="AutoByteArraySearchTest_search - 2019.08.30 at 09h 17m 49s.xml">
+      <configuration name="AutoByteArraySearchTest.search" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AutoByteArraySearchTest_spitAll - 2019.08.16 at 21h 32m 35s.xml">
-      <configuration name="AutoByteArraySearchTest.spitAll" configurationId="GradleRunConfiguration" />
+    <history-entry file="AutoByteArraySearchTest_search - 2019.08.30 at 09h 18m 07s.xml">
+      <configuration name="AutoByteArraySearchTest.search" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AutoByteArraySearchTest - 2019.08.16 at 21h 33m 39s.xml">
-      <configuration name="AutoByteArraySearchTest" configurationId="GradleRunConfiguration" />
+    <history-entry file="AutoByteArraySearchTest_search - 2019.08.30 at 10h 56m 04s.xml">
+      <configuration name="AutoByteArraySearchTest.search" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AutoByteArrayOutputStreamTest_run - 2019.08.27 at 20h 47m 46s.xml">
-      <configuration name="AutoByteArrayOutputStreamTest.run" configurationId="GradleRunConfiguration" />
+    <history-entry file="AutoByteArraySearchTest_search - 2019.08.30 at 10h 57m 22s.xml">
+      <configuration name="AutoByteArraySearchTest.search" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AutoByteArrayOutputStreamTest_run - 2019.08.27 at 20h 48m 15s.xml">
-      <configuration name="AutoByteArrayOutputStreamTest.run" configurationId="GradleRunConfiguration" />
+    <history-entry file="AutoByteArraySearchTest_spit - 2019.08.30 at 11h 12m 51s.xml">
+      <configuration name="AutoByteArraySearchTest.spit" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AutoByteArrayOutputStreamTest_run - 2019.08.27 at 21h 32m 10s.xml">
-      <configuration name="AutoByteArrayOutputStreamTest.run" configurationId="GradleRunConfiguration" />
+    <history-entry file="AutoByteArraySearchTest_spit - 2019.08.30 at 11h 13m 00s.xml">
+      <configuration name="AutoByteArraySearchTest.spit" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AutoByteArrayOutputStreamTest_run - 2019.08.27 at 21h 33m 23s.xml">
-      <configuration name="AutoByteArrayOutputStreamTest.run" configurationId="GradleRunConfiguration" />
+    <history-entry file="AutoByteArraySearchTest_spit - 2019.08.30 at 11h 14m 28s.xml">
+      <configuration name="AutoByteArraySearchTest.spit" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AutoByteArrayOutputStreamTest_run - 2019.08.27 at 21h 35m 05s.xml">
-      <configuration name="AutoByteArrayOutputStreamTest.run" configurationId="GradleRunConfiguration" />
+    <history-entry file="AutoByteArraySearchTest_spit - 2019.08.30 at 11h 15m 34s.xml">
+      <configuration name="AutoByteArraySearchTest.spit" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AutoByteArrayOutputStreamTest_run - 2019.08.27 at 22h 00m 36s.xml">
-      <configuration name="AutoByteArrayOutputStreamTest.run" configurationId="GradleRunConfiguration" />
+    <history-entry file="AutoByteArraySearchTest_spit - 2019.08.30 at 11h 24m 43s.xml">
+      <configuration name="AutoByteArraySearchTest.spit" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="484253000" />
+    <option name="totallyTimeSpent" value="513457000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1151,24 +1179,24 @@
     <layout>
       <window_info anchor="top" id="Ant Build" order="0" side_tool="true" weight="0.25" />
       <window_info anchor="top" id="Maven" order="1" side_tool="true" weight="0.32906976" />
-      <window_info id="Structure" order="0" sideWeight="0.5023256" side_tool="true" weight="0.23126338" />
+      <window_info id="Structure" order="0" sideWeight="0.50570345" side_tool="true" weight="0.18683083" />
       <window_info id="Designer" order="1" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" show_stripe_button="false" sideWeight="0.5023256" side_tool="true" weight="0.23126338" />
-      <window_info id="Build Variants" order="6" sideWeight="0.50676984" side_tool="true" weight="0.19057816" />
-      <window_info id="Captures" order="7" sideWeight="0.5023256" side_tool="true" weight="0.23126338" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.49323016" visible="true" weight="0.18683083" />
+      <window_info id="Build Variants" order="6" sideWeight="0.50570345" side_tool="true" weight="0.18683083" />
+      <window_info id="Captures" order="7" sideWeight="0.50570345" side_tool="true" weight="0.18683083" />
+      <window_info content_ui="combo" id="Project" order="8" sideWeight="0.49429658" visible="true" weight="0.18683083" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32844242" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3883721" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3883721" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3988372" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32906976" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.3267442" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32790697" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32790697" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.33837208" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -1204,7 +1232,8 @@
     <MESSAGE value="更改 HTTP 头下 POST 记录方式。" />
     <MESSAGE value="Version v0.1Beta" />
     <MESSAGE value="添加断点续传（错误）" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加断点续传（错误）" />
+    <MESSAGE value="臨時保存" />
+    <option name="LAST_COMMIT_MESSAGE" value="臨時保存" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1216,22 +1245,10 @@
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt</url>
-          <line>180</line>
-          <properties />
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArray.kt</url>
           <line>39</line>
           <properties />
           <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/AutoByteArrayOutputStreamTest.kt</url>
-          <line>18</line>
-          <properties />
-          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1271,90 +1288,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/phoneCli/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-284">
-          <caret column="35" selection-start-column="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/build/reports/tests/test/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoSizeByteArray/AutoSizeInputStream.java" />
-    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/util/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="124" column="26" selection-start-line="124" selection-end-line="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="155" column="52" selection-start-line="155" selection-start-column="52" selection-end-line="155" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/FileSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2774">
-          <caret line="33" column="15" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/WinNTFileSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="37" column="38" lean-forward="true" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/DefaultFileSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="37" column="24" lean-forward="true" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/RandomAccessFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="208" column="28" selection-start-line="208" selection-start-column="20" selection-end-line="208" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/nio/file/FileSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1330">
-          <caret line="97" column="22" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://4169a172-3a26-413c-9608-6c38a298144a/schema/main/table/HelloWorld">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="6031869b-e15c-4c8e-9617-75322c5d0016">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/4169a172-3a26-413c-9608-6c38a298144a/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.21/b8815e48fb45e94821287365bd9ce8623f459ac7/kotlin-stdlib-1.3.21-sources.jar!/kotlin/util/Synchronized.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoSizeByteArray/AutoSizeByteArray.kt" />
     <entry file="file://$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1365,30 +1298,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/LongByteArraySearchTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding>
-            <element signature="e#38#115#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/ContentTypeUtils.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="817">
           <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-524">
-          <caret line="44" column="30" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="30" />
-          <folding>
-            <element signature="e#38#232#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1428,23 +1341,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArraySearch.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="145" selection-start-line="121" selection-end-line="145" />
-          <folding>
-            <element signature="e#47#148#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="179" column="63" selection-start-line="179" selection-start-column="63" selection-end-line="179" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -1543,13 +1439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2185">
-          <caret line="122" selection-start-line="122" selection-end-line="122" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/client/responseData/DefaultResponseData.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
@@ -1577,10 +1466,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.21/b8815e48fb45e94821287365bd9ce8623f459ac7/kotlin-stdlib-1.3.21-sources.jar!/kotlin/Any.kt">
+    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/OutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="40" column="25" selection-start-line="40" selection-end-line="41" />
+        <state relative-caret-position="266">
+          <caret line="105" column="16" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/AutoByteArrayOutputStreamTest.kt" />
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArrayOutputStream.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1598,71 +1495,188 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/OutputStream.java">
+    <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.21/224a3bcfa1c088dd5d7c4a3958a68427b44c65dc/kotlin-stdlib-common-1.3.21-sources.jar!/kotlin/util/Standard.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="105" column="16" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+        <state relative-caret-position="274">
+          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/test/java/Test.java">
+    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/ByteArrayInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        <state relative-caret-position="76">
+          <caret line="39" column="25" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/io/StringBufferInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1634">
+          <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/Before.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="31" column="23" lean-forward="true" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArrayOutputStreamTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="34" column="20" selection-start-line="34" selection-end-line="35" />
           <folding>
-            <element signature="e#357#358#0" expanded="true" />
-            <element signature="e#387#388#0" expanded="true" />
+            <element signature="e#52#174#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/Test.java" />
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArrayOutputStream.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="34" column="21" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArraySearch.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1102">
+          <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
+          <folding>
+            <element signature="e#47#148#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/ArrayAutoByteArray.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#52#114#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArray.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="81" column="12" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="12" />
+        <state relative-caret-position="1748">
+          <caret line="99" column="17" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/AutoByteArrayOutputStreamTest.kt">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/DefaultAutoByteArray.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        <state relative-caret-position="513">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpHeaderInfo.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
           <folding>
-            <element signature="e#38#83#0" expanded="true" />
+            <element signature="e#38#232#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/longByte/LongByteArrayOutputStream.kt">
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/LongByteArraySearchTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        <state relative-caret-position="76">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArrayOutputStream.kt">
+    <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.21/4bcc2012b84840e19e1e28074284cac908be0295/kotlin-stdlib-1.3.21.jar!/kotlin/text/StringsKt.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/defaultFactory/DefaultHeaderReader.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="533">
+          <caret line="154" selection-start-line="154" selection-end-line="154" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/factory/HeaderReaderFactory.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearchTest0.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.21/b8815e48fb45e94821287365bd9ce8623f459ac7/kotlin-stdlib-1.3.21-sources.jar!/kotlin/Any.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.21/224a3bcfa1c088dd5d7c4a3958a68427b44c65dc/kotlin-stdlib-common-1.3.21-sources.jar!/generated/_Ranges.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="575" column="32" selection-start-line="575" selection-start-column="32" selection-end-line="575" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArray.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="179">
+          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
           <folding>
-            <element signature="e#52#103#0" expanded="true" />
+            <element signature="e#52#135#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/runnable/base/BaseClientRunnable.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="32" column="38" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/FileAutoByteArray.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="16" />
+        <state relative-caret-position="323">
+          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearchTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
           <folding>
-            <element signature="e#52#98#0" expanded="true" />
+            <element signature="e#52#133#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/autoByteArray/AutoByteArraySearch.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
+          <folding>
+            <element signature="e#52#153#0" expanded="true" />
           </folding>
         </state>
       </provider>

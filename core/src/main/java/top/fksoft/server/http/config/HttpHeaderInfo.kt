@@ -4,7 +4,8 @@ import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseUtils
-import top.fksoft.server.http.utils.longByte.LongByteArray
+import top.fksoft.server.http.utils.autoByteArray.AutoByteArray
+import top.fksoft.server.http.utils.autoByteArray.DefaultAutoByteArray
 import java.io.Closeable
 import java.nio.charset.Charset
 import kotlin.random.Random
@@ -59,15 +60,15 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * @return String
      */
     fun getForm(key: String, defaultValue: String = ""): String {
-        if (formArray.containsKey(key)) {
-            return formArray[key]!!
+        return if (formArray.containsKey(key)) {
+            formArray[key]!!
         } else {
-            return defaultValue
+            defaultValue
         }
     }
 
 
-    var rawPostArray = LongByteArray()
+    var rawPostArray :AutoByteArray= DefaultAutoByteArray()
         private set
 
 
@@ -219,7 +220,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
             }
             for (key in postFileArray.keys) {
                 val postFileItem = postFileArray[key]!!
-                val search = postFileItem.longByteArray.openSearch()
+                val search = postFileItem.autoByteArray.openSearch()
                 val md5:String = search.calculate("MD5").toUpperCase()
                 logger.debug("form's File Key=$key,MD5=$md5;")
             }
@@ -233,7 +234,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
          * 指定原始post 数据
          * @param input File
          */
-        fun setRawPostByteArray(array: LongByteArray) {
+        fun setRawPostByteArray(array: AutoByteArray) {
             rawPostArray = array
         }
 
@@ -245,19 +246,18 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * # POST 上传文件的实体类
      *
      * @property key String 文件键值对
-     * @property path LongByteArray 保存的位置
+     * @property autoByteArray AutoByteArray 保存的位置
      * @property contentType String 文件类型
      * @constructor
      */
-    data class PostFileItem(val key: String,  val longByteArray: LongByteArray, val contentType: String, val fileName:String) : Closeable {
+    data class PostFileItem(val key: String, val autoByteArray: AutoByteArray, val contentType: String, val fileName:String) : Closeable {
         override fun close() {
-            longByteArray.close()
+            autoByteArray.close()
         }
 
 
 
     }
 
-    companion object {
-    }
+
 }
