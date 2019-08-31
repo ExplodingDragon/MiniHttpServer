@@ -94,7 +94,7 @@ abstract class HeaderReaderFactory : CloseUtils.Closeable {
      * @param edit Edit
      */
     fun readHeaderBody(edit: HttpHeaderInfo.Edit):ResponseCode {
-        if (edit.getReader().isPost()){
+        if (edit.reader.isPost()){
             return readHeaderPostData(edit)
         }else
             return ResponseCode.HTTP_OK

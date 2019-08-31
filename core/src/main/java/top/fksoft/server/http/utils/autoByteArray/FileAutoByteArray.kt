@@ -1,5 +1,6 @@
 package top.fksoft.server.http.utils.autoByteArray
 
+import top.fksoft.server.http.logcat.Logger
 import java.io.*
 import java.util.*
 
@@ -7,7 +8,8 @@ import java.util.*
  * @author ExplodingDragon
  * @version 1.0
  */
-class FileAutoByteArray(private val tempFile: File) : AutoByteArray {
+class FileAutoByteArray(val tempFile: File) : AutoByteArray {
+    private val logger  = Logger.getLogger(this)
     var isClosed = false
         private set
     private val closeableList = LinkedList<Closeable>()
@@ -56,11 +58,13 @@ class FileAutoByteArray(private val tempFile: File) : AutoByteArray {
             try {
                 it.close()
             } catch (ignore: Exception) {
+                logger.debug("Close Error",ignore)
             }
         }
         randomAccessFile.close()
-        tempFile.delete()
-
+        if (!tempFile.delete()) {
+            logger.debug("file [${tempFile.absolutePath}] 删除失败！")
+        }
     }
 
 }

@@ -42,7 +42,7 @@ class AutoByteArraySearchTest {
 
     @Test
     fun toByteArray(){
-        println(arrayAutoByteArray.toByteArray(0, 5).toString(Charsets.US_ASCII))
+
     }
 
     @After

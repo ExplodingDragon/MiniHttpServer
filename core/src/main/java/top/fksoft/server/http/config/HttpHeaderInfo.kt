@@ -107,8 +107,8 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
     @Throws(Exception::class)
     override fun close() {
         synchronized(postFileArray) {
-            for (entry in postFileArray.iterator()) {
-                entry.value.close()
+            for (value in postFileArray.values) {
+                value.close()
             }
         }
         rawPostArray.close()
@@ -196,8 +196,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
          * # 得到只读header对象
          * @return HttpHeaderInfo 绑定的 Header 对象
          */
-        fun getReader() = this@HttpHeaderInfo
-
+        val reader = this@HttpHeaderInfo
         /**
          * # 添加一个Header Header 属性
          *
@@ -212,6 +211,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
          * # 仅用于打印 DEBUG 信息 调试  ...
          */
         fun printDebug() {
+            return
             for (key in headerArray.keys) {
                 logger.debug("header's Key=$key,value=${headerArray[key]};")
             }

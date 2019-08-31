@@ -69,7 +69,7 @@ class DefaultHeaderReader : HeaderReaderFactory() {
 
         val i = location.indexOf('?')
         //开始判断请求类型
-        val infoReader = edit.getReader()
+        val infoReader = edit.reader
         if (httpType.startsWith(HttpConstant.METHOD_GET)) {
             edit.setMethod(HttpConstant.METHOD_GET)
             //GET
@@ -117,9 +117,8 @@ class DefaultHeaderReader : HeaderReaderFactory() {
     }
 
 
-    override fun readHeaderPostData(edit: HttpHeaderInfo.Edit): ResponseCode {
-
-        val headerInfo = edit.run { getReader() }
+    override fun readHeaderPostData(httpHeader: HttpHeaderInfo.Edit): ResponseCode {
+        val headerInfo = httpHeader.reader
         val contentType = headerInfo.getHeader(HttpConstant.HEADER_KEY_CONTENT_TYPE)
         val contentLength = headerInfo.getHeader(HttpConstant.HEADER_KEY_CONTENT_LENGTH).toInt()
         val charset = HttpConstant.getValue(contentType, "charset=", defaultResult = "UTF-8")
@@ -132,42 +131,51 @@ class DefaultHeaderReader : HeaderReaderFactory() {
         }
         val autoByteArray = autoByteArrayOutputStream.autoByteArray
         val search = autoByteArray.search
-        edit.setRawPostByteArray(autoByteArray)
-        val arraySearch = autoByteArray.openSearch()
+        httpHeader.setRawPostByteArray(autoByteArray)
         if (HttpConstant.HEADER_CONTENT_TYPE_URLENCODED in contentType) {
             //此为普通的POST 请求方式，可以用类似于GET 数据解析的方式来进行解析
-            val line = autoByteArray.toString()
-            logger.debug("raw Post data:$line")
-            edit.addForms(URLDecoder.decode(line, charset))
+            val line = autoByteArray.toString(Charsets.UTF_8)
+            logger.debug("原始文本Post数据:[$line]")
+            httpHeader.addForms(URLDecoder.decode(line, charset))
         } else if (HttpConstant.HEADER_CONTENT_TYPE_FORM_DATA in contentType) {
             //另一种标准POST请求的方式
             val boundary = HttpConstant.getValue(contentType, "boundary=", UNKNOWN_VALUE)
             if (boundary == UNKNOWN_VALUE) {
                 //不存在POST 分割字符串，所以此POST 请求异常
-                logger.warn("boundary not found.")
+                logger.warn("未发现boundary分割线.")
                 return ResponseCode.HTTP_BAD_REQUEST
             }
             val postDataSpit = "--$boundary\r\n".toByteArray()
             val postDataEndSpit = "--$boundary--".toByteArray()
             val postArgs = search.spit(postDataSpit)
             postArgs.removeLast()
-            postArgs.addLast(search.search(postDataEndSpit) -1 )
+            postArgs.addLast(search.search(postDataEndSpit) - 1)
             //处理尾部索引
             logger.debug("POST 请求下存在 ${postArgs.size / 2} 个数据块.")
             for (i in postArgs.indices step 2) {
                 val start = postArgs[i]
                 val end = postArgs[i + 1] - 2
                 val typeLine = search.readLine(start)!!
-                val name = HttpConstant.getValue(typeLine, "name=", defaultResult = UNKNOWN_VALUE).replace("\"", "")
-                val fileName = HttpConstant.getValue(typeLine, "filename=", defaultResult = UNKNOWN_VALUE)
+                var name = HttpConstant.getValue(typeLine, "name=", defaultResult = UNKNOWN_VALUE)
+                name = name.substring(1, name.length - 1)
+                var fileName = HttpConstant.getValue(typeLine, "filename=", defaultResult = UNKNOWN_VALUE)
                 if (fileName == UNKNOWN_VALUE) {
                     //表示此POST块为表单
                     val index = search.readLines(start, 2)
-                    val data = autoByteArray.toByteArray(index, end).toString(Charsets.UTF_8)
-                    logger.debug("POST DATA ${(i + 2)/2}:[name=$name,data=$data]")
-                    edit.addForm(name,data)
+                    val bytes = autoByteArray.toByteArray(index, end)
+                    val data = bytes.toString(Charsets.UTF_8)
+                    logger.debug("POST DATA ${(i + 2) / 2}:[name=$name,data=$data]")
+                    httpHeader.addForm(name, data)
                 } else {
+                    fileName = fileName.substring(1, fileName.length - 1)
                     //表示此POST块为文件
+                    val contentTypeIndex = search.readLines(start, 1)
+                    val postDataIndex = search.readLines(start, 3)
+                    val contentTypeStr = search.readLine(contentTypeIndex)!!.split(":")[1].trim()
+                    val postFile = File(httpHeader.reader.serverConfig.tempDirectory, "${rawFileName}_${name}")
+                    val postAutoArray = autoByteArray.copyOf(postFile, postDataIndex + 1, end + 1)
+                    httpHeader.addFormFile(name, HttpHeaderInfo.PostFileItem(name, postAutoArray, contentTypeStr, fileName))
+                    logger.debug("POST FILE ${(i + 2) / 2}:[name=$name,size=${postAutoArray.size}]")
 
                 }
             }

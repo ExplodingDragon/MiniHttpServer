@@ -10,7 +10,7 @@ import kotlin.random.Random
  * @author ExplodingDragon
  * @version 1.0
  */
-class AutoByteArrayOutputStream(private val tempFile: File = getTempFile("${Random.nextDouble()}"), private val maxByteArraySize: Int = 8192) : OutputStream() {
+class AutoByteArrayOutputStream(private val tempFile: File = getTempFile("${Random.nextDouble()}"), private val maxByteArraySize: Int = 4096) : OutputStream() {
     @Volatile
     private var isClose: Boolean = false
     private var byteArray = ByteArray(32)
@@ -55,9 +55,9 @@ class AutoByteArrayOutputStream(private val tempFile: File = getTempFile("${Rand
             return
         }
         if (useByteArray) {
-            writeByteArray(b, 0, b.size)
+            writeByteArray(b, 0, len)
         } else {
-            writeFile(b, 0, b.size)
+            writeFile(b, 0, len)
         }
 
     }
