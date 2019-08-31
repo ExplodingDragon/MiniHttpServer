@@ -2,7 +2,7 @@ package top.fksoft.server.http.config
 
 import top.fksoft.server.http.config.HttpConstant.PROPERTIES_KEY.SERVER_PORT
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.CloseUtils
+import java.io.Closeable
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.ConcurrentHashMap
@@ -18,14 +18,14 @@ import java.util.concurrent.ConcurrentHashMap
  * @author ExplodingDragon
  * @version 1.0
  */
-class ServerConfig(val serverPort :Int):CloseUtils.Closeable{
+class ServerConfig(val serverPort :Int): Closeable {
 
 
     private val logger = Logger.getLogger(ServerConfig::class)
     private val httpPropertiesMap = ConcurrentHashMap<String, String>()
 
 
-    val httpExecuteMap = ConcurrentHashMap<String, HttpExecuteBinder>()
+    val httpExecuteMap = ConcurrentHashMap<String, HttpServletBinder>()
 
 
     /**
@@ -135,10 +135,10 @@ class ServerConfig(val serverPort :Int):CloseUtils.Closeable{
 
     /**
      * 添加一个监听方法
-     * @param binder HttpExecuteBinder
+     * @param binder HttpServletBinder
      * @return Boolean
      */
-    fun addHttpExecuteBinder(binder: HttpExecuteBinder):Boolean{
+    fun addHttpExecuteBinder(binder: HttpServletBinder):Boolean{
         if (httpExecuteMap.contains(binder.path)) {
             return false
         }else{

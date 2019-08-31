@@ -6,6 +6,7 @@ buildscript {
     ext.kotlin_version = '1.3.21'
 
     repositories {
+        mavenLocal()
         google()
         jcenter()
     }
@@ -16,14 +17,15 @@ buildscript {
     }
 }
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 
 allprojects {
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/public/' }
         mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/public/' }
         google()
         mavenCentral()
         jcenter()
@@ -37,7 +39,6 @@ task clean(type: Delete) {
     for(index in 0..(size-1) ){
         def projectIndex = project.allprojects[index]
         def printMessage = "Clear the compilation cache of :${projectIndex.name}"
-
         println "${String.format("%-50s",printMessage)} ... [OK]"
         delete projectIndex.buildDir
     }

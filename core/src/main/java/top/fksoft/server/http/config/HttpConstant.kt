@@ -39,6 +39,11 @@ object HttpConstant {
     const val METHOD_POST = "POST"
 
     /**
+     * Http 下未知请求的表示方法
+     */
+    const val METHOD_UNKNOWN = "UNKNOWN"
+
+    /**
      *  一个系统属性值，可得到系统临时目录位置
      */
     var PROPERTY_SYSTEM_TEMP_DIR: String = System.getProperty("java.io.tmpdir")

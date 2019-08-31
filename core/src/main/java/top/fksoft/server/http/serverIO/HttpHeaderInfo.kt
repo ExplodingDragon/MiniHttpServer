@@ -1,9 +1,10 @@
-package top.fksoft.server.http.config
+package top.fksoft.server.http.serverIO
 
 import jdkUtils.data.StringUtils
+import top.fksoft.server.http.config.HttpConstant
+import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.CloseUtils
 import top.fksoft.server.http.utils.autoByteArray.AutoByteArray
 import top.fksoft.server.http.utils.autoByteArray.DefaultAutoByteArray
 import java.io.Closeable
@@ -21,7 +22,7 @@ import kotlin.random.Random
  * @author ExplodingDragon
  * @version 1.0
  */
-class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig) : CloseUtils.Closeable {
+class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig) : Closeable {
     var charset: Charset = Charsets.UTF_8
     private val logger = Logger.getLogger(this)
     private val edit = Edit()
@@ -207,11 +208,8 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
             headerArray[key] = value.trim()
         }
 
-        /**
-         * # 仅用于打印 DEBUG 信息 调试  ...
-         */
+
         fun printDebug() {
-            return
             for (key in headerArray.keys) {
                 logger.debug("header's Key=$key,value=${headerArray[key]};")
             }

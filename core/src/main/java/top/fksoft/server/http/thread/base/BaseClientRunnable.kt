@@ -1,10 +1,11 @@
-package top.fksoft.server.http.runnable.base
+package top.fksoft.server.http.thread.base
 
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.CloseUtils
+import top.fksoft.server.http.utils.CloseableUtils
+import java.io.Closeable
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -21,7 +22,7 @@ import java.net.SocketTimeoutException
  * @version 1.0
  */
 abstract class BaseClientRunnable(protected val httpServer: HttpServer, protected val client: Socket, val remoteAddress: NetworkInfo)
-    : Runnable, CloseUtils.Closeable {
+    : Runnable, Closeable {
     private val logger = Logger.getLogger(BaseClientRunnable::class)
 
     protected val serverConfig: ServerConfig = httpServer.serverConfig
@@ -45,7 +46,7 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
 
         try {
             //销毁
-            CloseUtils.close(this)
+            CloseableUtils.close(this)
         } catch (e: Exception) {
             logger.warn("在销毁来自%s的Http请求中发生错误.", e, remoteAddress)
         }
@@ -65,7 +66,7 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
     @Throws(Exception::class)
     override fun close() {
         clear()
-        CloseUtils.close(client)
+        CloseableUtils.close(client)
         logger.debug("已完全关闭$remoteAddress 的连接.")
     }
 

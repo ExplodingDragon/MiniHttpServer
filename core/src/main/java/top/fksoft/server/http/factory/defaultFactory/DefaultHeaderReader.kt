@@ -2,13 +2,15 @@ package top.fksoft.server.http.factory.defaultFactory
 
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpConstant.UNKNOWN_VALUE
-import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
+import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.factory.HeaderReaderFactory
 import top.fksoft.server.http.logcat.Logger
+import top.fksoft.server.http.serverIO.HttpHeaderInfo
 import top.fksoft.server.http.utils.DataReaderUtils
 import top.fksoft.server.http.utils.autoByteArray.AutoByteArrayOutputStream
 import java.io.File
+import java.io.InputStream
 import java.net.URLDecoder
 import java.nio.charset.Charset
 
@@ -29,7 +31,7 @@ import java.nio.charset.Charset
  * @version 1.0
  */
 @Deprecated(message = "存在严重的安全问题！", level = DeprecationLevel.WARNING)
-class DefaultHeaderReader : HeaderReaderFactory() {
+class DefaultHeaderReader(config: ServerConfig, inputStream: InputStream) : HeaderReaderFactory(config, inputStream) {
     private val logger = Logger.getLogger(DefaultHeaderReader::class)
     @Throws(Exception::class)
     override fun readHeaderInfo(edit: HttpHeaderInfo.Edit): ResponseCode {
@@ -95,7 +97,8 @@ class DefaultHeaderReader : HeaderReaderFactory() {
             }
         } else {
             //暂无法解析 除 GET 和 POST 以外的其他方法
-            logger.warn("未知请求协议：$httpType")
+            edit.setMethod(HttpConstant.METHOD_UNKNOWN)
+            logger.warn("未知请求协议：[$httpType]")
             return ResponseCode.HTTP_BAD_METHOD
             //协议错误，返回 405 错误
         }

@@ -58,7 +58,7 @@ interface AutoByteArray : Closeable {
         inputStream.skip(index)
         val array = ByteArray(1024)
         while (true){
-            var i = inputStream.read(array)
+            inputStream.read(array)
             if (length >= 1024){
                 length-=1024
                 outputStream.write(array)

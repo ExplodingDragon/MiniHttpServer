@@ -1,6 +1,6 @@
-package top.fksoft.server.http.factory
+package top.fksoft.server.http.logcat.factory
 
-import top.fksoft.server.http.factory.defaultFactory.DefaultLog
+import top.fksoft.server.http.logcat.factory.simple.DefaultLog
 import kotlin.reflect.KClass
 
 /**

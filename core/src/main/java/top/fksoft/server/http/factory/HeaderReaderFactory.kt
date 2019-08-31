@@ -1,13 +1,11 @@
 package top.fksoft.server.http.factory
 
-import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.factory.defaultFactory.DefaultHeaderReader
-import top.fksoft.server.http.runnable.ClientAcceptRunnable
-import top.fksoft.server.http.utils.CloseUtils
-import java.io.IOException
-import java.io.OutputStream
+import top.fksoft.server.http.serverIO.HttpHeaderInfo
+import java.io.Closeable
+import java.io.InputStream
 import kotlin.reflect.KClass
 
 /**
@@ -25,33 +23,7 @@ import kotlin.reflect.KClass
  * @author ExplodingDragon
  * @version 1.0
  */
-abstract class HeaderReaderFactory : CloseUtils.Closeable {
-    private var runnable: ClientAcceptRunnable? = null
-    private var config: ServerConfig? = null
-    protected val inputStream by lazy {
-        runnable!!.inputStream
-    }
-
-
-
-    protected val outputStream: OutputStream
-        @Throws(IOException::class)
-        get() = runnable!!.outputStream
-
-    /**
-     *
-     * HTTP Header 预读取的初始化构造方法
-     *
-     *
-     * 此方法将在初始化类后由子线程调用此方法进行初始化
-     *
-     * @param config
-     * @param runnable
-     */
-    fun onCreate(config: ServerConfig, runnable: ClientAcceptRunnable) {
-        this.config = config
-        this.runnable = runnable
-    }
+abstract class HeaderReaderFactory(protected val config: ServerConfig,protected val inputStream:InputStream) : Closeable {
 
 
     /**
@@ -104,8 +76,11 @@ abstract class HeaderReaderFactory : CloseUtils.Closeable {
     companion object {
         @JvmStatic
         @Throws(IllegalAccessException::class, InstantiationException::class)
-        fun createHttpHeaderReader(headerFactory: KClass<out HeaderReaderFactory>): HeaderReaderFactory {
-            return headerFactory.java.newInstance()
+        fun createHttpHeaderReader(headerFactory: KClass<out HeaderReaderFactory>,config: ServerConfig, inputStream:InputStream): HeaderReaderFactory {
+            val clazz = headerFactory.java
+            val constructor = clazz.getDeclaredConstructor(ServerConfig::class.java, InputStream::class.java)
+            constructor.isAccessible = true
+            return constructor.newInstance(config,inputStream)
         }
         @JvmStatic
         fun getDefault() = DefaultHeaderReader::class

@@ -1,7 +1,7 @@
 package top.fksoft.server.http.config
 
 import jdkUtils.data.StringUtils
-import top.fksoft.server.http.client.ClientResponse
+import top.fksoft.server.http.serverIO.ClientResponse
 import java.io.ByteArrayInputStream
 
 /**

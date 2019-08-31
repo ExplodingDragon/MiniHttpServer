@@ -1,14 +1,16 @@
-package top.fksoft.server.http.client
+package top.fksoft.server.http.servlet.base
 
-import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.CloseUtils
+import top.fksoft.server.http.serverIO.ClientResponse
+import top.fksoft.server.http.serverIO.HttpHeaderInfo
+import top.fksoft.server.http.utils.CloseableUtils
+import java.io.Closeable
 
 /**
  * @author ExplodingDragon
  * @version 1.0
  */
-abstract class BaseHttpExecute protected constructor(private val headerInfo: HttpHeaderInfo,private val  response: ClientResponse) : CloseUtils.Closeable {
+abstract class BaseHttpServlet protected constructor(private val headerInfo: HttpHeaderInfo, private val  response: ClientResponse) : Closeable {
     protected var logger = Logger.getLogger(javaClass.kotlin)
 
     var hasPost = false
@@ -77,7 +79,7 @@ abstract class BaseHttpExecute protected constructor(private val headerInfo: Htt
             logger.warn("在 ${headerInfo.remoteInfo} 中发生异常！",e)
         } finally {
             try {
-                CloseUtils.close(this)
+                CloseableUtils.close(this)
             } catch (e: Exception) {
                 logger.warn("在 ${headerInfo.remoteInfo} 结束生命周期中发生异常！",e)
             }

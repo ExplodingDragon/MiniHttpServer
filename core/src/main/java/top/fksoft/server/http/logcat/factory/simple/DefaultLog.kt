@@ -1,6 +1,6 @@
-package top.fksoft.server.http.factory.defaultFactory
+package top.fksoft.server.http.logcat.factory.simple
 
-import top.fksoft.server.http.factory.LogFactory
+import top.fksoft.server.http.logcat.factory.LogFactory
 import top.fksoft.server.http.logcat.Log
 import java.text.SimpleDateFormat
 import java.util.*
@@ -10,7 +10,7 @@ import kotlin.reflect.KClass
  * @author ExplodingDragon
  * @version 1.0
  */
-class DefaultLog :LogFactory{
+class DefaultLog : LogFactory {
     private val format = SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault())
     override fun outputLog(millisecond: Long, level: Int, clazz: KClass<*>, message: String, exception: Throwable?) {
         val output = StringBuilder()

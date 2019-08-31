@@ -44,12 +44,12 @@ object ContentTypeUtils {
     fun file2Application(file: File) = extension2Application(file.absolutePath)
 
     fun extension2Application(externsion: String): String {
-        var externsion = externsion
-        val i = externsion.lastIndexOf(".")
+        var newExternsion = externsion
+        val i = newExternsion.lastIndexOf(".")
         if (i != -1) {
-            externsion = externsion.substring(i).toUpperCase().trim { it <= ' ' }
-            if (contentTypes.containsKey(externsion)) {
-                return contentTypes[externsion]!!
+            newExternsion = newExternsion.substring(i).toUpperCase().trim { it <= ' ' }
+            if (contentTypes.containsKey(newExternsion)) {
+                return contentTypes[newExternsion]!!
             }
         }
         return contentTypes["Unknown".toUpperCase()]!!

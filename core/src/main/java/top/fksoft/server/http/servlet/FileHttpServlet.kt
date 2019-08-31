@@ -1,11 +1,11 @@
-package top.fksoft.server.http.example
+package top.fksoft.server.http.servlet
 
 import jdkUtils.data.StringUtils
 import jdkUtils.io.FileUtils
-import top.fksoft.server.http.client.BaseHttpExecute
-import top.fksoft.server.http.client.ClientResponse
+import top.fksoft.server.http.servlet.base.BaseHttpServlet
+import top.fksoft.server.http.serverIO.ClientResponse
 import top.fksoft.server.http.config.HttpConstant
-import top.fksoft.server.http.config.HttpHeaderInfo
+import top.fksoft.server.http.serverIO.HttpHeaderInfo
 import java.io.File
 import java.util.*
 
@@ -13,7 +13,7 @@ import java.util.*
  * @author ExplodingDragon
  * @version 1.0
  */
-open class FileHttpExecute protected constructor(headerInfo: HttpHeaderInfo, response: ClientResponse) : BaseHttpExecute(headerInfo, response) {
+open class FileHttpServlet protected constructor(headerInfo: HttpHeaderInfo, response: ClientResponse) : BaseHttpServlet(headerInfo, response) {
     init {
         hasPost = true
     }

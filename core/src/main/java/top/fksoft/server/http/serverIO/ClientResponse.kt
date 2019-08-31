@@ -1,14 +1,11 @@
-package top.fksoft.server.http.client
+package top.fksoft.server.http.serverIO
 
 import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.HttpConstant
-import top.fksoft.server.http.config.HttpHeaderInfo
 import top.fksoft.server.http.config.ResponseCode
-import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.CloseUtils
+import top.fksoft.server.http.serverIO.base.BaseResponse
 import top.fksoft.server.http.utils.ContentTypeUtils
 import java.io.*
-import java.net.Socket
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
@@ -22,33 +19,21 @@ import kotlin.collections.ArrayList
  */
 
 
-class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client: Socket) : CloseUtils.Closeable {
-    val logger = Logger.getLogger(this)
+class ClientResponse(private val headerInfo: HttpHeaderInfo, private val outputStream: OutputStream): BaseResponse(headerInfo, outputStream) {
     var responseContentType: String = HttpConstant.HEADER_VALUE_TEXT_HTML
     var responseInputStream: InputStream? = null
     private val responseMap = ConcurrentHashMap<String, String>()
     private var isPrintHeader = false
-    private var ignorePrintWriter: PrintWriter? = null
-    val outputStream: OutputStream
-        get() = client.getOutputStream()
-    val printWriter: PrintWriter
-        get() {
-            if (ignorePrintWriter == null) {
-                ignorePrintWriter = PrintWriter(OutputStreamWriter(outputStream, headerInfo.charset), true)
-            }
-            return ignorePrintWriter!!
-        }
+
+    val printWriter by lazy {
+        PrintWriter(OutputStreamWriter(outputStream, headerInfo.charset), true)
+    }
 
 
     init {
         addResponseHeader("Server", HttpConstant.LIB_NAME)
     }
 
-
-    /**
-     * 返回的请求状态码
-     */
-    var responseCode: ResponseCode = ResponseCode.HTTP_OK
 
     /**
      * # 输出字符到客户端（实时）
@@ -94,7 +79,7 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client:
     }
 
 
-    fun flashResponse() {
+    override fun flashResponse(): Boolean {
         val available = responseInputStream?.let {
             if (responseInputStream is FileInputStream) {
                 val declaredField = FileInputStream::class.java.getDeclaredField("path")
@@ -104,11 +89,7 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client:
                 responseInputStream!!.available().toLong()
             }
         }.let {
-            if (it == null) {
-                0
-            } else {
-                it
-            }
+            it ?: 0
         }
         val rangeList = ArrayList<String>()
         responseInputStream?.let {
@@ -121,25 +102,23 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client:
                     val range1 = responseMap["Last-Modified"].let {
                         it ?: HttpConstant.UNKNOWN_VALUE
                     }
-                    val range2 = responseMap["ETag"].let {
-                        it ?: HttpConstant.UNKNOWN_VALUE
-                    }
+                    val range2 = responseMap["ETag"] ?: HttpConstant.UNKNOWN_VALUE
                     if (ifRange == range1 || ifRange == range2 && responseInputStream is FileInputStream) {
                         val rangeData = allRange.split("=")[1]
                         val ranges = rangeData.split(",")
-                        for ((index, range) in ranges.withIndex()) {
+                        for (range in ranges) {
                             val i = range.indexOf("-")
-                            if (i == 0) {
-                                rangeList.add("${available - 1 - range.substring(1).toLong()}-${available - 1} ")
-                            } else if (i == range.length - 1) {
-                                val toLong = range.substring(0, i).toLong()
-                                rangeList.add("$toLong-${available - 1}")
-                            } else {
-                                rangeList.add(range)
+                            when (i) {
+                                0 -> rangeList.add("${available - 1 - range.substring(1).toLong()}-${available - 1} ")
+                                range.length - 1 -> {
+                                    val toLong = range.substring(0, i).toLong()
+                                    rangeList.add("$toLong-${available - 1}")
+                                }
+                                else -> rangeList.add(range)
                             }
                         }
                         if (logger.debug) {
-                            logger.debug("发现断点续传请求！${Arrays.toString(rangeList.toTypedArray())}")
+                            logger.debug("发现断点续传请求！${rangeList.toTypedArray().contentToString()}")
                         }
                         responseCode = ResponseCode.HTTP_PARTIAL
                         var length: Long = 0
@@ -176,13 +155,13 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client:
                         val end = split[1].toLong()
                         accessFile.seek(start)
                         var len = end - start
-                        while (true){
-                            if (len >= b.size){
-                                len -= accessFile.read(b,0,b.size)
+                        while (true) {
+                            if (len >= b.size) {
+                                len -= accessFile.read(b, 0, b.size)
                                 output.write(b)
-                            }else{
-                                accessFile.read(b,0,len.toInt())
-                                output.write(b,0,len.toInt())
+                            } else {
+                                accessFile.read(b, 0, len.toInt())
+                                output.write(b, 0, len.toInt())
                                 break
                             }
                             output.flush()
@@ -205,6 +184,7 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo, private val client:
             }
 
         }
+        return true
     }
 
     private val format = SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss", Locale.ENGLISH)

@@ -1,10 +1,10 @@
-package top.fksoft.server.http.runnable
+package top.fksoft.server.http.thread
 
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.CloseUtils
+import java.io.Closeable
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.net.ServerSocket
@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit
  */
 class SocketListenerRunnable @Throws(IOException::class)
 
-constructor(private val httpServer: HttpServer, private val serverSocket: ServerSocket) : Runnable, CloseUtils.Closeable {
+constructor(private val httpServer: HttpServer, private val serverSocket: ServerSocket) : Runnable, Closeable {
 
     @Volatile
     var accept: Boolean = false

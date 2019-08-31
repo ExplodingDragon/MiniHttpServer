@@ -79,22 +79,28 @@ class DataReaderUtils(private val inputStream: InputStream, private val charset:
 
 
     fun copy(output: OutputStream, length: Int): Boolean{
-        var result = false
-        var len2 = 0
+        var  result: Boolean
+        var len2 = length
         try {
-            val bytes = ByteArray(1024)
+            val bytes = ByteArray(2048)
                 while (true){
                     if (inputStream.available() == 0) {
                         return len2 >=length
                     }
                     val readSize = inputStream.read(bytes, 0, bytes.size)
-                    len2 += readSize
-                    output.write(bytes,0,readSize)
+                    if (len2 < bytes.size){
+                        output.write(bytes,0,len2)
+                        break
+                    }else{
+                        output.write(bytes,0,readSize)
+                    }
                     output.flush()
+                    len2 -= readSize
                 }
-                result = true
+            result = true
         }catch (e:Exception){
             logger.debug("copy error.",e)
+            result = false
         }
         return result
     }
