@@ -47,7 +47,7 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, private val n
                 val clientResponse:BaseResponse = bindAutoCloseable(ClientResponse(httpHeaderInfo,bindAutoCloseable(client.getOutputStream()!!),responseData))
                 // 建立销毁索引方便结束后销毁
                 if (clientResponse.flashResponse()) {
-                    logger.info("请求类型:[${httpHeaderInfo.method}]; 请求路径:[${httpHeaderInfo.path}]; 返回状态码:[${clientResponse.finalResponseCode}]")
+                    logger.info("请求类型:[${httpHeaderInfo.method}]; 请求路径:[${httpHeaderInfo.path}]; 返回状态码:[${responseData.responseCode}]")
                 }else{
                     logger.warn("在回馈来自[$networkInfo]的连接中失败了.")
                 }

@@ -11,6 +11,6 @@ import kotlin.text.Charsets.UTF_8
  */
 class PkgHtmlResponseData(override var responseCode: ResponseCode = ResponseCode.HTTP_OK, packagePath: String, charset: Charset = UTF_8):HtmlResponseData(){
     init {
-        println(StringUtils.inputStreamToString(javaClass.getResourceAsStream("/res/resultHtml/400.html"),charset.name()))
+        println(StringUtils.inputStreamToString(javaClass.getResourceAsStream(packagePath),charset.name()))
     }
 }
