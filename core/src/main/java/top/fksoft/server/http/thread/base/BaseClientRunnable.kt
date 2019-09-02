@@ -6,12 +6,10 @@ import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.utils.CloseableUtils
 import java.io.Closeable
-import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
 import java.net.Socket
 import java.net.SocketException
 import java.net.SocketTimeoutException
+import java.util.concurrent.ConcurrentLinkedQueue
 
 /**
  *
@@ -23,15 +21,12 @@ import java.net.SocketTimeoutException
  */
 abstract class BaseClientRunnable(protected val httpServer: HttpServer, protected val client: Socket, val remoteAddress: NetworkInfo)
     : Runnable, Closeable {
+    private val closeableList = ConcurrentLinkedQueue<Closeable>()
+
     private val logger = Logger.getLogger(BaseClientRunnable::class)
 
     protected val serverConfig: ServerConfig = httpServer.serverConfig
-    val inputStream: InputStream
-        @Throws(IOException::class)
-        get() = client.getInputStream()
-    val outputStream: OutputStream
-        @Throws(IOException::class)
-        get() = client.getOutputStream()
+
 
     override fun run() {
         try {
@@ -39,7 +34,7 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
         } catch (e: Exception) {
             when (e) {
                 is SocketTimeoutException -> logger.warn("$remoteAddress 发送未知请求，已强制断开！")
-                is SocketException -> logger.warn("$remoteAddress 远程主机强制断开连接！",e)
+                is SocketException -> logger.warn("$remoteAddress 远程主机强制断开连接！", e)
                 else -> logger.warn("在处理来自%s的Http请求中发生错误.", e, remoteAddress)
             }
         }
@@ -65,19 +60,42 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
 
     @Throws(Exception::class)
     override fun close() {
-        clear()
-        CloseableUtils.close(client)
+        closeableList.add(client)
+        synchronized(closeableList) {
+            closeableList.forEach {
+                try {
+                    it.close()
+                } catch (e: Exception) {
+                    logger.debug("关闭${it.javaClass.name} 时错误！.", e)
+                }
+            }
+        }
+        closeableList.clear()
         logger.debug("已完全关闭$remoteAddress 的连接.")
     }
 
+
     /**
+     * #绑定一个自动销毁事件
      *
-     * 清空所有用于客户端请求的数据
+     * 针对一些继承于 ``` java.io.Closeable``` 的类，
+     * 需要在此连接完成后进行销毁，保证程序的健壮性，可通过此方法进行反向
+     * 遍历销毁
      *
-     *
-     * @throws IOException
+     * @param args T
+     * @return T
      */
-    @Throws(IOException::class)
-    internal abstract fun clear()
+    fun <T : Closeable> bindAutoCloseable(args: T): T {
+        synchronized(closeableList) {
+            closeableList.add(args)
+        }
+        return args
+    }
+
+    fun <T : Closeable> bindAutoCloseables(vararg args: T) {
+        synchronized(closeableList) {
+            closeableList.addAll(args)
+        }
+    }
 
 }

@@ -42,7 +42,6 @@ class AutoByteArraySearchTest {
 
     @Test
     fun toByteArray(){
-
     }
 
     @After

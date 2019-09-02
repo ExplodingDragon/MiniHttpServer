@@ -64,9 +64,11 @@ class AutoByteArraySearch(private val autoByteArray: AutoByteArray) {
             }
             startIndex = search + 1
         }
-        if (list.last != (autoByteArray.size - 1)) {
+        if (!list.isEmpty() && list.last != (autoByteArray.size - 1)) {
             list.add(autoByteArray.size - 1)
         }
+
+
 
         return list
     }
@@ -203,6 +205,13 @@ class AutoByteArraySearch(private val autoByteArray: AutoByteArray) {
         return result + 1
 
     }
+
+
+
+
+
+
+
 
 
 }

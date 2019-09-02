@@ -1,9 +1,9 @@
-package top.fksoft.server.http.factory
+package top.fksoft.server.http.server.factory
 
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.factory.defaultFactory.DefaultHeaderReader
-import top.fksoft.server.http.serverIO.HttpHeaderInfo
+import top.fksoft.server.http.server.factory.Instance.DefaultHeaderReader
+import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
 import java.io.Closeable
 import java.io.InputStream
 import kotlin.reflect.KClass
@@ -76,7 +76,7 @@ abstract class HeaderReaderFactory(protected val config: ServerConfig,protected 
     companion object {
         @JvmStatic
         @Throws(IllegalAccessException::class, InstantiationException::class)
-        fun createHttpHeaderReader(headerFactory: KClass<out HeaderReaderFactory>,config: ServerConfig, inputStream:InputStream): HeaderReaderFactory {
+        fun createHttpHeaderReader(headerFactory: KClass<out HeaderReaderFactory>, config: ServerConfig, inputStream:InputStream): HeaderReaderFactory {
             val clazz = headerFactory.java
             val constructor = clazz.getDeclaredConstructor(ServerConfig::class.java, InputStream::class.java)
             constructor.isAccessible = true

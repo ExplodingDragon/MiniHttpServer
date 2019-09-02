@@ -21,7 +21,7 @@ public class CalculateUtils {
         };
         byte[] mdbytes = md.digest();
 
-        // convert the byte to hex format
+        // convert the byte to hex webDateFormat
         for (int i = 0; i < mdbytes.length; i++) {
             md5.append(Integer.toString((mdbytes[i] & 0xff) + 0x100, 16).substring(1));
         }

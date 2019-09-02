@@ -1,4 +1,4 @@
-package top.fksoft.server.http.serverIO
+package top.fksoft.server.http.server.serverIO
 
 import jdkUtils.data.StringUtils
 import top.fksoft.server.http.config.HttpConstant
@@ -25,7 +25,7 @@ import kotlin.random.Random
 class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig) : Closeable {
     var charset: Charset = Charsets.UTF_8
     private val logger = Logger.getLogger(this)
-    private val edit = Edit()
+    val edit = Edit()
 
     /**
      * 服务器下的请求类型

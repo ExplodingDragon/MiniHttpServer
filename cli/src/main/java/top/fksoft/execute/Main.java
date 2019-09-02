@@ -18,7 +18,7 @@ public class Main {
         try {
             HttpServer httpServer = new HttpServer(8080);
             ServerConfig serverConfig = httpServer.getServerConfig();
-            serverConfig.setWorkDirectory(new File("E:\\"));
+            serverConfig.setWorkDirectory(new File("D:\\"));
             httpServer.start();
         }catch (Exception e){
             logger.error("启动服务器时出现问题 ！",e);

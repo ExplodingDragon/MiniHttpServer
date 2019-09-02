@@ -1,8 +1,8 @@
 package top.fksoft.server.http
 
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.factory.FindHttpServletFactory
-import top.fksoft.server.http.factory.HeaderReaderFactory
+import top.fksoft.server.http.server.factory.FindHttpServletFactory
+import top.fksoft.server.http.server.factory.HeaderReaderFactory
 import top.fksoft.server.http.logcat.factory.LogFactory
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.thread.SocketListenerRunnable
@@ -45,7 +45,7 @@ class HttpServer
     /**
      * 服务器路径查询方法
      */
-    val findHttpExecute =  FindHttpServletFactory.getDefault(serverConfig)
+    val findHttpServletFactory =  FindHttpServletFactory.getDefault(serverConfig)
 
     /**
      * 解析 HTTP请求头的处理类

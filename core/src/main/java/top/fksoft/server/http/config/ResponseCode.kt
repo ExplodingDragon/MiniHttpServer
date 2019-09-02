@@ -1,9 +1,5 @@
 package top.fksoft.server.http.config
 
-import jdkUtils.data.StringUtils
-import top.fksoft.server.http.serverIO.ClientResponse
-import java.io.ByteArrayInputStream
-
 /**
  * @author ExplodingDragon
  * @version 1.0
@@ -265,18 +261,5 @@ data class ResponseCode (val responseCode:Int,val codeMessage:String){
         val HTTP_VERSION = ResponseCode(505,"VERSION")
     }
 
-    fun flashResponseBody(clientResponse: ClientResponse){
-        val code = clientResponse.responseCode.responseCode
-        when (code) {
-            in 500..599  -> {
-                val inputStreamToString = StringUtils.inputStreamToString(javaClass.getResource("/res/resultHtml/50X.html").openStream(), "UTF-8")
-                clientResponse.responseInputStream = ByteArrayInputStream(inputStreamToString.replace("%DATA%","${clientResponse.responseCode}").toByteArray(Charsets.UTF_8))
-            }
-            404 ->{
-                clientResponse.responseInputStream = javaClass.getResource("/res/resultHtml/404.html").openStream()
-            }
-            else -> {
-            }
-        }
-    }
+
 }

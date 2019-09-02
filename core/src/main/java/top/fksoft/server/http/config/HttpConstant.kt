@@ -24,7 +24,6 @@ object HttpConstant {
      * # 最大内存下保存的文件
      */
     const val MAX_RAM_CLIENT_SIZE: Int = 64 * 1024
-    const val EXAMPLE_FILE_PATH_1: String = "/res/resultHtml/FileArray.html"
     const val HEADER_VALUE_TEXT_HTML: String = "text/html;charset=utf-8"
     const val UNKNOWN_VALUE: String = "_ExplodingFKL_By_unknown"
     /**

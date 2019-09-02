@@ -1,10 +1,10 @@
-package top.fksoft.server.http.factory.defaultFactory
+package top.fksoft.server.http.server.factory.Instance
 
-import top.fksoft.server.http.servlet.base.BaseHttpServlet
-import top.fksoft.server.http.serverIO.HttpHeaderInfo
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.servlet.FileHttpServlet
-import top.fksoft.server.http.factory.FindHttpServletFactory
+import top.fksoft.server.http.server.factory.FindHttpServletFactory
+import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
+import top.fksoft.server.http.servlet.Instance.FileHttpServlet
+import top.fksoft.server.http.servlet.BaseHttpServlet
 
 /**
  * @author ExplodingDragon
@@ -12,7 +12,7 @@ import top.fksoft.server.http.factory.FindHttpServletFactory
  */
 class DefaultFindHttpServlet(config: ServerConfig) : FindHttpServletFactory(config) {
 
-    override fun findHttpExecute(info: HttpHeaderInfo): Class<out BaseHttpServlet> {
+    override fun findHttpServlet(info: HttpHeaderInfo): Class<out BaseHttpServlet> {
         val path = info.path.trim()
         val httpExecuteBinder = serverConfig.httpExecuteMap[path.substring(0, path.lastIndexOf('/')).trim()]
         httpExecuteBinder?.let {

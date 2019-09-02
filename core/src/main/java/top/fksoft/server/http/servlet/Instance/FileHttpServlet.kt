@@ -1,11 +1,11 @@
-package top.fksoft.server.http.servlet
+package top.fksoft.server.http.servlet.Instance
 
 import jdkUtils.data.StringUtils
 import jdkUtils.io.FileUtils
-import top.fksoft.server.http.servlet.base.BaseHttpServlet
-import top.fksoft.server.http.serverIO.ClientResponse
-import top.fksoft.server.http.config.HttpConstant
-import top.fksoft.server.http.serverIO.HttpHeaderInfo
+import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
+import top.fksoft.server.http.server.serverIO.responseData.SimpleResponseData
+import top.fksoft.server.http.server.serverIO.responseData.impl.HtmlResponseData
+import top.fksoft.server.http.servlet.BaseHttpServlet
 import java.io.File
 import java.util.*
 
@@ -13,17 +13,12 @@ import java.util.*
  * @author ExplodingDragon
  * @version 1.0
  */
-open class FileHttpServlet protected constructor(headerInfo: HttpHeaderInfo, response: ClientResponse) : BaseHttpServlet(headerInfo, response) {
-    init {
-        hasPost = true
-    }
-
-    @Throws(Exception::class)
-    override fun doGet(headerInfo: HttpHeaderInfo, response: ClientResponse) {
+open class FileHttpServlet (headerInfo: HttpHeaderInfo) : BaseHttpServlet(headerInfo) {
+    override fun doGet(headerInfo: HttpHeaderInfo) {
         val workDirectory = headerInfo.serverConfig.workDirectory
         var acceptFile = File(workDirectory, headerInfo.path.substring(1))
         if (headerInfo.path.endsWith('/')) {
-            var string = StringUtils.inputStreamToString(javaClass.getResource(HttpConstant.EXAMPLE_FILE_PATH_1).openStream(), FileUtils.UTF_8)
+            var string = StringUtils.inputStreamToString(javaClass.getResourceAsStream("/res/resultHtml/ListFiles.html"), FileUtils.UTF_8)
             string = string.replace("%PATH%", headerInfo.path)
             var stringBuilder = StringBuilder()
             if (acceptFile.isDirectory) {
@@ -41,11 +36,20 @@ open class FileHttpServlet protected constructor(headerInfo: HttpHeaderInfo, res
                     stringBuilder.append("<tr><td><a href=\"$name\">$name</a><td>$date</td><td>$lengthStr</td></tr>")
                 }
                 string = string.replace("%TABLE%", stringBuilder.toString())
-                response.println(string)
+                val htmlResponseData = HtmlResponseData()
+                responseData = htmlResponseData
+                htmlResponseData.println(string)
             }
-        } else {
-            response.writeFile(acceptFile)
+        }else{
+            responseData = SimpleResponseData.NOT_FOUND
         }
     }
+
+
+
+    override fun close() {
+    }
+
+
 
 }

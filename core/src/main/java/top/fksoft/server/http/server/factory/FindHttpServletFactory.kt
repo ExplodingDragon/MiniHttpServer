@@ -1,9 +1,9 @@
-package top.fksoft.server.http.factory
+package top.fksoft.server.http.server.factory
 
-import top.fksoft.server.http.serverIO.HttpHeaderInfo
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.factory.defaultFactory.DefaultFindHttpServlet
-import top.fksoft.server.http.servlet.base.BaseHttpServlet
+import top.fksoft.server.http.server.factory.Instance.DefaultFindHttpServlet
+import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
+import top.fksoft.server.http.servlet.BaseHttpServlet
 
 /**
  * @author ExplodingDragon
@@ -17,7 +17,7 @@ abstract class FindHttpServletFactory protected constructor(config: ServerConfig
      * @param info
      * @return
      */
-    abstract fun findHttpExecute(info: HttpHeaderInfo): Class<out BaseHttpServlet>
+    abstract fun findHttpServlet(info: HttpHeaderInfo): Class<out BaseHttpServlet>
 
 
     companion object{

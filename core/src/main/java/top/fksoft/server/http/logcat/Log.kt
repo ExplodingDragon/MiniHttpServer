@@ -2,6 +2,7 @@ package top.fksoft.server.http.logcat
 
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.io.OutputStreamWriter
 import java.io.PrintWriter
 
 abstract class Log {
@@ -78,7 +79,7 @@ abstract class Log {
         @JvmStatic
         fun exceptionToString(exception: Throwable): String {
             val outputStream = ByteArrayOutputStream()
-            val printWriter = PrintWriter(outputStream)
+            val printWriter = PrintWriter(OutputStreamWriter(outputStream, Charsets.UTF_8),true)
             exception.printStackTrace(printWriter)
             printWriter.flush()
             printWriter.close()
@@ -86,8 +87,7 @@ abstract class Log {
                 outputStream.close()
             } catch (e: IOException) {
             }
-
-            return String(outputStream.toByteArray())
+            return String(outputStream.toByteArray()).trim()
         }
     }
 }

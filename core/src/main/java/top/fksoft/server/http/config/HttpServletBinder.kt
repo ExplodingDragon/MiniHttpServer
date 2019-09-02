@@ -1,6 +1,6 @@
 package top.fksoft.server.http.config
 
-import top.fksoft.server.http.servlet.base.BaseHttpServlet
+import top.fksoft.server.http.servlet.BaseHttpServlet
 import java.io.IOException
 
 /**
