@@ -1,7 +1,7 @@
 package top.fksoft.server.http
 
 import org.junit.Test
-import top.fksoft.server.http.server.serverIO.responseData.FileResponseData.Range
+import top.fksoft.server.http.server.serverIO.responseData.impl.raw.FileResponseData.Range
 
 /**
  * @author ExplodingDragon

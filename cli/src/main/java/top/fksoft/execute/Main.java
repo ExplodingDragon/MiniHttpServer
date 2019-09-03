@@ -20,7 +20,7 @@ public class Main {
         try {
             HttpServer httpServer = new HttpServer(8080);
             ServerConfig serverConfig = httpServer.getServerConfig();
-            serverConfig.setWorkDirectory(new File("D:\\"));
+            serverConfig.setWorkDirectory(new File("E:\\"));
             serverConfig.addHttpExecuteBinder(new HttpServletBinder("/i.php", InfoServlet.class,false));
             httpServer.start();
         }catch (Exception e){

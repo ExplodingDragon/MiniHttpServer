@@ -1,4 +1,4 @@
-package top.fksoft.server.http.server.serverIO.responseData
+package top.fksoft.server.http.server.serverIO.responseData.impl.raw
 
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.ResponseCode
@@ -6,6 +6,7 @@ import top.fksoft.server.http.config.ResponseCode.Companion.HTTP_NOT_MODIFIED
 import top.fksoft.server.http.config.ResponseCode.Companion.HTTP_OK
 import top.fksoft.server.http.config.ResponseCode.Companion.HTTP_PARTIAL
 import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
+import top.fksoft.server.http.server.serverIO.responseData.BaseResponseData
 import top.fksoft.server.http.utils.CalculateUtils
 import top.fksoft.server.http.utils.ContentTypeUtils
 import java.io.*
@@ -84,20 +85,24 @@ class FileResponseData(private val httpHeaderInfo: HttpHeaderInfo, private val f
                 val trim = it.trim()
                 val i = trim.indexOf("-")
                 val split = trim.split('-')
-                if (i == 0) {
-                    val l = split[0].toLong()
-                    val element = Range(fileLength - l, fileLength - 1)
-                    rangeFormatList.add(element)
-                    length += element.size
-                } else if (i == trim.length - 1) {
-                    val l = split[0].toLong()
-                    val element = Range(l, fileLength - 1)
-                    rangeFormatList.add(element)
-                    length += element.size
-                } else {
-                    val element = Range(split[0].toLong(), split[1].toLong())
-                    rangeFormatList.add(element)
-                    length += element.size
+                length += when (i) {
+                    0 -> {
+                        val l = split[0].toLong()
+                        val element = Range(fileLength - l, fileLength - 1)
+                        rangeFormatList.add(element)
+                        element.size
+                    }
+                    trim.length - 1 -> {
+                        val l = split[0].toLong()
+                        val element = Range(l, fileLength - 1)
+                        rangeFormatList.add(element)
+                        element.size
+                    }
+                    else -> {
+                        val element = Range(split[0].toLong(), split[1].toLong())
+                        rangeFormatList.add(element)
+                        element.size
+                    }
                 }
             }
             addHeader("Content-Range", "bytes $rangeData/$fileLength")
@@ -171,7 +176,6 @@ class FileResponseData(private val httpHeaderInfo: HttpHeaderInfo, private val f
             inputStream.close()
             val byteArrayOutputStream = ByteArrayOutputStream()
             byteArrayOutputStream.write(b)
-            b = ByteArray(0)
             byteArrayOutputStream.write(file.lastModified().toString(16).toByteArray())
             val crC32 = CalculateUtils.getCRC32(byteArrayOutputStream.toByteArray().inputStream())
             byteArrayOutputStream.close()
