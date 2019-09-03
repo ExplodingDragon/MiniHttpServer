@@ -3,8 +3,9 @@ package top.fksoft.server.http.servlet.Instance
 import jdkUtils.data.StringUtils
 import jdkUtils.io.FileUtils
 import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
+import top.fksoft.server.http.server.serverIO.responseData.FileResponseData
 import top.fksoft.server.http.server.serverIO.responseData.SimpleResponseData
-import top.fksoft.server.http.server.serverIO.responseData.impl.HtmlResponseData
+import top.fksoft.server.http.server.serverIO.responseData.impl.text.HtmlResponseData
 import top.fksoft.server.http.servlet.BaseHttpServlet
 import java.io.File
 import java.util.*
@@ -41,7 +42,12 @@ open class FileHttpServlet (headerInfo: HttpHeaderInfo) : BaseHttpServlet(header
                 htmlResponseData.println(string)
             }
         }else{
-            responseData = SimpleResponseData.NOT_FOUND
+            if (acceptFile.isFile) {
+                responseData = FileResponseData(headerInfo,acceptFile,true)
+
+            }else{
+                responseData = SimpleResponseData.NOT_FOUND
+            }
         }
     }
 

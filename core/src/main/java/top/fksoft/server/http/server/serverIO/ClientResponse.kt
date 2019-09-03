@@ -31,7 +31,9 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo,private val outputSt
     }
 
     override fun flashResponse(): Boolean {
-        header.putAll(responseData.header())
+        val dataHeader = responseData.header()
+        header.putAll(dataHeader)
+        dataHeader.clear()
         if (header.containsKey("Date").not()){
             header["Date"] = responseData.webDateFormat.format(Date())
         }

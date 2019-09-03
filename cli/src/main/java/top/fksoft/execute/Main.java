@@ -1,7 +1,9 @@
 package top.fksoft.execute;
 
 import top.fksoft.execute.config.Config;
+import top.fksoft.execute.servlet.InfoServlet;
 import top.fksoft.server.http.HttpServer;
+import top.fksoft.server.http.config.HttpServletBinder;
 import top.fksoft.server.http.config.ServerConfig;
 import top.fksoft.server.http.logcat.Logger;
 
@@ -19,6 +21,7 @@ public class Main {
             HttpServer httpServer = new HttpServer(8080);
             ServerConfig serverConfig = httpServer.getServerConfig();
             serverConfig.setWorkDirectory(new File("D:\\"));
+            serverConfig.addHttpExecuteBinder(new HttpServletBinder("/i.php", InfoServlet.class,false));
             httpServer.start();
         }catch (Exception e){
             logger.error("启动服务器时出现问题 ！",e);

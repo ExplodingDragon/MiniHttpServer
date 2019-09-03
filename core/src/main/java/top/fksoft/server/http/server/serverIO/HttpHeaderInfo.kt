@@ -101,8 +101,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
      * @return String 返回的数据
      */
     fun getHeader(key: String, defaultValue: String = ""): String {
-        var header = headerArray[key]
-        return if (header == null) defaultValue else header
+        return headerArray[key] ?: defaultValue
     }
 
     @Throws(Exception::class)

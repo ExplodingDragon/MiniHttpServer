@@ -139,10 +139,11 @@ class ServerConfig(val serverPort :Int): Closeable {
      * @return Boolean
      */
     fun addHttpExecuteBinder(binder: HttpServletBinder):Boolean{
-        if (httpExecuteMap.contains(binder.path)) {
+        val path = binder.path.toLowerCase()
+        if (httpExecuteMap.contains(path)) {
             return false
         }else{
-            httpExecuteMap[binder.path] = binder.copy()
+            httpExecuteMap[path] = binder.copy()
             return true
         }
     }

@@ -12,7 +12,7 @@ import java.io.Closeable
  * @author ExplodingDragon
  * @version 1.0
  */
-abstract class BaseHttpServlet  constructor(private val headerInfo: HttpHeaderInfo) : Closeable {
+abstract class BaseHttpServlet constructor(private val headerInfo: HttpHeaderInfo) : Closeable {
     protected val logger = Logger.getLogger(javaClass.kotlin)
 
     protected var hasPost:Boolean = false

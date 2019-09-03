@@ -11,7 +11,7 @@ import java.io.IOException
  * @property bindDirectory Boolean 是否绑定为路径
  * @property path String  最终绑定的路径
  */
-data class HttpServletBinder(private var ignorePath:String, val servletClass:Class<BaseHttpServlet>, var bindDirectory: Boolean = false){
+data class HttpServletBinder(private var ignorePath:String, val servletClass:Class<out BaseHttpServlet>, var bindDirectory: Boolean = false){
 
     val path:String
         get() = ignorePath

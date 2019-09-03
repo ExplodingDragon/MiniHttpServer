@@ -1,7 +1,7 @@
 package top.fksoft.server.http.server.serverIO.responseData
 
 import top.fksoft.server.http.config.ResponseCode
-import top.fksoft.server.http.server.serverIO.responseData.impl.PkgHtmlResponseData
+import top.fksoft.server.http.server.serverIO.responseData.impl.text.PkgHtmlResponseData
 
 /**
  * @author ExplodingDragon

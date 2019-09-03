@@ -6,29 +6,38 @@ package top.fksoft.server.http.server.serverIO.responseData
  */
 
 import top.fksoft.server.http.config.ResponseCode
+import top.fksoft.server.http.logcat.Logger
 import java.io.Closeable
 import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashMap
 
 /**
  * @author ExplodingDragon
  * @version 1.0
  */
-interface BaseResponseData : Closeable {
+abstract class BaseResponseData : Closeable {
 
-    var length:Long
+    protected val logger = Logger.getLogger(javaClass)
 
-    var responseCode: ResponseCode
+    private val header = HashMap<String, String>()
 
-    var contentType:String
+    abstract val length:Long
 
-    fun header():Map<String,String>
+    abstract val responseCode: ResponseCode
 
-    fun writeBody(output: OutputStream):Boolean
+    abstract val contentType:String
 
-    val webDateFormat: SimpleDateFormat
-        get() = SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss 'GMT'", Locale.ENGLISH)
+    fun header():HashMap<String,String> = header
+
+    protected fun addHeader(key: String, value: String) {
+        header[key.trim()] = value.trim()
+    }
+
+    abstract fun writeBody(output: OutputStream):Boolean
+
+    val webDateFormat: SimpleDateFormat = SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss 'GMT'", Locale.ENGLISH)
 
 
 }

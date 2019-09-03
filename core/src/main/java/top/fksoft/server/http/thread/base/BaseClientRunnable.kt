@@ -4,7 +4,6 @@ import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.CloseableUtils
 import java.io.Closeable
 import java.net.Socket
 import java.net.SocketException
@@ -41,7 +40,7 @@ abstract class BaseClientRunnable(protected val httpServer: HttpServer, protecte
 
         try {
             //销毁
-            CloseableUtils.close(this)
+            this.close()
         } catch (e: Exception) {
             logger.warn("在销毁来自%s的Http请求中发生错误.", e, remoteAddress)
         }

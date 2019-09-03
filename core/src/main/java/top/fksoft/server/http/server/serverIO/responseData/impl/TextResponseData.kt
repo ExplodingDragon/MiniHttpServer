@@ -2,49 +2,72 @@ package top.fksoft.server.http.server.serverIO.responseData.impl
 
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.server.serverIO.responseData.BaseResponseData
-import java.io.*
+import java.io.OutputStream
+import java.io.OutputStreamWriter
 
 /**
  * @author ExplodingDragon
  * @version 1.0
  */
 
-open abstract class TextResponseData() : BaseResponseData {
-    override var responseCode: ResponseCode = ResponseCode.HTTP_OK
-
-    protected val header = HashMap<String,String>()
-
-    override var length: Long = -1L
-    // 忽略长度测量
-
-    private val byteArrayOutputStream = ByteArrayOutputStream()
-    private val output = PrintWriter(OutputStreamWriter(byteArrayOutputStream, Charsets.UTF_8), true)
+open abstract class TextResponseData() : BaseResponseData() {
+    override val responseCode: ResponseCode = ResponseCode.HTTP_OK
 
 
-    override fun header(): Map<String, String> {
-        return header
+    override val length: Long by lazy {
+        builder.toString().toByteArray().size.toLong()
     }
 
+    // 忽略长度测量
+
+    private val builder = StringBuilder()
+
+
+
     override fun writeBody(output: OutputStream): Boolean {
-        ByteArrayInputStream(byteArrayOutputStream.toByteArray()).copyTo(output)
+        val writer = OutputStreamWriter(output, Charsets.UTF_8)
+        writer.write(builder.toString())
+        writer.flush()
         return true
     }
 
+
+    fun replace(old: String, newValues: String) {
+        synchronized(builder) {
+            val size = old.length
+            while (true) {
+                val i = builder.indexOf(old)
+                if (i == -1) {
+                    break
+                }
+                builder.replace(i, i + size, newValues)
+            }
+        }
+    }
+
     fun println(str: String) {
-        output.println(str)
+        synchronized(builder) {
+            builder.append(str).append("\r\n")
+        }
     }
 
     fun print(str: String) {
-        output.print(str)
+        synchronized(builder) {
 
+            builder.append(str)
+        }
     }
 
     fun printf(format: String, vararg args: Any) {
-        output.printf(format, args)
+        synchronized(builder) {
+            builder.append(String.format(format, args))
+        }
     }
 
     override fun close() {
-        output.close()
+        builder.clear()
     }
 
 }
+
+
