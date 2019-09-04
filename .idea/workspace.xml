@@ -10,14 +10,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/PkgRawResponseData.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/RawResponseData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/cli/httpServer.cli.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/core/httpServer.core.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/httpServer.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/FileResponseData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/FileResponseData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/SimpleResponseData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/SimpleResponseData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/Instance/FileHttpServlet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/Instance/FileHttpServlet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/Test.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cli/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/cli/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/core/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/phoneCli.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/androidTest/java/top/fksoft/web/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/java/top/fksoft/web/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/phoneCli/src/test/java/top/fksoft/web/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/modules/target/" />
@@ -132,68 +161,60 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/ClientResponse.kt">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/BaseHttpServlet.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+            <state relative-caret-position="447">
+              <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/base/BaseClientRunnable.kt">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+            <state relative-caret-position="180">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#66#253#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/FileResponseData.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="81" column="50" lean-forward="true" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
-              <folding>
-                <element signature="e#61#593#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/PkgRawResponseData.kt">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
-              <caret line="10" column="11" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="11" />
-              <folding>
-                <element signature="e#70#276#0" expanded="true" />
-              </folding>
+              <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.java">
+        <entry file="file://$PROJECT_DIR$/cli/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="22" column="53" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
+            <state relative-caret-position="228">
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/drawable/favicon.png">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/core/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/RawResponseData.kt">
+        <entry file="file://$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="33" selection-start-line="13" selection-start-column="3" selection-end-line="33" />
+            <state relative-caret-position="418">
+              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
               <folding>
-                <element signature="e#70#250#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -202,7 +223,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/BaseResponseData.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
+            <state relative-caret-position="285">
               <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
             </state>
           </provider>
@@ -220,11 +241,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/Instance/FileHttpServlet.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="779">
               <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
-              <folding>
-                <element signature="e#49#513#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -269,9 +287,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/serverIO/responseData/impl/HtmlResponseData.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/serverIO/responseData/BaseResponseData.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/serverIO/ClientResponse.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/serverIO/responseData/impl/TextResponseData.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/serverIO/responseData/impl/PackageHtmlResponseData.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/serverIO/responseData/simple/FileHttpServlet.kt" />
@@ -303,11 +318,9 @@
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpServletBinder.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/Instance/DefaultFindHttpServlet.kt" />
-        <option value="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoServlet.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CalculateUtils.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/HttpHeaderInfo.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt" />
-        <option value="$PROJECT_DIR$/core/build.gradle" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/base/BaseClientRunnable.kt" />
         <option value="$PROJECT_DIR$/core/src/test/java/top/fksoft/server/http/Test.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/ClientResponse.kt" />
@@ -320,6 +333,11 @@
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/PkgRawResponseData.kt" />
         <option value="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/FileResponseData.kt" />
+        <option value="$PROJECT_DIR$/settings.gradle" />
+        <option value="$PROJECT_DIR$/cli/build.gradle" />
+        <option value="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoServlet.java" />
+        <option value="$PROJECT_DIR$/core/build.gradle" />
+        <option value="$PROJECT_DIR$/build.gradle" />
       </list>
     </option>
   </component>
@@ -339,200 +357,11 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="AndroidView" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages AndroidView="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.cli" type="e9137016:NonAndroidModuleNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.cli" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.cli" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="execute" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.cli" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="execute" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.cli" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="execute" type="462c0819:PsiDirectoryNode" />
-              <item name="servlet" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="factory" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="factory" type="462c0819:PsiDirectoryNode" />
-              <item name="Instance" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="serverIO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="serverIO" type="462c0819:PsiDirectoryNode" />
-              <item name="responseData" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="serverIO" type="462c0819:PsiDirectoryNode" />
-              <item name="responseData" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="serverIO" type="462c0819:PsiDirectoryNode" />
-              <item name="responseData" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-              <item name="raw" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="servlet" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="servlet" type="462c0819:PsiDirectoryNode" />
-              <item name="Instance" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="thread" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="tests" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="tests" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="resources" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="resources" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="resources" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="drawable" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="httpServer.core" type="e9137016:NonAndroidModuleNode" />
-              <item name="resources" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="resultHtml" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
@@ -545,37 +374,18 @@
             <path>
               <item name="httpServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="httpServer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="phoneCli" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="cli" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="httpServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="httpServer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="phoneCli" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="cli" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="httpServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="httpServer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="phoneCli" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="httpServer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="phoneCli" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="httpServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="httpServer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="phoneCli" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="values" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -598,7 +408,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -660,7 +470,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Http Server">
+  <component name="RunManager" selected="Gradle.httpServer [createJar]">
     <configuration default="true" type="AndroidJUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -712,46 +522,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AutoByteArraySearchTest.spit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;top.fksoft.server.http.utils.autoByteArray.AutoByteArraySearchTest.spit&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":core:cleanTest" />
-            <option value=":core:test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="AutoByteArraySearchTest.toByteArray" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;top.fksoft.server.http.utils.autoByteArray.AutoByteArraySearchTest.toByteArray&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":core:cleanTest" />
-            <option value=":core:test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="Test.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -770,6 +540,44 @@
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="httpServer [createJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="createJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="httpServer [generateSourcesJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="generateSourcesJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <configuration name="httpServer:cli [build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
@@ -807,20 +615,20 @@
     <list>
       <item itemvalue="Android App.phoneCli" />
       <item itemvalue="Application.Http Server" />
-      <item itemvalue="Gradle.httpServer:cli [build]" />
-      <item itemvalue="Gradle.AutoByteArraySearchTest.spit" />
-      <item itemvalue="Gradle.AutoByteArraySearchTest.toByteArray" />
       <item itemvalue="Application.Test" />
-      <item itemvalue="Kotlin.Test" />
+      <item itemvalue="Gradle.httpServer:cli [build]" />
       <item itemvalue="Gradle.Test.test" />
+      <item itemvalue="Kotlin.Test" />
+      <item itemvalue="Gradle.httpServer [generateSourcesJar]" />
+      <item itemvalue="Gradle.httpServer [createJar]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.httpServer [createJar]" />
+        <item itemvalue="Gradle.httpServer [generateSourcesJar]" />
         <item itemvalue="Gradle.Test.test" />
         <item itemvalue="Kotlin.Test" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="Gradle.AutoByteArraySearchTest.toByteArray" />
-        <item itemvalue="Gradle.AutoByteArraySearchTest.spit" />
       </list>
     </recent_temporary>
   </component>
@@ -940,7 +748,9 @@
       <workItem from="1567306993803" duration="3930000" />
       <workItem from="1567386695546" duration="20717000" />
       <workItem from="1567478933599" duration="705000" />
-      <workItem from="1567494190934" duration="21006000" />
+      <workItem from="1567494190934" duration="21478000" />
+      <workItem from="1567566205517" duration="2121000" />
+      <workItem from="1567580998642" duration="2486000" />
     </task>
     <task id="LOCAL-00001" summary="fix bugs.">
       <created>1561946216653</created>
@@ -1229,7 +1039,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567531197265</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="臨時保存">
+      <created>1567533702044</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1567533702044</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1265,7 +1082,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="602976000" />
+    <option name="totallyTimeSpent" value="608055000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1290,25 +1107,25 @@
       <window_info id="Favorites" order="5" show_stripe_button="false" sideWeight="0.5023256" side_tool="true" weight="0.23126338" />
       <window_info id="Build Variants" order="6" sideWeight="0.5095057" side_tool="true" weight="0.25428265" />
       <window_info id="Captures" order="7" sideWeight="0.50570345" side_tool="true" weight="0.18683083" />
-      <window_info content_ui="combo" id="Project" order="8" sideWeight="0.4904943" visible="true" weight="0.2098501" />
+      <window_info content_ui="combo" id="Project" order="8" sideWeight="0.4904943" visible="true" weight="0.21252677" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32790697" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946466" weight="0.3883721" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.3988372" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.3988372" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32906976" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.3267442" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32790697" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005353" side_tool="true" weight="0.3883721" />
-      <window_info anchor="bottom" id="Database Changes" order="11" weight="0.32906976" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.5360465" />
-      <window_info anchor="bottom" id="Android Profiler" order="13" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Logcat" order="14" weight="0.32906976" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="15" weight="0.32906976" />
-      <window_info anchor="bottom" id="Messages" order="16" weight="0.32844242" />
-      <window_info anchor="bottom" id="Database Console" order="17" weight="0.32906976" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.3255814" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005353" side_tool="true" weight="0.3883721" />
+      <window_info anchor="bottom" id="Database Changes" order="10" weight="0.32906976" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.5360465" />
+      <window_info anchor="bottom" id="Android Profiler" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Logcat" order="13" weight="0.32906976" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="14" weight="0.32906976" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.32844242" />
+      <window_info anchor="bottom" id="Database Console" order="16" weight="0.32906976" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="17" visible="true" weight="0.32790697" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Palette" order="2" />
@@ -1403,30 +1220,6 @@
           <properties />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/FileResponseData.kt</url>
-          <line>107</line>
-          <properties />
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/FileResponseData.kt</url>
-          <line>106</line>
-          <properties />
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/FileResponseData.kt</url>
-          <line>82</line>
-          <properties />
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/FileResponseData.kt</url>
-          <line>81</line>
-          <properties />
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -1465,36 +1258,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/serverIO/responseData/impl/PackageHtmlResponseData.kt" />
-    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/resultHtml/HelloWorld.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/serverIO/responseData/simple/FileHttpServlet.kt" />
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/logcat/Logger.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="40" column="99" selection-start-line="40" selection-start-column="90" selection-end-line="40" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/logcat/factory/LogFactory.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/logcat/factory/simple/DefaultLog.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/logcat/Log.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
@@ -1556,20 +1319,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/drawable/SceneBuilderApp.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3659">
-          <caret line="286" selection-start-line="286" selection-end-line="286" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/test/java/Test.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/drawable/SceneBuilderApp.properties" />
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/Test.kt" />
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/Instance/DefaultFindHttpServlet.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
@@ -1588,23 +1339,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
           <caret line="141" column="44" selection-start-line="141" selection-start-column="44" selection-end-line="141" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/BaseHttpServlet.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1667,30 +1401,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#66#253#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CloseableUtils.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/CloseableUtils.kt" />
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-988">
@@ -1729,13 +1440,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/base/BaseClientRunnable.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/ContentTypeUtils.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -1743,60 +1447,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/drawable/icon.ico" />
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/ClientResponse.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
+        <state relative-caret-position="532">
           <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/drawable/favicon.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/drawable/icon.ico">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/Instance/FileHttpServlet.kt">
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/base/BaseClientRunnable.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
-          <folding>
-            <element signature="e#49#513#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/SimpleResponseData.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/BaseResponseData.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/RawResponseData.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="33" selection-start-line="13" selection-start-column="3" selection-end-line="33" />
-          <folding>
-            <element signature="e#70#250#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="646">
+          <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/PkgRawResponseData.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
+        <state relative-caret-position="114">
           <caret line="10" column="11" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="11" />
-          <folding>
-            <element signature="e#70#276#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1807,13 +1476,122 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/drawable/favicon.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/RawResponseData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="33" selection-start-line="13" selection-start-column="3" selection-end-line="33" />
+          <folding>
+            <element signature="e#70#250#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/FileResponseData.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="81" column="50" lean-forward="true" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
+        <state relative-caret-position="988">
+          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/BaseResponseData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/SimpleResponseData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/Instance/FileHttpServlet.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Software/SoftData/GradleLocal/wrapper/dists/gradle-4.10.3-all/81msde2dx9p4vji0mjgtvxkcb/gradle-4.10.3/src/core-api/org/gradle/api/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3477">
           <folding>
-            <element signature="e#61#593#0" expanded="true" />
+            <element signature="e#0#72872#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#66#253#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/BaseHttpServlet.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Software/SoftData/GradleLocal/wrapper/dists/gradle-4.10.3-all/81msde2dx9p4vji0mjgtvxkcb/gradle-4.10.3/src/core/org/gradle/api/tasks/AbstractCopyTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="268" column="28" selection-start-line="268" selection-start-column="28" selection-end-line="268" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Software/SoftData/GradleLocal/wrapper/dists/gradle-4.10.3-all/81msde2dx9p4vji0mjgtvxkcb/gradle-4.10.3/src/core/org/gradle/api/tasks/bundling/AbstractArchiveTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="168" column="27" lean-forward="true" selection-start-line="168" selection-start-column="27" selection-end-line="168" selection-end-column="27" />
+          <folding>
+            <element signature="e#4990#4991#0" expanded="true" />
+            <element signature="e#5034#5035#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1869,11 +1647,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Java-Gradle|httpServer</last-edited>
+          <last-edited>cli|httpServer</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

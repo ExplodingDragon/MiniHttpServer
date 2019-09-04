@@ -32,8 +32,6 @@ task fatJar(type: Jar) {
         exclude "META-INF/*.RSA"
     }
     with jar
-    def outputFile =  libsDir.path +File.separator + "cli-1.0-SNAPSHOT.jar"
-    delete( outputFile)
 }
 artifacts {
     archives fatJar

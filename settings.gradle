@@ -1,4 +1,3 @@
-include ':phoneCli'
 rootProject.name = 'httpServer'
 include 'core'
 include 'cli'

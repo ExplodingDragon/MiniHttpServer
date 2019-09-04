@@ -11,9 +11,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
     }
 }
 repositories {
@@ -25,7 +23,7 @@ repositories {
 allprojects {
     repositories {
         mavenLocal()
-        maven { url 'https://maven.aliyun.com/repository/public/' }
+//        maven { url 'https://maven.aliyun.com/repository/public/' }
         google()
         mavenCentral()
         jcenter()
