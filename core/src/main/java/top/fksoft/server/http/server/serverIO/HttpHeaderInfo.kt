@@ -1,12 +1,12 @@
 package top.fksoft.server.http.server.serverIO
 
 import jdkUtils.data.StringUtils
+import jdkUtils.io.autoByteArray.AutoByteArray
+import jdkUtils.io.autoByteArray.DefaultAutoByteArray
+import top.fksoft.bean.NetworkInfo
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
-import top.fksoft.server.http.utils.autoByteArray.AutoByteArray
-import top.fksoft.server.http.utils.autoByteArray.DefaultAutoByteArray
 import java.io.Closeable
 import java.nio.charset.Charset
 import kotlin.random.Random
@@ -51,7 +51,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
     /**
      * 当前实例的唯一 Token
      */
-    val headerSession = StringUtils.sha1Encryption("$remoteInfo${System.currentTimeMillis()}${Random.nextDouble()}")!!
+    val headerSession = StringUtils.stringSha1("$remoteInfo${System.currentTimeMillis()}${Random.nextDouble()}")
 
     /**
      * # 得到表单数据
@@ -69,7 +69,7 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
     }
 
 
-    var rawPostArray :AutoByteArray= DefaultAutoByteArray()
+    var rawPostArray : AutoByteArray = DefaultAutoByteArray()
         private set
 
 

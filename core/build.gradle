@@ -6,9 +6,9 @@ group "$groups"
 version "$versions"
 sourceCompatibility = 1.8
 
-
 dependencies {
-    implementation 'com.github.ExplodingFKL:JavaUtils:v0.1-beta'
+    implementation 'com.github.ExplodingDragon.JavaUtils:DataBean:v0.1-beta'
+    implementation 'com.github.ExplodingDragon.JavaUtils:JavaUtils:v0.1-beta'
     //以后会逐步替代此工具包中的方法
     implementation group: 'org.json', name: 'json', version: '20180813'
 

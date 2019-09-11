@@ -1,4 +1,4 @@
-package top.fksoft.server.http.servlet.Instance
+package top.fksoft.server.http.servlet.impl
 
 import jdkUtils.data.StringUtils
 import jdkUtils.io.FileUtils
@@ -20,16 +20,16 @@ open class FileHttpServlet (headerInfo: HttpHeaderInfo) : BaseHttpServlet(header
         val workDirectory = headerInfo.serverConfig.workDirectory
         var acceptFile = File(workDirectory, headerInfo.path.substring(1))
         if (headerInfo.path.endsWith('/')) {
-            var string = StringUtils.inputStreamToString(javaClass.getResourceAsStream("/res/resultHtml/ListFiles.html"), FileUtils.UTF_8)
+            var string = StringUtils.readInputStream(javaClass.getResourceAsStream("/res/resultHtml/ListFiles.html"))
             string = string.replace("%PATH%", headerInfo.path)
             var stringBuilder = StringBuilder()
             if (acceptFile.isDirectory) {
                 var listFiles = acceptFile.listFiles().asList()
-                FileUtils.sort(listFiles)
+                FileUtils.fileSort(listFiles)
                 for (file in listFiles) {
                     var name = file.name
                     var length = file.length()
-                    var lengthStr = FileUtils.bytesToString(length.toDouble(), 2)
+                    var lengthStr = FileUtils.lengthFormat(length, 2)
                     var date = String.format("%20s", Date(file.lastModified()).toString())
                     if (file.isDirectory) {
                         name = "$name/"

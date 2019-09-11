@@ -1,8 +1,8 @@
 package top.fksoft.server.http.thread
 
+import top.fksoft.bean.NetworkInfo
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.ResponseCode.Companion.HTTP_OK
-import top.fksoft.server.http.config.bean.NetworkInfo
 import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.server.factory.HeaderReaderFactory
 import top.fksoft.server.http.server.serverIO.ClientResponse

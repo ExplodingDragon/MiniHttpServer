@@ -63,7 +63,7 @@ class Logger private constructor(private val kClass: KClass<*>) : Log() {
 
         private fun printLogo(path: String) {
             try {
-                val logo = StringUtils.inputStreamToString(Logger::class.java.getResourceAsStream(path), "UTF-8")
+                val logo = StringUtils.readInputStream(Logger::class.java.getResourceAsStream(path))
                 System.err.println("\n$logo\n")
             } catch (e: Exception) {
                 System.err.println("Logo 打印失败！")

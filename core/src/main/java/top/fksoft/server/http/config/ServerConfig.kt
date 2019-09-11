@@ -2,10 +2,12 @@ package top.fksoft.server.http.config
 
 import top.fksoft.server.http.config.HttpConstant.PROPERTIES_KEY.SERVER_PORT
 import top.fksoft.server.http.logcat.Logger
+import top.fksoft.server.http.servlet.BaseHttpServlet
 import java.io.Closeable
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.ConcurrentHashMap
+import kotlin.reflect.KClass
 
 /**
  *
@@ -25,7 +27,7 @@ class ServerConfig(val serverPort :Int): Closeable {
     private val httpPropertiesMap = ConcurrentHashMap<String, String>()
 
 
-    val httpExecuteMap = ConcurrentHashMap<String, HttpServletBinder>()
+    val httpServletMap = ConcurrentHashMap<String, HttpServletBinder>()
 
 
     /**
@@ -132,18 +134,30 @@ class ServerConfig(val serverPort :Int): Closeable {
         }
     }
 
-
+    /**
+     * # 添加一个注解的 HttpServlet
+     *
+     * 警告，如果未标记，则会抛出
+     *
+     * @param httpServlet BaseHttpServlet
+     */
+    fun addAutoHttpServlet(servletClass:Class<out BaseHttpServlet>) :Boolean{
+        return addHttpServletBinder(HttpServletBinder(servletClass))
+    }
+    fun addAutoHttpServlet(servletClass: KClass<out BaseHttpServlet>) :Boolean{
+        return addHttpServletBinder(HttpServletBinder(servletClass.java))
+    }
     /**
      * 添加一个监听方法
      * @param binder HttpServletBinder
      * @return Boolean
      */
-    fun addHttpExecuteBinder(binder: HttpServletBinder):Boolean{
+    fun addHttpServletBinder(binder: HttpServletBinder):Boolean{
         val path = binder.path.toLowerCase()
-        if (httpExecuteMap.contains(path)) {
+        if (httpServletMap.contains(path)) {
             return false
         }else{
-            httpExecuteMap[path] = binder.copy()
+            httpServletMap[path] = binder
             return true
         }
     }

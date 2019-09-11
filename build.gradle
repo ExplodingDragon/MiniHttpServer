@@ -23,7 +23,7 @@ repositories {
 allprojects {
     repositories {
         mavenLocal()
-//        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
         google()
         mavenCentral()
         jcenter()
@@ -32,13 +32,5 @@ allprojects {
     }
 }
 
-//task clean(type: Delete) {
-//    def size = project.allprojects.size()
-//    for(index in 0..(size-1) ){
-//        def projectIndex = project.allprojects[index]
-//        def printMessage = "Clear the compilation cache of :${projectIndex.name}"
-//        println "${String.format("%-50s",printMessage)} ... [OK]"
-//        delete projectIndex.buildDir
-//    }
-//}
+
 

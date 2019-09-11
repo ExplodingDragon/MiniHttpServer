@@ -44,7 +44,6 @@ abstract class BaseHttpServlet constructor(private val headerInfo: HttpHeaderInf
 
     }
 
-
     companion object{
         fun newInstance(clazz:Class<out BaseHttpServlet>, headerInfo: HttpHeaderInfo): BaseHttpServlet {
             val declaredConstructor = clazz.getDeclaredConstructor(HttpHeaderInfo::class.java)

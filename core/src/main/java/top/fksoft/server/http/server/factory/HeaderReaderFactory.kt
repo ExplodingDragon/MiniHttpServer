@@ -2,7 +2,7 @@ package top.fksoft.server.http.server.factory
 
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.server.factory.Instance.DefaultHeaderReader
+import top.fksoft.server.http.server.factory.impl.DefaultHeaderReader
 import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
 import java.io.Closeable
 import java.io.InputStream

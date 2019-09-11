@@ -1,5 +1,6 @@
 package top.fksoft.server.http.server.serverIO.responseData.impl
 
+import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.ResponseCode
 import top.fksoft.server.http.server.serverIO.responseData.BaseResponseData
 import java.io.OutputStream
@@ -10,9 +11,10 @@ import java.io.OutputStreamWriter
  * @version 1.0
  */
 
-open abstract class TextResponseData() : BaseResponseData() {
-    override val responseCode: ResponseCode = ResponseCode.HTTP_OK
+open  class TextResponseData() : BaseResponseData() {
+    override var responseCode: ResponseCode = ResponseCode.HTTP_OK
 
+    override var contentType: String = HttpConstant.HEADER_VALUE_TEXT_HTML
 
     override val length: Long by lazy {
         builder.toString().toByteArray().size.toLong()

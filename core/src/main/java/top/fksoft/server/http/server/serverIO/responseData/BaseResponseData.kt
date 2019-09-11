@@ -27,7 +27,7 @@ abstract class BaseResponseData : Closeable {
 
     abstract val responseCode: ResponseCode
 
-    abstract val contentType:String
+    abstract var contentType:String
 
     fun header():HashMap<String,String> = header
 

@@ -1,7 +1,9 @@
 package top.fksoft.server.http.config
 
 import top.fksoft.server.http.servlet.BaseHttpServlet
+import top.fksoft.server.http.servlet.annotation.ServletBinder
 import java.io.IOException
+import java.lang.annotation.AnnotationFormatError
 
 /**
  * @author ExplodingDragon
@@ -11,7 +13,7 @@ import java.io.IOException
  * @property bindDirectory Boolean 是否绑定为路径
  * @property path String  最终绑定的路径
  */
-data class HttpServletBinder(private var ignorePath:String, val servletClass:Class<out BaseHttpServlet>, var bindDirectory: Boolean = false){
+data class HttpServletBinder( val servletClass:Class<out BaseHttpServlet>,private var ignorePath:String = getPath(servletClass) , var bindDirectory: Boolean = isBindDirectory(servletClass)){
 
     val path:String
         get() = ignorePath
@@ -24,6 +26,16 @@ data class HttpServletBinder(private var ignorePath:String, val servletClass:Cla
         if (ignorePath.endsWith('/')){
             bindDirectory = true
             ignorePath = ignorePath.substring(0,ignorePath.lastIndexOf('/')).trim()
+        }
+    }
+    companion object{
+        fun getPath(clazz: Class<out BaseHttpServlet>): String{
+            val annotation = clazz.getAnnotation(ServletBinder::class.java) ?: throw AnnotationFormatError("未标记注解.")
+            return annotation.path
+        }
+        fun isBindDirectory(clazz: Class<out BaseHttpServlet>): Boolean{
+            val annotation = clazz.getAnnotation(ServletBinder::class.java) ?: throw AnnotationFormatError("未标记注解.")
+            return annotation.bindDirectory
         }
     }
 

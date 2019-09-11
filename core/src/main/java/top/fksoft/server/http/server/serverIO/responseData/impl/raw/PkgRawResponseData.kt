@@ -11,7 +11,7 @@ import java.io.OutputStream
  * @version 1.0
  */
 class PkgRawResponseData (private val path:String): BaseResponseData(){
-    override val contentType: String = ContentTypeUtils.extension2Application(path)
+    override var contentType: String = ContentTypeUtils.extension2Application(path)
     private val inputStream = PkgRawResponseData::class.java.getResourceAsStream(path)
     private var bytes:ByteArray = ByteArray(0)
     init {

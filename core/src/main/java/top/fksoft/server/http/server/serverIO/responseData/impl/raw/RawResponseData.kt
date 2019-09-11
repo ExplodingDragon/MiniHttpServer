@@ -9,7 +9,7 @@ import java.io.OutputStream
  * @author ExplodingDragon
  * @version 1.0
  */
-open class RawResponseData (private val inputStream: InputStream, override val contentType: String): BaseResponseData(){
+open class RawResponseData (private val inputStream: InputStream, override var contentType: String): BaseResponseData(){
 
     override val length: Long = -1
     override val responseCode: ResponseCode = ResponseCode.HTTP_OK

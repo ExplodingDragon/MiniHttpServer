@@ -1,5 +1,6 @@
-package top.fksoft.server.http.server.factory.Instance
+package top.fksoft.server.http.server.factory.impl
 
+import jdkUtils.io.autoByteArray.AutoByteArrayOutputStream
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpConstant.UNKNOWN_VALUE
 import top.fksoft.server.http.config.ResponseCode
@@ -8,7 +9,6 @@ import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.server.factory.HeaderReaderFactory
 import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
 import top.fksoft.server.http.utils.DataReaderUtils
-import top.fksoft.server.http.utils.autoByteArray.AutoByteArrayOutputStream
 import java.io.File
 import java.io.InputStream
 import java.net.URLDecoder
@@ -137,7 +137,7 @@ class DefaultHeaderReader(config: ServerConfig, inputStream: InputStream) : Head
         httpHeader.setRawPostByteArray(autoByteArray)
         if (HttpConstant.HEADER_CONTENT_TYPE_URLENCODED in contentType) {
             //此为普通的POST 请求方式，可以用类似于GET 数据解析的方式来进行解析
-            val line = autoByteArray.toString(Charsets.UTF_8)
+            val line = autoByteArray.toString()
             logger.debug("原始文本Post数据:[$line]")
             httpHeader.addForms(URLDecoder.decode(line, charset))
         } else if (HttpConstant.HEADER_CONTENT_TYPE_FORM_DATA in contentType) {
@@ -165,7 +165,7 @@ class DefaultHeaderReader(config: ServerConfig, inputStream: InputStream) : Head
                 if (fileName == UNKNOWN_VALUE) {
                     //表示此POST块为表单
                     val index = search.readLines(start, 2)
-                    val bytes = autoByteArray.toByteArray(index, end)
+                    val bytes = autoByteArray.toByteArray(index, (end - index + 1).toInt())
                     val data = bytes.toString(Charsets.UTF_8)
                     logger.debug("POST DATA ${(i + 2) / 2}:[name=$name,data=$data]")
                     httpHeader.addForm(name, data)

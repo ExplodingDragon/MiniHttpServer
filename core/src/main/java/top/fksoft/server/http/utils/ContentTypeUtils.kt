@@ -13,7 +13,7 @@ object ContentTypeUtils {
     private val contentTypes = ConcurrentHashMap<String, String>()
 
     init {
-        val string = StringUtils.inputStreamToString(javaClass.getResource("/res/application.json").openStream(), "UTF-8")
+        val string = StringUtils.readInputStream(javaClass.getResource("/res/application.json").openStream())
         val array = JSONArray(string)
         val length = array.length()
         contentTypes.clear()
