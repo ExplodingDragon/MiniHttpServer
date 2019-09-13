@@ -10,10 +10,11 @@ import top.fksoft.server.http.servlet.impl.HtmlHttpServlet
  * @version 1.0
  */
 
-@ServletBinder(path = "/i.md")
-class InfoServlet(headerInfo: HttpHeaderInfo) : HtmlHttpServlet(headerInfo) {
+@ServletBinder(path = "/i")
+class InfoHtmlServlet(headerInfo: HttpHeaderInfo) : HtmlHttpServlet(headerInfo) {
+
     init {
-        println(StringUtils.readInputStream(javaClass.getResourceAsStream("/InfoHtml.md")))
+        println(StringUtils.readInputStream(javaClass.getResourceAsStream("/InfoHtml.html")))
     }
 
 }

@@ -1,6 +1,6 @@
 package top.fksoft.server.http.server.serverIO.base
 
-import top.fksoft.server.http.logcat.Logger
+import jdkUtils.logcat.Logger
 import top.fksoft.server.http.server.serverIO.responseData.BaseResponseData
 import java.io.Closeable
 import java.io.OutputStream

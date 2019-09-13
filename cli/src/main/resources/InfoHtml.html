@@ -5,7 +5,6 @@
     <script>
         function showMarkdown() {
             // 获取表单变量
-            var f = form;
             // 创建XMLHttpRequest对象
             var xmlhttp;
             if (window.XMLHttpRequest) {
@@ -26,7 +25,7 @@
 
 
             // 向服务器发送请求，获取你需要的Markdown文档
-            xmlhttp.open("GET", f.q.value, true);
+            xmlhttp.open("GET", "i.md", true);
             xmlhttp.send();
         }
         showMarkdown()

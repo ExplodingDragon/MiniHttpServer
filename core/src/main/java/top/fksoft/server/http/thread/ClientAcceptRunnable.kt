@@ -1,9 +1,9 @@
 package top.fksoft.server.http.thread
 
+import jdkUtils.logcat.Logger
 import top.fksoft.bean.NetworkInfo
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.ResponseCode.Companion.HTTP_OK
-import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.server.factory.HeaderReaderFactory
 import top.fksoft.server.http.server.serverIO.ClientResponse
 import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
@@ -36,7 +36,7 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, private val n
         if ((responseCode == HTTP_OK)) {
             responseCode  = headerReader.readHeaderBody(httpHeaderInfo.edit)
         }else{
-            logger.warn("在读取来自[$networkInfo]的Header中失败了.原因：[${responseCode }]  .")
+            logger.warn("在读取来自[$networkInfo]的Header中失败了.原因：[${responseCode }].")
         }
         if (responseCode  == HTTP_OK) {
             //协议识别 再放行tcp 连接维持时间

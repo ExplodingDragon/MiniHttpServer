@@ -1,7 +1,7 @@
 package top.fksoft.server.http.utils
 
-import top.fksoft.server.http.logcat.Logger
 import java.io.ByteArrayOutputStream
+import jdkUtils.logcat.Logger
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream

@@ -6,8 +6,8 @@ import jdkUtils.io.autoByteArray.DefaultAutoByteArray
 import top.fksoft.bean.NetworkInfo
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.logcat.Logger
 import java.io.Closeable
+import jdkUtils.logcat.Logger
 import java.nio.charset.Charset
 import kotlin.random.Random
 

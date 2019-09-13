@@ -6,8 +6,8 @@ package top.fksoft.server.http.server.serverIO.responseData
  */
 
 import top.fksoft.server.http.config.ResponseCode
-import top.fksoft.server.http.logcat.Logger
 import java.io.Closeable
+import jdkUtils.logcat.Logger
 import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*

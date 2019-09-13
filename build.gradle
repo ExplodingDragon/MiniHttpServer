@@ -4,6 +4,7 @@ buildscript {
     ext.versions = '1.0-SNAPSHOT'
     ext.versionCode = 1
     ext.kotlin_version = '1.3.21'
+    ext.javaUtilVersion = 'v0.1-beta2'
 
     repositories {
         mavenLocal()
@@ -18,6 +19,7 @@ repositories {
     mavenLocal()
     mavenCentral()
 }
+
 
 
 allprojects {

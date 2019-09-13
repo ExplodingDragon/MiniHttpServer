@@ -1,10 +1,9 @@
 package top.fksoft.server.http
 
+import jdkUtils.logcat.Logger
 import top.fksoft.server.http.config.ServerConfig
 import top.fksoft.server.http.server.factory.FindHttpServletFactory
 import top.fksoft.server.http.server.factory.HeaderReaderFactory
-import top.fksoft.server.http.logcat.factory.LogFactory
-import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.thread.SocketListenerRunnable
 import java.io.Closeable
 import java.io.IOException
@@ -86,9 +85,6 @@ class HttpServer
 
     override fun close() {
     }
-    companion object{
-        @JvmStatic
-        var loggerFactory: LogFactory = LogFactory.default
-    }
+
 
 }

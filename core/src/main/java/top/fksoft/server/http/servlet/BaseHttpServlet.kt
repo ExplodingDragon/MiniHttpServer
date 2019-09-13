@@ -1,17 +1,18 @@
 package top.fksoft.server.http.servlet
 
 import top.fksoft.server.http.config.HttpConstant
-import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
 import top.fksoft.server.http.server.serverIO.responseData.BaseResponseData
 import top.fksoft.server.http.server.serverIO.responseData.SimpleResponseData
 import top.fksoft.server.http.server.serverIO.responseData.SimpleResponseData.WELCOME
 import java.io.Closeable
+import jdkUtils.logcat.Logger
 
 /**
  * @author ExplodingDragon
  * @version 1.0
  */
+
 abstract class BaseHttpServlet constructor(private val headerInfo: HttpHeaderInfo) : Closeable {
     protected val logger = Logger.getLogger(javaClass.kotlin)
 

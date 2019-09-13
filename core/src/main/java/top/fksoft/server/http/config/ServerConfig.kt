@@ -1,7 +1,7 @@
 package top.fksoft.server.http.config
 
+import jdkUtils.logcat.Logger
 import top.fksoft.server.http.config.HttpConstant.PROPERTIES_KEY.SERVER_PORT
-import top.fksoft.server.http.logcat.Logger
 import top.fksoft.server.http.servlet.BaseHttpServlet
 import java.io.Closeable
 import java.io.File
@@ -139,7 +139,7 @@ class ServerConfig(val serverPort :Int): Closeable {
      *
      * 警告，如果未标记，则会抛出
      *
-     * @param httpServlet BaseHttpServlet
+     * @param servletClass BaseHttpServlet
      */
     fun addAutoHttpServlet(servletClass:Class<out BaseHttpServlet>) :Boolean{
         return addHttpServletBinder(HttpServletBinder(servletClass))
@@ -154,11 +154,11 @@ class ServerConfig(val serverPort :Int): Closeable {
      */
     fun addHttpServletBinder(binder: HttpServletBinder):Boolean{
         val path = binder.path.toLowerCase()
-        if (httpServletMap.contains(path)) {
-            return false
+        return if (httpServletMap.contains(path)) {
+            false
         }else{
             httpServletMap[path] = binder
-            return true
+            true
         }
     }
 

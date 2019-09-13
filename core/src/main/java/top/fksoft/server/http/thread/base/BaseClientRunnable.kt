@@ -1,9 +1,9 @@
 package top.fksoft.server.http.thread.base
 
+import jdkUtils.logcat.Logger
 import top.fksoft.bean.NetworkInfo
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.logcat.Logger
 import java.io.Closeable
 import java.net.Socket
 import java.net.SocketException

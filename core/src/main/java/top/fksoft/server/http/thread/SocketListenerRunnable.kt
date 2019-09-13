@@ -3,7 +3,7 @@ package top.fksoft.server.http.thread
 import top.fksoft.bean.NetworkInfo
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.ServerConfig
-import top.fksoft.server.http.logcat.Logger
+import jdkUtils.logcat.Logger
 import java.io.Closeable
 import java.io.IOException
 import java.net.InetSocketAddress
