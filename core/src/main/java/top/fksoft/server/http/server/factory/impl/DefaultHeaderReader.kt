@@ -1,6 +1,7 @@
 package top.fksoft.server.http.server.factory.impl
 
 import jdkUtils.io.autoByteArray.AutoByteArrayOutputStream
+import jdkUtils.logcat.Logger
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.HttpConstant.UNKNOWN_VALUE
 import top.fksoft.server.http.config.ResponseCode
@@ -9,7 +10,6 @@ import top.fksoft.server.http.server.factory.HeaderReaderFactory
 import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
 import top.fksoft.server.http.utils.DataReaderUtils
 import java.io.File
-import jdkUtils.logcat.Logger
 import java.io.InputStream
 import java.net.URLDecoder
 import java.nio.charset.Charset
@@ -176,7 +176,9 @@ class DefaultHeaderReader(config: ServerConfig, inputStream: InputStream) : Head
                     val postDataIndex = search.readLines(start, 3)
                     val contentTypeStr = search.readLine(contentTypeIndex)!!.split(":")[1].trim()
                     val postFile = File(httpHeader.reader.serverConfig.tempDirectory, "${rawFileName}_${name}")
-                    val postAutoArray = autoByteArray.copyOf(postFile, postDataIndex + 1, end + 1)
+                    val start = postDataIndex + 1
+                    val end2 = end + 1
+                    val postAutoArray = autoByteArray.copyOf(postFile, start, end2 - start)
                     // 存在逻辑错误（UTF-8编码问题），但是运行没问题，所以不管啦，以后修复吧
                     httpHeader.addFormFile(name, HttpHeaderInfo.PostFileItem(name, postAutoArray, contentTypeStr, fileName))
                     logger.debug("POST FILE ${(i + 2) / 2}:[name=$name,size=${postAutoArray.size}]")

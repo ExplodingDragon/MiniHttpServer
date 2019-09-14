@@ -3,6 +3,8 @@ package top.fksoft.server.http.config
 import jdkUtils.logcat.Logger
 import top.fksoft.server.http.config.HttpConstant.PROPERTIES_KEY.SERVER_PORT
 import top.fksoft.server.http.servlet.BaseHttpServlet
+import top.fksoft.server.http.servlet.binder.BaseHttpServletBinder
+import top.fksoft.server.http.servlet.binder.impl.HttpServletBinder
 import java.io.Closeable
 import java.io.File
 import java.io.IOException
@@ -27,7 +29,7 @@ class ServerConfig(val serverPort :Int): Closeable {
     private val httpPropertiesMap = ConcurrentHashMap<String, String>()
 
 
-    val httpServletMap = ConcurrentHashMap<String, HttpServletBinder>()
+    val httpServletMap = ConcurrentHashMap<String, BaseHttpServletBinder>()
 
 
     /**
@@ -152,7 +154,7 @@ class ServerConfig(val serverPort :Int): Closeable {
      * @param binder HttpServletBinder
      * @return Boolean
      */
-    fun addHttpServletBinder(binder: HttpServletBinder):Boolean{
+    fun addHttpServletBinder(binder: BaseHttpServletBinder):Boolean{
         val path = binder.path.toLowerCase()
         return if (httpServletMap.contains(path)) {
             false

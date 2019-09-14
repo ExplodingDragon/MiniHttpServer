@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <meta charset="utf-8"/>
+    <title>服务器测试</title>
+    <script src="/marked.min.js"></script>
     <script>
         function showMarkdown() {
             // 获取表单变量
@@ -22,17 +24,23 @@
                     document.getElementById("content").innerHTML = marked(xmlhttp.responseText);
                 }
             }
-
-
             // 向服务器发送请求，获取你需要的Markdown文档
-            xmlhttp.open("GET", "i.md", true);
+            var url = window.document.location.href.toString();
+            var u = url.split("?");
+            if (u.length > 1){
+                xmlhttp.open("GET", "i.md?" + u[1], true);
+
+            }else {
+                xmlhttp.open("GET", "i.md", true);
+
+            }
             xmlhttp.send();
         }
         showMarkdown()
     </script>
 </head>
 <body>
-    <div id="content"></div>
+<div id="content"></div>
 </div>
 </body>
 </html>

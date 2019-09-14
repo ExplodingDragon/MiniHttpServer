@@ -3,11 +3,11 @@ package top.fksoft.server.http.server.serverIO
 import jdkUtils.data.StringUtils
 import jdkUtils.io.autoByteArray.AutoByteArray
 import jdkUtils.io.autoByteArray.DefaultAutoByteArray
+import jdkUtils.logcat.Logger
 import top.fksoft.bean.NetworkInfo
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.config.ServerConfig
 import java.io.Closeable
-import jdkUtils.logcat.Logger
 import java.nio.charset.Charset
 import kotlin.random.Random
 
@@ -125,6 +125,24 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
     fun containsHeader(key: String) = headerArray.containsKey(key)
 
 
+    fun printDebug() {
+        for (key in headerArray.keys) {
+            logger.debug("header's Key=$key,value=${headerArray[key]};")
+        }
+        for (key in formArray.keys) {
+            logger.debug("form's Key=$key,value=${formArray[key]};")
+        }
+        for (key in postFileArray.keys) {
+            val postFileItem = postFileArray[key]!!
+            val search = postFileItem.autoByteArray.search
+            val md5:String = search.calculate("MD5").toUpperCase()
+            logger.debug("form's File Key=$key,MD5=$md5;")
+        }
+    }
+
+
+
+
     inner class Edit() {
 
         /**
@@ -135,6 +153,9 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
             this@HttpHeaderInfo.method = method;
         }
 
+        fun setHttpVersion(httpVersion: Float) {
+            this@HttpHeaderInfo.httpVersion = httpVersion
+        }
         /**
          *  # 添加表单
          *
@@ -208,24 +229,6 @@ class HttpHeaderInfo(val remoteInfo: NetworkInfo, val serverConfig: ServerConfig
         }
 
 
-        fun printDebug() {
-            for (key in headerArray.keys) {
-                logger.debug("header's Key=$key,value=${headerArray[key]};")
-            }
-            for (key in formArray.keys) {
-                logger.debug("form's Key=$key,value=${formArray[key]};")
-            }
-            for (key in postFileArray.keys) {
-                val postFileItem = postFileArray[key]!!
-                val search = postFileItem.autoByteArray.search
-                val md5:String = search.calculate("MD5").toUpperCase()
-                logger.debug("form's File Key=$key,MD5=$md5;")
-            }
-        }
-
-        fun setHttpVersion(httpVersion: Float) {
-            this@HttpHeaderInfo.httpVersion = httpVersion
-        }
 
         /**
          * 指定原始post 数据

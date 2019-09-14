@@ -9,7 +9,7 @@ import top.fksoft.server.http.servlet.BaseHttpServlet
  * @author ExplodingDragon
  * @version 1.0
  */
-abstract class FindHttpServletFactory protected constructor(config: ServerConfig) {
+abstract class FindHttpServletFactory (config: ServerConfig) {
     protected val serverConfig = config
     /**
      * # 得到当前 HTTP  连接可用的 HTTP 解析类
@@ -17,7 +17,7 @@ abstract class FindHttpServletFactory protected constructor(config: ServerConfig
      * @param info
      * @return
      */
-    abstract fun findHttpServlet(info: HttpHeaderInfo): Class<out BaseHttpServlet>
+    abstract fun findHttpServlet(info: HttpHeaderInfo): BaseHttpServlet
 
 
     companion object{

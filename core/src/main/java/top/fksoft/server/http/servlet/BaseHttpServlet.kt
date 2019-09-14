@@ -1,12 +1,12 @@
 package top.fksoft.server.http.servlet
 
+import jdkUtils.logcat.Logger
 import top.fksoft.server.http.config.HttpConstant
 import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
 import top.fksoft.server.http.server.serverIO.responseData.BaseResponseData
 import top.fksoft.server.http.server.serverIO.responseData.SimpleResponseData
 import top.fksoft.server.http.server.serverIO.responseData.SimpleResponseData.WELCOME
 import java.io.Closeable
-import jdkUtils.logcat.Logger
 
 /**
  * @author ExplodingDragon
@@ -41,7 +41,7 @@ abstract class BaseHttpServlet constructor(private val headerInfo: HttpHeaderInf
     abstract fun doGet(headerInfo: HttpHeaderInfo)
 
     @Throws(Exception::class)
-    fun doPost(headerInfo: HttpHeaderInfo){
+    open fun doPost(headerInfo: HttpHeaderInfo){
 
     }
 

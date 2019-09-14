@@ -8,7 +8,6 @@ import top.fksoft.server.http.server.factory.HeaderReaderFactory
 import top.fksoft.server.http.server.serverIO.ClientResponse
 import top.fksoft.server.http.server.serverIO.HttpHeaderInfo
 import top.fksoft.server.http.server.serverIO.base.BaseResponse
-import top.fksoft.server.http.servlet.BaseHttpServlet
 import top.fksoft.server.http.thread.base.BaseClientRunnable
 import java.net.Socket
 
@@ -40,13 +39,15 @@ class ClientAcceptRunnable(httpServer: HttpServer, client: Socket, private val n
         }
         if (responseCode  == HTTP_OK) {
             //协议识别 再放行tcp 连接维持时间
-            val findHttpServlet = httpServer.findHttpServletFactory.findHttpServlet(httpHeaderInfo)
             try {
-                val httpServlet = bindAutoCloseable(BaseHttpServlet.newInstance(findHttpServlet, httpHeaderInfo))
+                val httpServlet = bindAutoCloseable(httpServer.findHttpServletFactory.findHttpServlet(httpHeaderInfo))
                 val responseData = bindAutoCloseable(httpServlet.execute())
                 val clientResponse:BaseResponse = bindAutoCloseable(ClientResponse(httpHeaderInfo,bindAutoCloseable(client.getOutputStream()!!),responseData))
                 // 建立销毁索引方便结束后销毁
                 if (clientResponse.flashResponse()) {
+                    if (logger.debug){
+                        httpHeaderInfo.printDebug()
+                    }
                     logger.info("请求类型:[${httpHeaderInfo.method}]; 请求路径:[${httpHeaderInfo.path}]; 返回状态码:[${responseData.responseCode}]")
                 }else{
                     logger.warn("在回馈来自[$networkInfo]的连接中失败了.")

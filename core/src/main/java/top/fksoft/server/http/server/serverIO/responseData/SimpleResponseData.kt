@@ -1,7 +1,7 @@
 package top.fksoft.server.http.server.serverIO.responseData
 
 import top.fksoft.server.http.config.ResponseCode
-import top.fksoft.server.http.server.serverIO.responseData.impl.raw.PkgRawResponseData
+import top.fksoft.server.http.server.serverIO.responseData.impl.raw.ResRawResponseData
 import top.fksoft.server.http.server.serverIO.responseData.impl.text.PkgHtmlResponseData
 
 /**
@@ -16,7 +16,7 @@ object SimpleResponseData {
     val WELCOME
         get() = PkgHtmlResponseData(packagePath = "/res/resultHtml/HelloWorld.html")
     val FAVICON
-        get() = PkgRawResponseData("/res/drawable/favicon.png")
+        get() = ResRawResponseData("/res/drawable/favicon.png")
 
 
 }

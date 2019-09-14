@@ -10,9 +10,9 @@ import java.io.OutputStream
  * @author ExplodingDragon
  * @version 1.0
  */
-class PkgRawResponseData (private val path:String): BaseResponseData(){
+class ResRawResponseData (private val path:String): BaseResponseData(){
     override var contentType: String = ContentTypeUtils.extension2Application(path)
-    private val inputStream = PkgRawResponseData::class.java.getResourceAsStream(path)
+    private val inputStream = ResRawResponseData::class.java.getResourceAsStream(path)
     private var bytes:ByteArray = ByteArray(0)
     init {
         val output = ByteArrayOutputStream()
