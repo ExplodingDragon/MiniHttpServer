@@ -9,32 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cli/src/main/resources/marked.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/binder/BaseHttpServletBinder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/binder/impl/ResServletBinder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raw/icon.xcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/raw/服务器测试.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReadMe.MD" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/cli/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoHtmlServlet.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoServlet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoServlet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/src/main/resources/InfoHtml.html" beforeDir="false" afterPath="$PROJECT_DIR$/cli/src/main/resources/InfoHtml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/src/main/resources/InfoHtml.md" beforeDir="false" afterPath="$PROJECT_DIR$/cli/src/main/resources/InfoHtml.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/HttpServletBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/binder/impl/HttpServletBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/FindHttpServletFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/FindHttpServletFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultFindHttpServlet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultFindHttpServlet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultHeaderReader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultHeaderReader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/HttpHeaderInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/HttpHeaderInfo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/SimpleResponseData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/SimpleResponseData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/PkgRawResponseData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/ResRawResponseData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/BaseHttpServlet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/BaseHttpServlet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/TextHtmlServlet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/TextHtmlServlet.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/ClientAcceptRunnable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/ClientAcceptRunnable.kt" afterDir="false" />
-    </list>
+    <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/modules/target/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -169,7 +144,7 @@
         <entry file="file://$PROJECT_DIR$/cli/src/main/resources/InfoHtml.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="224">
+              <first_editor relative-caret-position="627">
                 <caret line="33" selection-start-line="33" selection-end-line="33" />
               </first_editor>
               <second_editor />
@@ -1003,7 +978,7 @@
       <workItem from="1568382317371" duration="7325000" />
       <workItem from="1568427586202" duration="2341000" />
       <workItem from="1568430007939" duration="5214000" />
-      <workItem from="1568435274103" duration="705000" />
+      <workItem from="1568435274103" duration="771000" />
     </task>
     <task id="LOCAL-00001" summary="fix bugs.">
       <created>1561946216653</created>
@@ -1327,7 +1302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568387471864</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="臨時保存">
+      <created>1568436030124</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1568436030124</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1363,7 +1345,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="649152000" />
+    <option name="totallyTimeSpent" value="649218000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1376,7 +1358,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="top" id="Ant Build" order="0" side_tool="true" weight="0.25" />
       <window_info anchor="top" id="Maven" order="1" side_tool="true" weight="0.32906976" />
@@ -1388,10 +1369,10 @@
       <window_info id="Favorites" order="5" show_stripe_button="false" sideWeight="0.5023256" side_tool="true" weight="0.23126338" />
       <window_info id="Build Variants" order="6" sideWeight="0.5095057" side_tool="true" weight="0.25428265" />
       <window_info id="Captures" order="7" sideWeight="0.50570345" side_tool="true" weight="0.18683083" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.4904943" visible="true" weight="0.29122055" />
+      <window_info content_ui="combo" id="Project" order="8" sideWeight="0.4904943" visible="true" weight="0.29122055" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32790697" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946466" visible="true" weight="0.48488373" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946466" weight="0.48488373" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.3988372" />
@@ -1894,7 +1875,7 @@
     <entry file="file://$PROJECT_DIR$/cli/src/main/resources/InfoHtml.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="224">
+          <first_editor relative-caret-position="627">
             <caret line="33" selection-start-line="33" selection-end-line="33" />
           </first_editor>
           <second_editor />
