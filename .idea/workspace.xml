@@ -11,15 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/HttpServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/HttpServer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/ClientResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/ClientResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/SimpleResponseData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/SimpleResponseData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/ResRawResponseData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/ResRawResponseData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/SocketListenerRunnable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/SocketListenerRunnable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/modules/target/" />
@@ -175,7 +166,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
+            <state relative-caret-position="-618">
               <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="e#66#303#0" expanded="true" />
@@ -1126,7 +1117,7 @@
       <workItem from="1568430007939" duration="5214000" />
       <workItem from="1568435274103" duration="771000" />
       <workItem from="1568525819290" duration="141000" />
-      <workItem from="1568690862664" duration="3014000" />
+      <workItem from="1568690862664" duration="3377000" />
     </task>
     <task id="LOCAL-00001" summary="fix bugs.">
       <created>1561946216653</created>
@@ -1464,7 +1455,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568525877001</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="1. 修复存在于issue(1)下的问题&#10;2. 将一个方法设置为过时的&#10;3. 指定默认连接维持时间为 3000 ms">
+      <created>1568694237837</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1568694237838</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1500,7 +1498,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="652373000" />
+    <option name="totallyTimeSpent" value="652736000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1528,14 +1526,14 @@
       <window_info content_ui="combo" id="Project" order="8" sideWeight="0.4904943" visible="true" weight="0.28333333" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32790697" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946466" weight="0.48464912" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49895832" visible="true" weight="0.48464912" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Debug" order="5" visible="true" weight="0.39802632" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.39802632" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32906976" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32456142" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005353" side_tool="true" weight="0.3883721" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50104165" side_tool="true" weight="0.48464912" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.32906976" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.5360465" />
       <window_info anchor="bottom" id="Android Profiler" order="12" show_stripe_button="false" />
@@ -1667,7 +1665,8 @@
     <MESSAGE value="Version v0.1Beta" />
     <MESSAGE value="添加断点续传（错误）" />
     <MESSAGE value="臨時保存" />
-    <option name="LAST_COMMIT_MESSAGE" value="臨時保存" />
+    <MESSAGE value="1. 修复存在于issue(1)下的问题&#10;2. 将一个方法设置为过时的&#10;3. 指定默认连接维持时间为 3000 ms" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. 修复存在于issue(1)下的问题&#10;2. 将一个方法设置为过时的&#10;3. 指定默认连接维持时间为 3000 ms" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2084,7 +2083,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
+        <state relative-caret-position="-618">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#66#303#0" expanded="true" />
