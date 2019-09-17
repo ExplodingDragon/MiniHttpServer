@@ -2,9 +2,7 @@ package top.fksoft.execute
 
 import jdkUtils.ModConfig
 import jdkUtils.logcat.Logger
-import top.fksoft.execute.servlet.InfoServlet
 import top.fksoft.server.http.HttpServer
-import top.fksoft.server.http.servlet.binder.impl.ResServletBinder
 import java.io.File
 
 object Main {
@@ -17,9 +15,9 @@ object Main {
             val serverConfig = httpServer.serverConfig
             ModConfig.debug = true
             serverConfig.workDirectory = File("D:\\")
-            serverConfig.addAutoHttpServlet(InfoServlet::class)
-            serverConfig.addHttpServletBinder(ResServletBinder("/","/InfoHtml.html"))
-            serverConfig.addHttpServletBinder(ResServletBinder("/marked.min.js","/marked.min.js"))
+//            serverConfig.addAutoHttpServlet(InfoServlet::class)
+//            serverConfig.addHttpServletBinder(ResServletBinder("/","/InfoHtml.html"))
+//            serverConfig.addHttpServletBinder(ResServletBinder("/marked.min.js","/marked.min.js"))
             httpServer.start()
             var breakIt = false
             while (!breakIt){

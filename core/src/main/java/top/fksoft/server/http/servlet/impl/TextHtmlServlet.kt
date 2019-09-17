@@ -19,7 +19,7 @@ open class TextHtmlServlet(headerInfo: HttpHeaderInfo) : BaseHttpServlet(headerI
 
     var contentType:String
     set(value) {
-        responseData.contentType = contentType
+        responseData.contentType = value
     }
     get() = responseData.contentType
 

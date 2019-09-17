@@ -63,13 +63,6 @@ class DataReaderUtils(private val inputStream: InputStream, private val charset:
         return result
     }
 
-    /**
-     * 将位置移动到下一行
-     * @return Boolean
-     */
-    fun nextLine() :Boolean{
-        return readLine() != null
-    }
 
 
     fun copy(output: OutputStream, length: Int): Boolean{

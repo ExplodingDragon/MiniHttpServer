@@ -37,7 +37,7 @@ class DefaultHeaderReader(config: ServerConfig, inputStream: InputStream) : Head
     override fun readHeaderInfo(edit: HttpHeaderInfo.Edit): ResponseCode {
         val headerReader = DataReaderUtils(inputStream, Charsets.UTF_8)
 //        val headerReader = BufferedReader(InputStreamReader(inputStream))
-        val httpType = headerReader.readLine()!!.trim()
+        val httpType = headerReader.readLine().trim()
         // 读取HTTP第一行的数据
         val typeArray = httpType.split(" ")
         /*
@@ -55,7 +55,7 @@ class DefaultHeaderReader(config: ServerConfig, inputStream: InputStream) : Head
         location = URLDecoder.decode(location, Charsets.UTF_8.name())
         //还原 URL 中的转义字符
         while (true) {
-            val line = headerReader.readLine()!!.trim()
+            val line = headerReader.readLine().trim()
             if (line == "") {
                 //达到HTTP HEADER 第一个末尾
                 break
@@ -176,9 +176,9 @@ class DefaultHeaderReader(config: ServerConfig, inputStream: InputStream) : Head
                     val postDataIndex = search.readLines(start, 3)
                     val contentTypeStr = search.readLine(contentTypeIndex)!!.split(":")[1].trim()
                     val postFile = File(httpHeader.reader.serverConfig.tempDirectory, "${rawFileName}_${name}")
-                    val start = postDataIndex + 1
+                    val start1 = postDataIndex + 1
                     val end2 = end + 1
-                    val postAutoArray = autoByteArray.copyOf(postFile, start, end2 - start)
+                    val postAutoArray = autoByteArray.copyOf(postFile, start1, end2 - start1)
                     // 存在逻辑错误（UTF-8编码问题），但是运行没问题，所以不管啦，以后修复吧
                     httpHeader.addFormFile(name, HttpHeaderInfo.PostFileItem(name, postAutoArray, contentTypeStr, fileName))
                     logger.debug("POST FILE ${(i + 2) / 2}:[name=$name,size=${postAutoArray.size}]")

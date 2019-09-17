@@ -11,6 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultHeaderReader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultHeaderReader.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/TextHtmlServlet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/TextHtmlServlet.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/modules/target/" />
@@ -123,51 +127,12 @@
     <favorites_list name="httpServer" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/base/BaseClientRunnable.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="64" column="21" lean-forward="true" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
-              <folding>
-                <element signature="e#44#368#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/SimpleResponseData.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/text/PkgHtmlResponseData.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="11" column="151" selection-start-line="11" selection-start-column="151" selection-end-line="11" selection-end-column="151" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/text/HtmlResponseData.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-618">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="413">
+              <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
               <folding>
                 <element signature="e#66#303#0" expanded="true" />
               </folding>
@@ -176,22 +141,61 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/BaseResponseData.kt">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+            <state relative-caret-position="342">
+              <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="47" selection-start-line="7" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultHeaderReader.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="178" column="30" selection-start-line="178" selection-start-column="30" selection-end-line="178" selection-end-column="30" />
               <folding>
-                <element signature="e#113#332#0" expanded="true" />
+                <element signature="e#52#638#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/ResRawResponseData.kt">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/TextHtmlServlet.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+            <state relative-caret-position="161">
+              <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="741">
+              <caret line="65" selection-start-line="65" selection-end-line="65" />
+              <folding>
+                <element signature="e#38#191#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="21" column="18" selection-start-line="19" selection-start-column="13" selection-end-line="21" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -199,7 +203,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/FileHttpServlet.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="722">
+            <state relative-caret-position="779">
               <caret line="50" column="39" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="42" />
             </state>
           </provider>
@@ -213,7 +217,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/ClientResponse.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="716">
+            <state relative-caret-position="912">
               <caret line="55" column="22" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="22" />
             </state>
           </provider>
@@ -279,7 +283,6 @@
         <option value="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.java" />
         <option value="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/servlet/InfoServlet.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/annotation/ServletBinder.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/core/build.gradle" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/base/BaseResponse.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/base/BaseClientRunnable.kt" />
@@ -300,13 +303,9 @@
         <option value="$PROJECT_DIR$/cli/src/main/resources/InfoHtml2.html" />
         <option value="$PROJECT_DIR$/cli/src/main/resources/InfoHtml.html" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/binder/impl/ResServletBinder.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/TextHtmlServlet.kt" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultHeaderReader.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/ClientAcceptRunnable.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/HttpHeaderInfo.kt" />
         <option value="$PROJECT_DIR$/cli/src/main/resources/InfoHtml.md" />
-        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt" />
-        <option value="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/HttpServer.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/SocketListenerRunnable.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/config/ServerConfig.kt" />
@@ -315,6 +314,11 @@
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/SimpleResponseData.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/BaseResponseData.kt" />
         <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultHeaderReader.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/TextHtmlServlet.kt" />
+        <option value="$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt" />
+        <option value="$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.kt" />
       </list>
     </option>
   </component>
@@ -339,6 +343,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="httpServer" type="58d84e3e:PackageViewProjectNode" />
+              <item name="httpServer" type="eaaa3913:PackageViewModuleGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -717,17 +732,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="httpServer" type="58d84e3e:PackageViewProjectNode" />
-              <item name="httpServer" type="eaaa3913:PackageViewModuleGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1117,14 +1121,8 @@
       <workItem from="1568430007939" duration="5214000" />
       <workItem from="1568435274103" duration="771000" />
       <workItem from="1568525819290" duration="141000" />
-      <workItem from="1568690862664" duration="3377000" />
-    </task>
-    <task id="LOCAL-00001" summary="fix bugs.">
-      <created>1561946216653</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1561946216654</updated>
+      <workItem from="1568690862664" duration="4407000" />
+      <workItem from="1568704889987" duration="322000" />
     </task>
     <task id="LOCAL-00002" summary="fix bugs.">
       <created>1561946694663</created>
@@ -1462,7 +1460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568694237838</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="1. 修复存在于issue(1)下的问题&#10;2. 将一个方法设置为过时的&#10;3. 指定默认连接维持时间为 3000 ms">
+      <created>1568694264068</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1568694264069</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1498,7 +1503,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="652736000" />
+    <option name="totallyTimeSpent" value="654088000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1523,10 +1528,10 @@
       <window_info id="Favorites" order="5" show_stripe_button="false" sideWeight="0.5023256" side_tool="true" weight="0.23126338" />
       <window_info id="Build Variants" order="6" sideWeight="0.5095057" side_tool="true" weight="0.25428265" />
       <window_info id="Captures" order="7" sideWeight="0.50570345" side_tool="true" weight="0.18683083" />
-      <window_info content_ui="combo" id="Project" order="8" sideWeight="0.4904943" visible="true" weight="0.28333333" />
+      <window_info active="true" content_ui="combo" id="Project" order="8" sideWeight="0.4904943" visible="true" weight="0.29122055" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32790697" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49895832" visible="true" weight="0.48464912" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49895832" visible="true" weight="0.48372093" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.39802632" />
@@ -1727,13 +1732,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/HeaderReaderFactory.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cli/src/main/resources/Info.html" />
     <entry file="jar://C:/Program Files/RedHat/java-1.8.0-openjdk-1.8.0.212-3/src.zip!/java/lang/annotation/Target.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1787,13 +1785,6 @@
           <folding>
             <element signature="e#70#250#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1897,13 +1888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/TextHtmlServlet.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/Software/SoftData/GradleLocal/caches/modules-2/files-2.1/com.github.ExplodingDragon.JavaUtils/JavaUtils/v0.1-beta2/442ef9c2455a32382521c51a44dc012ec2289649/JavaUtils-v0.1-beta2-sources.jar!/jdkUtils/io/autoByteArray/AutoByteArraySearch.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1917,16 +1901,6 @@
           <caret line="33" column="40" lean-forward="true" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
           <folding>
             <element signature="e#52#498#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultHeaderReader.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1177">
-          <caret line="103" column="9" lean-forward="true" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
-          <folding>
-            <element signature="e#52#638#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1948,16 +1922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#38#191#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/HttpServer.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1672">
@@ -1965,13 +1929,6 @@
           <folding>
             <element signature="e#32#496#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
@@ -2016,37 +1973,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/drawable/favicon.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/ClientResponse.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="716">
-          <caret line="55" column="22" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/FileHttpServlet.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="50" column="39" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/thread/base/BaseClientRunnable.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="64" column="21" lean-forward="true" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
+        <state relative-caret-position="1064">
+          <caret line="64" column="21" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
           <folding>
             <element signature="e#44#368#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/ResRawResponseData.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -2073,7 +2006,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/BaseResponseData.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="361">
           <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
           <folding>
             <element signature="e#113#332#0" expanded="true" />
@@ -2081,13 +2014,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/raw/ResRawResponseData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/FileHttpServlet.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="50" column="39" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/resources/res/drawable/favicon.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/ClientResponse.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="912">
+          <caret line="55" column="22" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/serverIO/responseData/impl/TextResponseData.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-618">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="413">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
           <folding>
             <element signature="e#66#303#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="47" selection-start-line="7" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/server/factory/impl/DefaultHeaderReader.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="178" column="30" selection-start-line="178" selection-start-column="30" selection-end-line="178" selection-end-column="30" />
+          <folding>
+            <element signature="e#52#638#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/servlet/impl/TextHtmlServlet.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/top/fksoft/server/http/utils/DataReaderUtils.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+          <folding>
+            <element signature="e#38#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/src/main/java/top/fksoft/execute/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="21" column="18" selection-start-line="19" selection-start-column="13" selection-end-line="21" selection-end-column="18" />
         </state>
       </provider>
     </entry>
