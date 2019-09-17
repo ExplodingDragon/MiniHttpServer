@@ -1,40 +1,34 @@
 package top.fksoft.server.http.utils
 
-import java.io.ByteArrayOutputStream
 import jdkUtils.logcat.Logger
-import java.io.IOException
+import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.io.OutputStream
 import java.nio.charset.Charset
 
 /**
  * @author ExplodingDragon
- * @version 1.0
+ * @version 1.1
+ *
+ * bug 修复：
+ * v1.1 修复在慢速连接下发生错误的问题
+ *
  */
+@Deprecated(message = "对于不同编码存在大量问题，即将替代")
 class DataReaderUtils(private val inputStream: InputStream, private val charset: Charset = Charsets.UTF_8) {
     private val logger = Logger.getLogger(DataReaderUtils::class)
-    init {
-        if (inputStream.available() == 0) {
-            throw IOException("无法读取到更多数据！")
-        }
-    }
 
     /**
      * # 读取一行数据
      * @return String
      */
-    fun readLine(): String? {
+    fun readLine(): String {
         val defaultResult = ""
-        if (inputStream.available() == 0)
-            return null
         var charLine = 0
         val outputStream = ByteArrayOutputStream()
         var byteChar: Char
         var read: Int
         while (true) {
-            if (inputStream.available() == 0) {
-                break
-            }
             read = inputStream.read()
             if (read == -1) {
                 break

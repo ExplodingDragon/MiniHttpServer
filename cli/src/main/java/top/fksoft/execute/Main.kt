@@ -20,11 +20,25 @@ object Main {
             serverConfig.addAutoHttpServlet(InfoServlet::class)
             serverConfig.addHttpServletBinder(ResServletBinder("/","/InfoHtml.html"))
             serverConfig.addHttpServletBinder(ResServletBinder("/marked.min.js","/marked.min.js"))
-
             httpServer.start()
+            var breakIt = false
+            while (!breakIt){
+                readLine()?.let {
+                    val line = it.trim().toUpperCase()
+                    if (line == "STOP"){
+                        println("Stop Service ...")
+                        breakIt = true
+                        httpServer.close()
+                    }else{
+                        println("Unknown Command.")
+                    }
+                }
+
+            }
         } catch (e: Exception) {
             logger.error("启动服务器时出现问题 ！", e)
         }
 
     }
 }
+

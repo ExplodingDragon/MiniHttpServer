@@ -84,6 +84,9 @@ class HttpServer
     }
 
     override fun close() {
+        serverSocket.close()
+        runnable.close()
+        logger.info("销毁服务器完成！")
     }
 
 

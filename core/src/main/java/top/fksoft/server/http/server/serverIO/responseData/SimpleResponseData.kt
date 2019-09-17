@@ -15,8 +15,7 @@ object SimpleResponseData {
         get() = PkgHtmlResponseData(ResponseCode.HTTP_BAD_REQUEST, "/res/resultHtml/400.html")
     val WELCOME
         get() = PkgHtmlResponseData(packagePath = "/res/resultHtml/HelloWorld.html")
-    val FAVICON
-        get() = ResRawResponseData("/res/drawable/favicon.png")
+    val FAVICON = ResRawResponseData("/res/drawable/favicon.png",true)
 
 
 }

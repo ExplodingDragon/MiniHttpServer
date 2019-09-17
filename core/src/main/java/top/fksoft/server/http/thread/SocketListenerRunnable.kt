@@ -1,13 +1,14 @@
 package top.fksoft.server.http.thread
 
+import jdkUtils.logcat.Logger
 import top.fksoft.bean.NetworkInfo
 import top.fksoft.server.http.HttpServer
 import top.fksoft.server.http.config.ServerConfig
-import jdkUtils.logcat.Logger
 import java.io.Closeable
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.net.ServerSocket
+import java.net.SocketException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.SynchronousQueue
 import java.util.concurrent.ThreadPoolExecutor
@@ -72,7 +73,9 @@ constructor(private val httpServer: HttpServer, private val serverSocket: Server
                     client.close()
                 }
             } catch (e: Exception) {
-                logger.error("在处理 $remoteInfo 的过程中出现异常.", e)
+                if (e !is SocketException || !e.message!!.contains("closed")) {
+                    logger.error("在处理 $remoteInfo 的过程中出现异常.", e)
+                }
             }
         }
     }

@@ -19,9 +19,7 @@ open  class TextResponseData() : BaseResponseData() {
     override val length: Long by lazy {
         builder.toString().toByteArray().size.toLong()
     }
-
     // 忽略长度测量
-
     private val builder = StringBuilder()
 
 

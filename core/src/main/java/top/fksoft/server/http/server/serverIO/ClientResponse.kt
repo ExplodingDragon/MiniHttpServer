@@ -47,7 +47,9 @@ class ClientResponse(private val headerInfo: HttpHeaderInfo,private val outputSt
         }
         printWriter.println()
         printWriter.flush()
-        return responseData.writeBody(outputStream)
+        val writeBody = responseData.writeBody(outputStream)
+        outputStream.flush()
+        return writeBody
     }
 
     override fun close() {

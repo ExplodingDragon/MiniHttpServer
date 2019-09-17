@@ -27,9 +27,8 @@ class ServerConfig(val serverPort :Int): Closeable {
 
     private val logger = Logger.getLogger(ServerConfig::class)
     private val httpPropertiesMap = ConcurrentHashMap<String, String>()
-
-
     val httpServletMap = ConcurrentHashMap<String, BaseHttpServletBinder>()
+
 
 
     /**
@@ -44,7 +43,7 @@ class ServerConfig(val serverPort :Int): Closeable {
      *
      * @return 维持的时间，单位： ms
      */
-    var socketTimeout:Int = 0
+    var socketTimeout:Int = 3000
 
     var tempDirectory = File(HttpConstant.PROPERTY_SYSTEM_TEMP_DIR, HttpConstant.LIB_NAME)
     var workDirectory = tempDirectory
