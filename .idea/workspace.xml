@@ -11,7 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ef2f63a9-e1dd-461b-abd7-de5ebd5118cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.idea/modules/target/" />
@@ -189,8 +188,8 @@
         <entry file="file://$PROJECT_DIR$/ReadMe.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="470">
-                <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+              <first_editor relative-caret-position="186">
+                <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
               </first_editor>
               <second_editor />
             </state>
@@ -1120,21 +1119,7 @@
       <workItem from="1568525819290" duration="141000" />
       <workItem from="1568690862664" duration="4407000" />
       <workItem from="1568704889987" duration="552000" />
-      <workItem from="1570121819684" duration="457000" />
-    </task>
-    <task id="LOCAL-00003" summary="update  LICENSE.">
-      <created>1561947007135</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1561947007135</updated>
-    </task>
-    <task id="LOCAL-00004" summary="update  LICENSE.">
-      <created>1561947200941</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1561947200941</updated>
+      <workItem from="1570121819684" duration="701000" />
     </task>
     <task id="LOCAL-00005" summary="update  LICENSE.">
       <created>1561949130808</created>
@@ -1465,7 +1450,21 @@
       <option name="project" value="LOCAL" />
       <updated>1568705421554</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="优化代码结构.">
+      <created>1570122466307</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1570122466308</updated>
+    </task>
+    <task id="LOCAL-00053" summary="优化代码结构.">
+      <created>1570122498984</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1570122498984</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1501,7 +1500,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="654775000" />
+    <option name="totallyTimeSpent" value="655019000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2097,8 +2096,8 @@
     <entry file="file://$PROJECT_DIR$/ReadMe.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="470">
-            <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
+          <first_editor relative-caret-position="186">
+            <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
           </first_editor>
           <second_editor />
         </state>
