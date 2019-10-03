@@ -3,7 +3,6 @@
 
 
 
-
 [![](https://jitpack.io/v/ExplodingDragon/MiniHttpServer.svg)](https://jitpack.io/#ExplodingDragon/MiniHttpServer)
 ![Java Version 1.8](https://img.shields.io/badge/JAVA-1.8+-red.svg)    ![HTTP 1.1](https://img.shields.io/badge/HTTP-1.1-pink.svg)     ![MIT](https://img.shields.io/badge/license-MIT-pink.svg)       ![Android API 15+](https://img.shields.io/badge/Android-15+-PINK.svg)       ![Build Fail](https://img.shields.io/badge/Build-Success-pink.svg)
 
